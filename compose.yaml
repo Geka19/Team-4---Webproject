@@ -1,0 +1,6 @@
+services:
+  team4-app:
+    image: fancyapp:0.1
+    build: .
+    ports: 
+      - 8084:8084
