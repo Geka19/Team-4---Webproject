@@ -12,7 +12,7 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: build and push a docker image
-        user: docker/build-push-action@v5
+        uses: docker/build-push-action@v5
         with:
           context:
           file: Dockerfile
