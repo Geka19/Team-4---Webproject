@@ -1,6 +1,8 @@
 {
   "dependencies": {
-    "express": "^4.18.3"
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mongoose": "^8.3.1"
   },
   "scripts": {
     "start": "node server.js"
@@ -9,7 +11,6 @@
   "description": "Webproject Autumn 2024 Team 4",
   "version": "0.0.1",
   "main": "server.js",
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Geka19/Team-4---Webproject.git"
@@ -17,7 +18,7 @@
   "keywords": [
     "webproject"
   ],
-  "author": "team4",
+  "author": "Team4",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Geka19/Team-4---Webproject/issues"
