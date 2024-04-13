@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import "../styles/Inaccessible.css";
 import NotFound_404 from "../assets/img/404.png";
 
+// Not Found page
+// Returns a 404 not found if the user tries to access a page that does not exist
 function NotFound() {
   const navigate = useNavigate();
 

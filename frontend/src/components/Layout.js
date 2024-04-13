@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 import "../styles/Layout.css";
 import Sidebar from "../components/Sidebar";
 
-// For the main layout
+// For the layout component
 const Layout = () => {
   return (
     <div className="layout-container">

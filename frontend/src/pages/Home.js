@@ -1,6 +1,7 @@
 import React from "react";
 import "../styles/Home.css";
-
+ 
+// For the home page (Not finished yet) feel free to add stuff i dont know what to add here
 function Home() {
   return (
     <main className="home-container">

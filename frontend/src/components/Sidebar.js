@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Logo from "../assets/img/logo.png"; // Replace with your logo if available
+import Logo from "../assets/img/logo.png";
 import "../styles/Sidebar.css";
 
+// Sidebar component
 function Sidebar() {
   return (
     <div className="container-sidebar">
@@ -37,8 +38,8 @@ function Sidebar() {
           </li>
 
           <li className="nav-link-item">
-            {/* Add the link to the Share Page here */}
-            <Link to="/">
+            {/* Add the link to the Note Page here */}
+            <Link to="/notes">
               <i className="fas fa-lightbulb"></i>
               <span className="nav-item">Notes Page</span>
             </Link>
@@ -53,6 +54,7 @@ function Sidebar() {
           </li>
 
           <li className="nav-link-item">
+            {/* Add the link to the settings Page here */}
             <Link to="/tips">
               <i className="fas fa-lightbulb"></i>
               <span className="nav-item">Settings</span>
