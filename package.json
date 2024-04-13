@@ -23,5 +23,9 @@
   "bugs": {
     "url": "https://github.com/Geka19/Team-4---Webproject/issues"
   },
-  "homepage": "https://github.com/Geka19/Team-4---Webproject#readme"
+  "homepage": "https://github.com/Geka19/Team-4---Webproject#readme",
+  "devDependencies": {
+    "webpack": "^5.91.0",
+    "webpack-cli": "^5.1.4"
+  }
 }
