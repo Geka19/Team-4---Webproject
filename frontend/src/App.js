@@ -1,93 +1,24 @@
-// App.js
+import { Routes, Route } from "react-router-dom";
+import NotFound from "./pages/NotFound";
+import Home from "./pages/Home";
+import Layout from "./components/Layout";
+import Notes from "./pages/Notes"; // Make sure to import the Notes component
 
-import React, { useState } from "react";
-
-const App = () => {
-  const [notes, setNotes] = useState([]);
-  const [showMain, setShowMain] = useState(true);
-
-  const saveNote = () => {
-    // Implement save note functionality
-  };
-
-  const deleteNote = () => {
-    // Implement delete note functionality
-  };
-
-  const saveToDraft = () => {
-    // Implement save to draft functionality
-  };
-
-  const saveToFolder = () => {
-    // Implement save to folder functionality
-  };
-
-  const showNotes = () => {
-    setShowMain(false);
-  };
-
-  const showMainContent = () => {
-    setShowMain(true);
-  };
-
-  const toggleMenu = () => {
-    // Implement toggle menu functionality
-  };
-
+function App() {
   return (
-    <div className="container">
-      <Sidebar showNotes={showNotes} showMain={showMainContent} />
-      <div className="content">
-        {showMain ? (
-          <Main saveNote={saveNote} toggleMenu={toggleMenu} />
-        ) : (
-          <Notes notes={notes} />
-        )}
-      </div>
-    </div>
-  );
-};
+    <Routes>
+      {/* Here you can add more routes for example if you create another page */}
+      <Route path="/" element={<Layout />}>
+        {/* Home/welcome route */}
+        <Route index element={<Home />} />
+        {/* Notes route */}
+        <Route path="notes" element={<Notes />} />
+      </Route>
 
-const Sidebar = ({ showNotes, showMain }) => {
-  return (
-    <div className="sidebar">
-      <h2 className="logo">NoteApp</h2>
-      <ul>
-        <li>
-          <a href="#" onClick={showMain}>
-            Main
-          </a>
-        </li>
-        <li>
-          <a href="#" onClick={showNotes}>
-            Notes
-          </a>
-        </li>
-      </ul>
-    </div>
+      {/* Fallback route for unmatched paths */}
+      <Route path="*" element={<NotFound />} />
+    </Routes>
   );
-};
-
-const Main = ({ saveNote, toggleMenu }) => {
-  return (
-    <div className="main">
-      <h1>Notebook</h1>
-      <div className="note">{/* Note Content */}</div>
-    </div>
-  );
-};
-
-const Notes = ({ notes }) => {
-  return (
-    <div className="notes">
-      <h1>My Notes</h1>
-      <ul>
-        {notes.map((note, index) => (
-          <li key={index}>{note}</li>
-        ))}
-      </ul>
-    </div>
-  );
-};
+}
 
 export default App;
