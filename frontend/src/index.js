@@ -1,14 +1,19 @@
 import React from "react";
-import ReactDOM from "react-dom";
-import { BrowserRouter as Router } from "react-router-dom"; // Import BrowserRouter
+import { createRoot } from "react-dom/client";
+import { BrowserRouter as Router } from "react-router-dom";
+import "./index.css";
 import App from "./App";
-import "../src/index.css";
+import { Routes, Route } from "react-router-dom";
 
-// Render the App component inside the Router component to enable routing as a single-page application
-ReactDOM.createRoot(document.getElementById("root")).render(
+const container = document.getElementById("root");
+const root = createRoot(container);
+
+root.render(
   <React.StrictMode>
     <Router>
-      <App />
+      <Routes>
+        <Route path="/*" element={<App />} />
+      </Routes>
     </Router>
   </React.StrictMode>
 );
