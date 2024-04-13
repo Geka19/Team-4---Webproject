@@ -32,7 +32,6 @@ function NotebookPage() {
             </div>
           </div>
           <Toolbar />
-          <SaveNote />
           <Textarea />
           <SaveNote />
           <p id="errorText" className="error-text">
