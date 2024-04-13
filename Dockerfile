@@ -20,3 +20,34 @@ RUN npm install
 USER usr
 
 CMD ["node", "server.js"]
+
+# Backend Dockerfile
+FROM node:14
+
+WORKDIR /usr/src/backend
+
+COPY backend/package*.json ./
+RUN npm install
+
+COPY backend/ .
+
+EXPOSE 3001
+CMD ["node", "src/server.js"]
+
+# Frontend Dockerfile
+FROM node:14 as build
+
+WORKDIR /usr/src/frontend
+
+COPY frontend/package*.json ./
+RUN npm install
+
+COPY frontend/ .
+
+RUN npm run build
+
+FROM nginx:alpine
+
+COPY --from=build /usr/src/frontend/build /usr/share/nginx/html
+
+EXPOSE 80
