@@ -1,24 +1,9 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
-import Notebook from "./pages/NotebookPage";
-
-// Still working on the protected routes and authentication/ admin login functionality
+import NotebookPage from "./pages/NotebookPage";
 
 // App component
 const App = () => {
-  return (
-    <Routes>
-      <Route path="/register" element={<RegisterPage />} />
-      <Route path="/login" element={<LoginPage />} />
-      <Route path="/" element={<WelcomePage />} />
-      {/* <Route
-        path="/dashboard"
-        element={<AdminRoute element={<DashboardPage />} />}
-      /> */}
-      <Route path="/dashboard" element={<DashboardPage />} />
-      <Route path="*" element={<NotFoundPage />} />
-    </Routes>
-  );
+  return <NotebookPage />;
 };
 
 export default App;
