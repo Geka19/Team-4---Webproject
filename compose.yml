@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:latest
+    ports:
+      - "27017:27017"  # Expose MongoDB port
+
+  team4-app:
+    image: fancyapp:0.1
+    build: .
+    ports: 
+      - "8084:8084"
+    depends_on:
+      - mongodb  # Ensure MongoDB service is started before the app
+    environment:
+      MONGODB_DATABASE: sustainable-diary.users
