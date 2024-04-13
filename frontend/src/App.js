@@ -2,7 +2,8 @@ import { Routes, Route } from "react-router-dom";
 import NotFound from "./pages/NotFound";
 import Home from "./pages/Home";
 import Layout from "./components/Layout";
-import Notes from "./pages/Notes"; 
+import Notes from "./pages/Notes";
+import Board from "./pages/Board";
 
 function App() {
   return (
@@ -11,9 +12,12 @@ function App() {
       <Route path="/" element={<Layout />}>
         {/* Home/welcome route */}
         <Route path="home" element={<Home />} />
-        
+
         {/* Notes route */}
         <Route index element={<Notes />} />
+
+        {/* Board route */}
+        <Route index element={<Board />} />
       </Route>
 
       {/* Fallback route for unmatched paths */}

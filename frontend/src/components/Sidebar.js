@@ -9,10 +9,10 @@ function Sidebar() {
       <nav>
         <ul>
           <li className="logo-item">
-            <Link to="/dashboard" className="logo">
+            <div className="logo">
               <img src={Logo} alt="Logo" />
               <span className="nav-item">Sustainability Diary</span>
-            </Link>
+            </div>
           </li>
 
           <li className="nav-link-item">
@@ -30,21 +30,23 @@ function Sidebar() {
           </li>
 
           <li className="nav-link-item">
-            <Link to="/goals">
+            <Link to="/board">
               <i className="fas fa-tasks"></i>
+              <span className="nav-item">Board Page</span>
+            </Link>
+          </li>
+
+          <li className="nav-link-item">
+            {/* Add the link to the Share Page here */}
+            <Link to="/">
+              <i className="fas fa-lightbulb"></i>
               <span className="nav-item">Notes Page</span>
             </Link>
           </li>
 
           <li className="nav-link-item">
-            <Link to="/tips">
-              <i className="fas fa-lightbulb"></i>
-              <span className="nav-item">Boards Page</span>
-            </Link>
-          </li>
-
-          <li className="nav-link-item">
-            <Link to="/tips">
+             {/* Add the link to the Share Page here */}
+            <Link to="/">
               <i className="fas fa-lightbulb"></i>
               <span className="nav-item">Share Page</span>
             </Link>

@@ -1,38 +1,42 @@
 .container-sidebar {
   display: flex;
-  position: sticky;
-  top: 0;
   height: 100vh;
   overflow-y: auto;
-}
-.container-sidebar nav {
-  position: relative;
+  position: sticky;
   top: 0;
-  bottom: 0;
+}
+
+.container-sidebar nav {
+  background: rgb(32, 31, 31);
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+  color: white;
   height: 100vh;
   left: 0;
-  background: rgb(32, 31, 31);
-  color: white;
-  width: 300px;
   overflow: hidden;
-  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+  position: relative;
+  top: 0;
+  width: 300px;
 }
+
 .container-sidebar .logo {
-  text-align: center;
   display: flex;
-  margin: 10px 0 0 10px;
+  text-align: center;
+  overflow: hidden;
+  padding: 10px;
 }
+
 .container-sidebar .logo img {
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
+  height: 50px;
+  width: auto;
 }
+
 .container-sidebar .logo span {
   font-weight: bold;
   padding-left: 15px;
   font-size: 20px;
   text-transform: uppercase;
 }
+
 .container-sidebar a {
   position: relative;
   color: var(--black);
@@ -41,6 +45,7 @@
   width: 280px;
   padding: 10px;
 }
+
 .container-sidebar nav .fas {
   position: relative;
   width: 70px;
@@ -49,6 +54,7 @@
   font-size: 20px;
   text-align: center;
 }
+
 .container-sidebar .nav-item {
   position: relative;
   top: 12px;
@@ -57,4 +63,20 @@
 
 .container-sidebar .nav-link-item:hover {
   background: rgb(110, 110, 173);
+}
+
+/* For the modal */
+h2 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+p{
+  color: gray;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.modal-button {
+  margin-right: 10px;
 }
