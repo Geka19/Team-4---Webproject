@@ -29,10 +29,10 @@
   outline: none;
   cursor: pointer;
   transition: background-color 0.3s;
-  background: var(--orange);
-  color: var(--pure-white);
+  background: orange;
+  color: white;
 }
 
 .notfound button:hover {
-  background: var(--dark-orange);
+  background: orange;
 }

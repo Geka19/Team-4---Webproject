@@ -16,14 +16,14 @@ function Sidebar() {
           </li>
 
           <li className="nav-link-item">
-            <Link to="/notes">
+            <Link to="/">
               <i className="fas fa-home"></i>
               <span className="nav-item">Opening Page</span>
             </Link>
           </li>
 
           <li className="nav-link-item">
-            <Link to="/">
+            <Link to="/home">
               <i className="fas fa-book-open"></i>
               <span className="nav-item">Home Page</span>
             </Link>

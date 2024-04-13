@@ -10,7 +10,7 @@ function Notes() {
   };
 
   return (
-    <div class="container">
+    <div className="container">
       <h1>Notes</h1>
       <textarea
         value={note}

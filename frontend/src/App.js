@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import NotFound from "./pages/NotFound";
 import Home from "./pages/Home";
 import Layout from "./components/Layout";
-import Notes from "./pages/Notes"; // Make sure to import the Notes component
+import Notes from "./pages/Notes"; 
 
 function App() {
   return (
@@ -10,9 +10,10 @@ function App() {
       {/* Here you can add more routes for example if you create another page */}
       <Route path="/" element={<Layout />}>
         {/* Home/welcome route */}
-        <Route index element={<Home />} />
+        <Route path="home" element={<Home />} />
+        
         {/* Notes route */}
-        <Route path="notes" element={<Notes />} />
+        <Route index element={<Notes />} />
       </Route>
 
       {/* Fallback route for unmatched paths */}

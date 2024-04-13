@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/Inaccessible.css";
-import NotFound_404 from "../assets/img/not-found.png";
+import NotFound_404 from "../assets/img/404.png";
 
 function NotFound() {
   const navigate = useNavigate();
@@ -11,10 +11,10 @@ function NotFound() {
       <img src={NotFound_404} alt="Not Found" />
       <h1>404: Page Not Found</h1>
       <p>
-        We're sorry, but the page you are looking for doesn't exist or has been
+        We're sorry, the page you are looking for doesn't exist or has been
         moved.
       </p>
-      <button onClick={() => navigate("/")}>Go Home</button>
+      <button onClick={() => navigate("/")}>Go Back</button>
     </div>
   );
 }
