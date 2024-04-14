@@ -2,7 +2,6 @@ import { Routes, Route } from "react-router-dom";
 import NotFound from "./pages/NotFound";
 import Home from "./pages/Home";
 import Layout from "./components/Layout";
-import Opening from "./pages/Opening";
 import Board from "./pages/Board";
 import Notes from "./pages/Notes";
 import Share from "./pages/Share";
@@ -13,11 +12,9 @@ function App() {
     <Routes>
       {/* Here you can add more routes for example if you create another page */}
       <Route path="/" element={<Layout />}>
-        {/* Opening route (to quickly write down a note)*/}
-        <Route index="/" element={<Opening />} />
-
+    
         {/* Home/welcome route */}
-        <Route path="home" element={<Home />} />
+        <Route path="/" element={<Home />} />
 
         {/* Board route */}
         <Route path="board" element={<Board />} />

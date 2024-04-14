@@ -18,22 +18,15 @@ function Sidebar() {
 
           <li className="nav-link-item">
             <Link to="/">
-              <i className="fas fa-home"></i>
-              <span className="nav-item">Opening Page</span>
-            </Link>
-          </li>
-
-          <li className="nav-link-item">
-            <Link to="/home">
               <i className="fas fa-book-open"></i>
-              <span className="nav-item">Home Page</span>
+              <span className="nav-item">Home</span>
             </Link>
           </li>
 
           <li className="nav-link-item">
             <Link to="/board">
               <i className="fas fa-tasks"></i>
-              <span className="nav-item">Board Page</span>
+              <span className="nav-item">Board</span>
             </Link>
           </li>
 
@@ -41,7 +34,7 @@ function Sidebar() {
             {/* Add the link to the Note Page here */}
             <Link to="/notes">
               <i className="fas fa-lightbulb"></i>
-              <span className="nav-item">Notes Page</span>
+              <span className="nav-item">Notes</span>
             </Link>
           </li>
 
@@ -49,7 +42,7 @@ function Sidebar() {
              {/* Add the link to the Share Page here */}
             <Link to="/share">
               <i className="fas fa-lightbulb"></i>
-              <span className="nav-item">Share Page</span>
+              <span className="nav-item">Share</span>
             </Link>
           </li>
 
