@@ -47,7 +47,7 @@ function Sidebar() {
 
           <li className="nav-link-item">
              {/* Add the link to the Share Page here */}
-            <Link to="/">
+            <Link to="/share">
               <i className="fas fa-lightbulb"></i>
               <span className="nav-item">Share Page</span>
             </Link>
@@ -55,7 +55,7 @@ function Sidebar() {
 
           <li className="nav-link-item">
             {/* Add the link to the settings Page here */}
-            <Link to="/tips">
+            <Link to="/settings">
               <i className="fas fa-lightbulb"></i>
               <span className="nav-item">Settings</span>
             </Link>

@@ -5,6 +5,8 @@ import Layout from "./components/Layout";
 import Opening from "./pages/Opening";
 import Board from "./pages/Board";
 import Notes from "./pages/Notes";
+import Share from "./pages/Share";
+import Settings from "./pages/Settings";
 
 function App() {
   return (
@@ -24,8 +26,10 @@ function App() {
         <Route path="notes" element={<Notes />} />
 
         {/* Share route */}
+        <Route path="share" element={<Share />} />
 
         {/* Settings route */}
+        <Route path="settings" element={<Settings />} />
 
       </Route>
 
