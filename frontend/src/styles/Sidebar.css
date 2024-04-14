@@ -31,7 +31,7 @@
   background-color: #555;
 }
 
-* Main content styles */
+/* Main content styles */
 .main {
   flex: 1;
   padding: 20px;
@@ -166,9 +166,9 @@ textarea {
   width: 300px;
 }
 
+/* For the logo */
 .container-sidebar .logo {
   display: flex;
-  align-items: center;
   text-align: center;
   overflow: hidden;
   padding: 10px;
@@ -186,32 +186,42 @@ textarea {
   text-transform: uppercase;
 }
 
+/* For the nav */
 .container-sidebar a {
   position: relative;
-  color: #fff;
+  color: var(--black);
   font-size: 16px;
-  display: block;
+  display: table;
   width: 280px;
   padding: 10px;
-  text-decoration: none;
+}
+
+.container-sidebar nav .fas {
+  position: relative;
+  width: 70px;
+  height: 40px;
+  top: 14px;
+  font-size: 20px;
+  text-align: center;
 }
 
 .container-sidebar .nav-item {
+  position: relative;
+  top: 12px;
   margin-left: 10px;
-  list-style: none;
 }
 
 .container-sidebar .nav-link-item:hover {
   background: rgb(110, 110, 173);
 }
-/* Modal styles */
-.modal h2 {
+
+/* For the modal */
+h2 {
   margin-bottom: 20px;
   text-align: center;
 }
 
-.modal p {
-  color: gray;
+p{
   text-align: center;
   margin-bottom: 10px;
 }
