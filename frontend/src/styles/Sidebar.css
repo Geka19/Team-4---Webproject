@@ -1,3 +1,6 @@
+<<<<<<< HEAD
+/* For main styles */
+=======
 /* Sidebar styles */
 .sidebar {
   background-color: #333;
@@ -146,6 +149,7 @@ textarea {
   margin-right: 10px;
 }
 /* Sidebar styles */
+>>>>>>> main
 .container-sidebar {
   display: flex;
   height: 100vh;
@@ -166,9 +170,15 @@ textarea {
   width: 300px;
 }
 
+<<<<<<< HEAD
+/* For the logo */
+.container-sidebar .logo {
+  display: flex;
+=======
 .container-sidebar .logo {
   display: flex;
   align-items: center;
+>>>>>>> main
   text-align: center;
   overflow: hidden;
   padding: 10px;
@@ -186,6 +196,31 @@ textarea {
   text-transform: uppercase;
 }
 
+<<<<<<< HEAD
+/* For the nav */
+.container-sidebar a {
+  position: relative;
+  color: var(--black);
+  font-size: 16px;
+  display: table;
+  width: 280px;
+  padding: 10px;
+}
+
+.container-sidebar nav .fas {
+  position: relative;
+  width: 70px;
+  height: 40px;
+  top: 14px;
+  font-size: 20px;
+  text-align: center;
+}
+
+.container-sidebar .nav-item {
+  position: relative;
+  top: 12px;
+  margin-left: 10px;
+=======
 .container-sidebar a {
   position: relative;
   color: #fff;
@@ -199,23 +234,38 @@ textarea {
 .container-sidebar .nav-item {
   margin-left: 10px;
   list-style: none;
+>>>>>>> main
 }
 
 .container-sidebar .nav-link-item:hover {
   background: rgb(110, 110, 173);
 }
+<<<<<<< HEAD
+
+/* For the modal */
+h2 {
+=======
 /* Modal styles */
 .modal h2 {
+>>>>>>> main
   margin-bottom: 20px;
   text-align: center;
 }
 
+<<<<<<< HEAD
+p{
+=======
 .modal p {
   color: gray;
+>>>>>>> main
   text-align: center;
   margin-bottom: 10px;
 }
 
 .modal-button {
   margin-right: 10px;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> main

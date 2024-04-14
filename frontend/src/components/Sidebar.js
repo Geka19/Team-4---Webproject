@@ -1,20 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// import Logo from "../assets/img/logo.png"; // Replace with your logo if available
+import Logo from "../assets/img/logo.png";
 import "../styles/Sidebar.css";
-import Textarea from "./Textarea";
 
+// Sidebar component
 function Sidebar() {
   return (
     <div className="container-sidebar">
       <nav>
         <ul>
-          {/* <li className="logo-item">
+          <li className="logo-item">
             <div className="logo">
               <img src={Logo} alt="Logo" />
               <span className="nav-item">Sustainability Diary</span>
             </div>
-          </li> */}
+          </li>
 
           <li className="nav-link-item">
             <Link to="/">
@@ -38,15 +38,15 @@ function Sidebar() {
           </li>
 
           <li className="nav-link-item">
-            {/* Add the link to the Share Page here */}
-            <Link to="/">
+            {/* Add the link to the Note Page here */}
+            <Link to="/notes">
               <i className="fas fa-lightbulb"></i>
               <span className="nav-item">Notes Page</span>
             </Link>
           </li>
 
           <li className="nav-link-item">
-            {/* Add the link to the Share Page here */}
+             {/* Add the link to the Share Page here */}
             <Link to="/">
               <i className="fas fa-lightbulb"></i>
               <span className="nav-item">Share Page</span>
@@ -54,6 +54,7 @@ function Sidebar() {
           </li>
 
           <li className="nav-link-item">
+            {/* Add the link to the settings Page here */}
             <Link to="/tips">
               <i className="fas fa-lightbulb"></i>
               <span className="nav-item">Settings</span>

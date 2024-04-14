@@ -1,31 +1,5 @@
 {
   "dependencies": {
-    "dotenv": "^16.4.5",
-    "express": "^4.19.2",
-    "mongoose": "^8.3.1"
-  },
-  "scripts": {
-    "start": "node server.js"
-  },
-  "name": "team4sustainnotes",
-  "description": "Webproject Autumn 2024 Team 4",
-  "version": "0.0.1",
-  "main": "server.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Geka19/Team-4---Webproject.git"
-  },
-  "keywords": [
-    "webproject"
-  ],
-  "author": "Team4",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Geka19/Team-4---Webproject/issues"
-  },
-  "homepage": "https://github.com/Geka19/Team-4---Webproject#readme",
-  "devDependencies": {
-    "webpack": "^5.91.0",
-    "webpack-cli": "^5.1.4"
+    "react-modal": "^3.16.1"
   }
 }
