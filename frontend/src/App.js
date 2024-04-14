@@ -12,7 +12,7 @@ function App() {
       {/* Here you can add more routes for example if you create another page */}
       <Route path="/" element={<Layout />}>
         {/* Opening route (to quickly write down a note)*/}
-        <Route index element={<Opening />} />
+        <Route index="/" element={<Opening />} />
 
         {/* Home/welcome route */}
         <Route path="home" element={<Home />} />
@@ -22,6 +22,11 @@ function App() {
 
         {/* Notes route */}
         <Route path="notes" element={<Notes />} />
+
+        {/* Share route */}
+
+        {/* Settings route */}
+
       </Route>
 
       {/* Fallback route for paths that does not exist*/}
