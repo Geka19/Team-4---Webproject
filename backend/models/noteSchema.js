@@ -7,6 +7,7 @@ const noteSchema = new mongoose.Schema({
     max: 50,
   },
   user: {
+    // comment out ref and replace type with String to test easier
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
     required: true,
@@ -18,7 +19,7 @@ const noteSchema = new mongoose.Schema({
     min: 2,
     max: 500,
   },
-  collection: {
+  board: {
     type: String,
     required: true,
     default: "Drafts",

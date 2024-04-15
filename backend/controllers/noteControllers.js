@@ -14,7 +14,7 @@ const getAllNotes = async (req, res) => {
 // get a specific Note
 const getNote = async (req, res) => {
   try {
-    const showNotes = await Note.findOne({ name: req.params.name });
+    const showNotes = await Note.findOne({ _id: req.params._id });
     res.json(showNotes);
   } catch (err) {
     res.json({ message: err });
@@ -24,12 +24,12 @@ const getNote = async (req, res) => {
 // create a new Note
 const createNote = async (req, res) => {
   const newNote = new Note({
-    name: req.body.name,
-    surname: req.body.surname,
-    email: req.body.email,
-    department: req.body.department,
-    university: req.body.university,
-    position: req.body.position,
+    title: req.body.title,
+    user: req.body.user,
+    tags: req.body.tags,
+    content: req.body.content,
+    board: req.body.board,
+    visibility: req.body.visibility,
   });
   try {
     const saveNote = await newNote.save();
@@ -41,53 +41,22 @@ const createNote = async (req, res) => {
 
 // update info about a Note
 const updateNote = async (req, res) => {
-  // get which info to update and the new input
-  const oldInfo = req.body.oldInfo;
-  const newInput = req.body.newInput;
-
   try {
-    const Note = await Note.findOne({ email: req.params.email });
-
-    // if Note not found
-    if (!Note) {
-      return res.status(404).json({ message: "Note not found" });
-    }
-
-    // get the info to be updated and update it
-    // switch (oldInfo) {
-    //   case "name":
-    //     Note.name = newInput;
-    //     break;
-    //   case "surname":
-    //     Note.surname = newInput;
-    //     break;
-    //   case "department":
-    //     Note.department = newInput;
-    //     break;
-    //   case "university":
-    //     Note.university = newInput;
-    //     break;
-    //   case "position":
-    //     Note.position = newInput;
-    //     break;
-    //   default:
-    //     res.status(400).json({ message: "Invalid update" });
-    // }
-
-    // save the updated card
-    const updatedNote = await Note.save();
-
+    const updatedNote = await Note.findByIdAndUpdate(
+      req.params._id, // id of the note to update
+      req.body, // new data
+      { new: true } // to return the updated data
+    );
     res.json(updatedNote);
   } catch (err) {
-    // catch any errors
-    res.status(400).send("failed");
+    res.status(400).json({ message: err });
   }
 };
 
 // delete a Note
 const deleteNote = async (req, res) => {
   try {
-    const deleteNote = await Note.deleteOne({ email: req.params.email });
+    const deleteNote = await Note.deleteOne({ _id: req.params._id });
     res.json({ message: "Note deleted" });
   } catch (err) {
     res.status(400).json({ message: err });

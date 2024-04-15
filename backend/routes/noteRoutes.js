@@ -11,12 +11,12 @@ const {
 // routes
 router.get("/", getAllNotes);
 
-router.get("/:name", getNote);
+router.get("/:_id", getNote);
 
 router.post("/", createNote);
 
-router.put("/:email", updateNote);
+router.put("/:_id", updateNote);
 
-router.delete("/:email", deleteNote);
+router.delete("/:_id", deleteNote);
 
 module.exports = router;
