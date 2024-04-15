@@ -10,7 +10,7 @@ const connectDB = require("./connectDB");
 const app = express();
 
 // connect to database
-// connectDB();
+connectDB();
 
 // config express app
 // app.use('/', express.static("public"));

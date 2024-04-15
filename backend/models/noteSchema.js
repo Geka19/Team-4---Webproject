@@ -7,15 +7,28 @@ const noteSchema = new mongoose.Schema({
     max: 50,
   },
   user: {
-    type: User,
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
     required: true,
   },
-  category: [
-    {
-      type: String,
-      required: true,
-    },
-  ],
+  tags: [String],
+  content: {
+    type: String,
+    required: true,
+    min: 2,
+    max: 500,
+  },
+  collection: {
+    type: String,
+    required: true,
+    default: "Drafts",
+  },
+  visibility: {
+    required: true,
+    type: String,
+    enum: ["public", "private"],
+    default: "private",
+  },
   date: {
     type: Date,
     default: Date.now,
