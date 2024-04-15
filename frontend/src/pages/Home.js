@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
-import '../styles/Home.css';
-import Opening from '../components/OpenNotes.js'; // Adjust the path as needed
+import React, { useState } from "react";
+import "../styles/Home.css";
+import Opening from "../components/OpenNotes.js";
+import GetNotes from "../components/getNotes.js";
 
 const Home = () => {
   const [isOpeningModal, setIsOpeningModal] = useState(false);
@@ -15,11 +16,8 @@ const Home = () => {
 
   return (
     <div>
-      <div>
-      
-      </div>
       <main className="home-container">
-        <section className="welcome">
+        <div className="welcome">
           <h1>Welcome to the Sustainability Diary!</h1>
           <p>
             Write down what you see about sustainability through diary entries.
@@ -28,12 +26,15 @@ const Home = () => {
           </p>
 
           <button onClick={handleOpenModal}>Open Modal</button>
-
           {isOpeningModal && <Opening onClose={handleCloseModal} />}
-        </section>
+        </div>
+
+        <h2 class="header-notes">Recently Made Notes:</h2>
+          {/* Gets all notes from the api */}
+          <GetNotes />
       </main>
     </div>
   );
-}
+};
 
 export default Home;

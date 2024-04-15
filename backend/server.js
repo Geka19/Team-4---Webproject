@@ -7,7 +7,10 @@ const connectDB = require("./connectDB");
 
 // initiate express app
 const app = express();
+const cors = require('cors');
 app.use(express.json());
+
+app.use(cors()); // Will enable CORS for all files
 
 // connect to database
 connectDB();
