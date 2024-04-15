@@ -1,6 +1,5 @@
 const path = require("path");
-const dotenv = require("dotenv");
-dotenv.config(); // load env variables
+const dotenv = require("dotenv").config();
 const express = require("express");
 const PORT = process.env.PORT || 3000;
 const connectDB = require("./connectDB");
@@ -8,19 +7,25 @@ const connectDB = require("./connectDB");
 
 // initiate express app
 const app = express();
+app.use(express.json());
 
 // connect to database
-// connectDB();
+connectDB();
 
 // config express app
 // app.use('/', express.static("public"));
 
-app.use("/", (req, res) => {
-  res.end("hello there");
-});
+// app.use("/", (req, res) => {
+//   res.end("hello there");
+// });
 
+// user routes
 app.use("/api/users", require("./routes/userRoutes"));
 
+// note routes
+app.use("/api/notes", require("./routes/noteRoutes"));
+
+// listen on port
 app.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}`);
 });

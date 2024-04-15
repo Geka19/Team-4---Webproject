@@ -1,13 +1,6 @@
-const { uniq } = require("lodash");
 const mongoose = require("mongoose");
 const userSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
-    min: 2,
-    max: 50,
-  },
-  surname: {
+  username: {
     type: String,
     required: true,
     min: 2,
@@ -25,6 +18,11 @@ const userSchema = new mongoose.Schema({
     required: true,
     min: 3,
   },
+  board: [
+    {
+      type: String,
+    },
+  ],
   role: {
     type: String,
     required: true,
