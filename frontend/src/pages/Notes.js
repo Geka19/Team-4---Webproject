@@ -7,9 +7,16 @@ Modal.setAppElement("#root");
 function Notes() {
   const [note, setNote] = useState("");
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [error, setError] = useState(false); // State to manage error visibility
 
   const handleSave = () => {
-    setModalIsOpen(true);
+    if (note.trim() === "") {
+      // If the note is empty, set error to true
+      setError(true);
+    } else {
+      // If the note is not empty, open the modal
+      setModalIsOpen(true);
+    }
   };
 
   const handleOptionClick = (option) => {
@@ -48,7 +55,6 @@ function Notes() {
         placeholder="Write your ideas here..."
       />
       <button onClick={handleSave}>Save</button>
-
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={() => setModalIsOpen(false)}

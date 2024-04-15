@@ -4,33 +4,33 @@ import "../styles/OpenNotes.css";
 
 Modal.setAppElement("#root");
 
-// This modal will be used on the home page
-// Users will be presented the option to write down their ideas as soon as they open the app
-// Fixes we need add close button and the modal should be by default open
 function OpenNotes({ onClose }) {
   const [note, setNote] = useState("");
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
+  const [error, setError] = useState(false); // State to manage error visibility
 
-  // Need to add logic here with database to save the note to the selected option
   const handleSave = () => {
-    setModalIsOpen(true);
+    if (note.trim() === "") {
+      setError(true); // Set error state if note is empty
+      setModalIsOpen(false); // Don't open the modal if there's an error
+    } else {
+      setModalIsOpen(true);
+      setError(false); // Clear error state if note is not empty
+    }
   };
 
-  // Closes the modal
   const handleCloseModal = () => {
     setModalIsOpen(false);
     onClose();
   };
 
-  // Allows you to pick an option to save to
   const handleOptionClick = (option) => {
     console.log(`Saving note to ${option}...`);
     setSelectedOption(option);
     handleCloseModal();
   };
 
-  // Custom styles for the modal
   const customStyles = {
     overlay: {
       backgroundColor: "rgba(0, 0, 0, 0.75)",
@@ -61,7 +61,7 @@ function OpenNotes({ onClose }) {
       <button onClick={handleSave} className="close-button">
         Save
       </button>
-
+      {error && <p className="error-message">Cannot save empty note</p>}
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={handleCloseModal}
