@@ -29,7 +29,7 @@ const Home = () => {
           {isOpeningModal && <Opening onClose={handleCloseModal} />}
         </div>
 
-        <h2 class="header-notes">Recently Made Notes:</h2>
+        <h2 className="header-notes">Recently Made Notes:</h2>
           {/* Gets all notes from the api */}
           <GetNotes />
       </main>

@@ -56,6 +56,7 @@ function OpenNotes({ onClose }) {
   return (
     <div className="container">
       <h1>Notes</h1>
+      <input className="notes-input" placeholder="Title" style={{ width: "100%", height: "10vh" }} />
       <textarea
         value={note}
         onChange={(e) => setNote(e.target.value)}
