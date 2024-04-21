@@ -2,13 +2,12 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans-serif;
-    
+
 }
 
 .app {
     display: grid;
     grid-template-columns: 250px auto;
-    height: 100vh;
     overflow: hidden;
 }
 
@@ -19,6 +18,7 @@ body {
     color: white;
     height: 100%;
     width: 250px;
+    height: 100vh;
 }
 
 .main-content {
@@ -50,12 +50,51 @@ li img:hover {
     transition: transform 0.3s ease;
 }
 
+/* For the create note component */
+.create-note {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #f5f5f5;
+}
+
+.create-note input,
+.create-note textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.create-note button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+}
+
+.create-note button:hover {
+    background-color: #0056b3;
+    /* Darker blue background on hover */
+}
+
+/* Media Queries */
+
 @media screen and (max-width: 600px) {
     .app {
-      grid-template-columns: 1fr;
+        grid-template-columns: 1fr;
     }
-  
-    .sidebar, .main-content {
-      width: 100%; 
+
+    .sidebar,
+    .main-content {
+        width: 100%;
     }
-  }
+}

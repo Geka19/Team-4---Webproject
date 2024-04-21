@@ -5,6 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "nodemon server.js",
+    "populate": "node populateBoard.js",
     "dev": "nodemon server.js",
     "build": "webpack --config webpack.config.js"
   },

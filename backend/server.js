@@ -2,7 +2,7 @@ const path = require("path");
 const dotenv = require("dotenv").config();
 const express = require("express");
 const PORT = process.env.PORT || 3000;
-const connectDB = require("./connectDB");
+const connectDB = require("./config/connectDB");
 // const ejs = require("ejs");
 
 // initiate express app
@@ -27,6 +27,9 @@ app.use("/api/users", require("./routes/userRoutes"));
 
 // note routes
 app.use("/api/notes", require("./routes/noteRoutes"));
+
+// Board routes
+app.use("/api/boards", require("./routes/boardRoutes"));
 
 // listen on port
 app.listen(PORT, () => {
