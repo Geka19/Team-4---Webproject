@@ -20,15 +20,19 @@ function GetBoard() {
   }
 
   return (
-    <div>
+    <>
       <Link to="/create-board">Create New Board</Link>
-      {boards.map((board) => (
-        <div key={board._id}>
-          <h1>{board.title}</h1>
-          <p>{board.description}</p>
-        </div>
-      ))}
-    </div>
+      <div className="board-container">
+        {boards.map((board) => (
+          <Link to={`/boards/name/${board.title}`} key={board._id}>
+            <div className="board-item" key={board._id}>
+              <h1>{board.title}</h1>
+              <p>{board.description}</p>
+            </div>
+          </Link>
+        ))}
+      </div>
+    </>
   );
 }
 

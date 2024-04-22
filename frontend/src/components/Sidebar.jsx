@@ -15,7 +15,7 @@ function Sidebar() {
           </Link>
         </li>
         <li className="list-group-item">
-          <Link to="/board">
+          <Link to="/boards">
           <img className="icon board" src={boardIcon} alt="icon for home page" />
           </Link>
         </li>

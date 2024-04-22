@@ -7,12 +7,15 @@ const {
   updateNote,
   deleteNote,
   uploadJson,
+  getNoteByBoardName,
 } = require("../controllers/noteControllers");
 
 // routes
 router.get("/", getAllNotes);
 
 router.get("/:_id", getNote);
+
+router.get("/name/:boardName", getNoteByBoardName);
 
 router.post("/", createNote);
 

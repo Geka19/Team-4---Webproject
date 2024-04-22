@@ -2,7 +2,7 @@ import Sidebar from "../components/Sidebar";
 import GetBoards from "../components/GetBoards";
 import "../App.css";
 
-function Home() {
+function Board() {
   return (
     <>
       <div className="app">
@@ -18,4 +18,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Board;

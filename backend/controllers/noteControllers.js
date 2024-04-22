@@ -85,6 +85,15 @@ const uploadJson = async (req, res) => {
   }
 };
 
+const getNoteByBoardName = async (req, res) => {
+  try {
+    const showNotes = await Note.find({ board: req.params.boardName });
+    res.json(showNotes);
+  } catch (err) {
+    res.json({ message: err });
+  }
+};
+
 // export the functions
 module.exports = {
   getAllNotes,
@@ -93,4 +102,5 @@ module.exports = {
   updateNote,
   deleteNote,
   uploadJson,
+  getNoteByBoardName,
 };
