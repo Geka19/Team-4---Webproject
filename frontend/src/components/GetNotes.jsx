@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 
+// For fetching the list of notes
 function GetNotes() {
   const [notes, setNotes] = useState([]);
 
+  // Fetch the list of notes from the server
   useEffect(() => {
     fetch("http://localhost:8050/api/notes/")
       .then((response) => response.json())
@@ -11,6 +13,7 @@ function GetNotes() {
       });
   }, []);
 
+  // Display a list of notes
   const noteItems = notes.map((note) => {
     return (
       <li key={note._id} className="note">
@@ -20,6 +23,7 @@ function GetNotes() {
     );
   });
 
+  // If there are no notes display a message to the user
   const message = notes.length === 0 ? <p>No notes found</p> : null;
 
   return (

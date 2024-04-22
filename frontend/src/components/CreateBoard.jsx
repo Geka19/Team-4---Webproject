@@ -2,18 +2,21 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../App.css";
 
+// For creating a new board
 function CreateBoard() {
   const [boardName, setBoardName] = useState("");
   const [boardDescription, setBoardDescription] = useState("");
   const [boardNameValid, setBoardNameValid] = useState(true);
   const [boardDescriptionValid, setBoardDescriptionValid] = useState(true);
 
+  // For going back to the previous page
   const navigate = useNavigate();
 
   const handleGoBack = () => {
     navigate(-1);
   };
 
+  // Uploading json data to the server when creating a new board
   const handleCreateBoard = async () => {
     setBoardNameValid(!!boardName);
     setBoardDescriptionValid(!!boardDescription);
@@ -40,6 +43,7 @@ function CreateBoard() {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
+      // Resetting the board name and description after the user submits the form
       setBoardName("");
       setBoardDescription("");
     } catch (error) {

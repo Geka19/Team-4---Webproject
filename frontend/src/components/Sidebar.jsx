@@ -4,7 +4,7 @@ import profileIcon from "../assets/img/profile.png";
 import { Link } from "react-router-dom";
 import "../App.css";
 
-
+// For creating the sidebar
 function Sidebar() {
   return (
     <div className="sidebar">

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
+// For creating a new note
 function CreateNote() {
   const [boardName, setBoardName] = useState("");
   const [existingBoards, setExistingBoards] = useState([]);
@@ -9,6 +11,13 @@ function CreateNote() {
     title: "",
     content: "",
   });
+
+  // To go back to the last page
+  const navigate = useNavigate();
+
+  const handleGoBack = () => {
+    navigate(-1);
+  };
 
   // Fetch the list of existing boards from the server
   useEffect(() => {
@@ -20,10 +29,12 @@ function CreateNote() {
       });
   }, []);
 
+  // For changing the board name
   const handleBoardChange = (event) => {
     setBoardName(event.target.value);
   };
 
+  // For updating the note data
   const handleNoteChange = (event) => {
     setNoteData({
       ...noteData,
@@ -31,12 +42,12 @@ function CreateNote() {
     });
   };
 
+  //  Logic for adding a new note
   const handleAddNote = async () => {
-    console.log(boardName);
     // Create a new note object
     const newNote = {
       ...noteData,
-      board: boardName, // Set the board value to the name the user has chosen
+      board: boardName, 
     };
 
     console.log(newNote);
@@ -63,10 +74,11 @@ function CreateNote() {
     }
   };
 
+  // Show a loading paragraph while servering is fetching data
   if (loading) {
     return <h1>Loading...</h1>;
   }
-  
+
   return (
     <div className="create-note">
       <h2>Create a new note</h2>
@@ -93,6 +105,7 @@ function CreateNote() {
       </select>
       <Link to="/create-board">Create New Board</Link>
       <button onClick={handleAddNote}>Add Note</button>
+      <button onClick={handleGoBack}>Go back</button>
     </div>
   );
 }

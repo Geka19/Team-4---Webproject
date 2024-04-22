@@ -14,6 +14,10 @@ const boardSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  isDraft : {
+    type: Boolean,
+    default: false,
+  },
 });
 
 module.exports = mongoose.model('Board', boardSchema);

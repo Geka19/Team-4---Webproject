@@ -1,9 +1,10 @@
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Boards from "./pages/Board";
-import BoardNotes from "./components/BoardNotes";
+import BoardNotes from "./pages/BoardNotes";
 import Profile from "./pages/Profile";
 import CreateBoard from "./components/CreateBoard";
+import CreateNote from "./components/CreateNote";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Route path="/boards" element={<Boards />} />
       <Route path="/boards/name/:boardName" element={<BoardNotes />} />
       <Route path="/create-board" element={<CreateBoard />} />
+      <Route path="/create-note" element={<CreateNote />} />
       <Route path="/profile" element={<Profile />} />
     </Routes>
   );
