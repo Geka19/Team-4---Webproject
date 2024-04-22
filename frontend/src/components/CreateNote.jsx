@@ -1,57 +1,100 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 function CreateNote() {
-    const [boardName, setBoardName] = useState("");
-    const [existingBoards, setExistingBoards] = useState([]);
+  const [boardName, setBoardName] = useState("");
+  const [existingBoards, setExistingBoards] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [noteData, setNoteData] = useState({
+    title: "",
+    content: "",
+  });
 
-    // Fetch the list of existing boards from the server
-    useEffect(() => {
-        // Your code to fetch the existing boards goes here
-        // Example: fetchExistingBoards().then(data => setExistingBoards(data));
-    }, []);
+  // Fetch the list of existing boards from the server
+  useEffect(() => {
+    fetch("http://localhost:8050/api/boards/")
+      .then((response) => response.json())
+      .then((data) => {
+        setExistingBoards(data);
+        setLoading(false);
+      });
+  }, []);
 
-    const handleBoardChange = (event) => {
-        setBoardName(event.target.value);
+  const handleBoardChange = (event) => {
+    setBoardName(event.target.value);
+  };
+
+  const handleNoteChange = (event) => {
+    setNoteData({
+      ...noteData,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  const handleAddNote = async () => {
+    console.log(boardName);
+    // Create a new note object
+    const newNote = {
+      ...noteData,
+      board: boardName, // Set the board value to the name the user has chosen
     };
 
-    const handleCreateBoard = () => {
-        // Your code to handle creating a new board goes here
-        // Example: createNewBoard(boardName);
-    };
+    console.log(newNote);
 
-    const handleAddNote = () => {
-        // Your code to handle adding the note to the selected board goes here
-        // Example: addNoteToBoard(boardName);
-    };
+    // Send a POST request to the server to create a new note
+    try {
+      const response = await fetch("http://localhost:8050/api/notes/upload/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newNote),
+      });
 
-    return (
-        <>
-            <div className="create-note">
-                <h1>New Note</h1>
-                <input type="text" placeholder="Title..." />
-                <textarea placeholder="Write down your ideas here..." />
-                <select value={boardName} onChange={handleBoardChange}>
-                    <option value="">Select a board</option>
-                    {existingBoards.map((board) => (
-                        <option key={board.id} value={board.name}>
-                            {board.name}
-                        </option>
-                    ))}
-                </select>
-                {boardName === "" ? (
-                    <input
-                        type="text"
-                        placeholder="Enter board name..."
-                        value={boardName}
-                        onChange={(event) => setBoardName(event.target.value)}
-                    />
-                ) : null}
-                <button onClick={boardName === "" ? handleCreateBoard : handleAddNote}>
-                    {boardName === "" ? "Create Board" : "Add Note"}
-                </button>
-            </div>
-        </>
-    );
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      // If the request was successful, clear the note data and board name
+      setNoteData({ title: "", content: "" });
+      setBoardName("");
+    } catch (error) {
+      console.error("Failed to add note:", error);
+    }
+  };
+
+  if (loading) {
+    return <h1>Loading...</h1>;
+  }
+  
+  return (
+    <div className="create-note">
+      <h2>Create a new note</h2>
+      <input
+        type="text"
+        placeholder="Title"
+        name="title"
+        value={noteData.title}
+        onChange={handleNoteChange}
+      />
+      <textarea
+        placeholder="Write down your ideas here..."
+        name="content"
+        value={noteData.content}
+        onChange={handleNoteChange}
+      />
+      <select value={boardName} onChange={handleBoardChange}>
+        <option value="">Select a board</option>
+        {existingBoards.map((board) => (
+          <option key={board._id} value={board.title}>
+            {board.title}
+          </option>
+        ))}
+      </select>
+      <Link to="/create-board">Create New Board</Link>
+      <button onClick={handleAddNote}>Add Note</button>
+    </div>
+  );
 }
 
 export default CreateNote;

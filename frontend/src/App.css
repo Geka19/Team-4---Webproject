@@ -86,8 +86,12 @@ li img:hover {
     /* Darker blue background on hover */
 }
 
-/* Media Queries */
+/* For errors */
+.invalid {
+    border: 2px solid red !important;
+}
 
+/* Media Queries */
 @media screen and (max-width: 600px) {
     .app {
         grid-template-columns: 1fr;

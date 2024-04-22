@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+
 const noteSchema = new mongoose.Schema({
   title: {
     type: String,
@@ -8,9 +9,9 @@ const noteSchema = new mongoose.Schema({
   },
   user: {
     // comment out ref and replace type with String to test easier
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
-    required: true,
+    // type: mongoose.Schema.Types.ObjectId,
+    // ref: "User",
+    // required: true,
   },
   tags: [String],
   content: {

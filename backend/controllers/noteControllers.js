@@ -63,6 +63,28 @@ const deleteNote = async (req, res) => {
   }
 };
 
+const uploadJson = async (req, res) => {
+  const data = req.body;
+
+  // Get the title and content properties
+  if (data.title && data.content) {
+    try {
+      let newNote = new Note({
+        title: data.title,
+        content: data.content,
+        board: data.board,
+      });
+      await newNote.save(); // Save the note to the database
+      res.status(200).json({ message: "Note uploaded successfully" });
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ error: "Error saving note to database" });
+    }
+  } else {
+    res.status(400).json({ error: "Invalid JSON structure" });
+  }
+};
+
 // export the functions
 module.exports = {
   getAllNotes,
@@ -70,4 +92,5 @@ module.exports = {
   createNote,
   updateNote,
   deleteNote,
+  uploadJson,
 };

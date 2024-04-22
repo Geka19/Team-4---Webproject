@@ -1,5 +1,5 @@
 import Sidebar from "../components/Sidebar";
-import GetNotes from "../components/GetNotes";
+import GetBoards from "../components/GetBoards";
 import "../App.css";
 
 function Home() {
@@ -11,7 +11,7 @@ function Home() {
         <div className="main-content">
           <h1>Boards</h1>
           <p>Here are your boards:</p>
-          <GetNotes />
+          <GetBoards />
         </div>
       </div>
     </>

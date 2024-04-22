@@ -25,8 +25,8 @@ const getBoard = async (req, res) => {
 const createBoard = async (req, res) => {
   try {
     const newBoard = new Board({
-        title: req.body.title,
-        description: req.body.description,
+      title: req.body.title,
+      description: req.body.description,
     });
     const savedBoard = await newBoard.save();
     res
@@ -55,7 +55,7 @@ const updateBoard = async (req, res) => {
 const deleteBoard = async (req, res) => {
   try {
     const deleteBoard = await Board.deleteOne({ _id: req.params._id });
-    res.json({ message: "Note deleted" });
+    res.json({ message: "Board deleted" });
   } catch (err) {
     res.status(400).json({ message: err });
   }
