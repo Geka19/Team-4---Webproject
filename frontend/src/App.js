@@ -15,7 +15,7 @@ function App() {
       <Route path="/boards/name/:boardName" element={<BoardNotes />} />
       <Route path="/create-board" element={<CreateBoard />} />
       <Route path="/create-note" element={<CreateNote />} />
-      <Route path="/notes/:noteId" element={<EditNote />} />
+      <Route path="/boards/name/:boardName/:noteId" element={<EditNote />} />
       <Route path="/profile" element={<Profile />} />
     </Routes>
   );

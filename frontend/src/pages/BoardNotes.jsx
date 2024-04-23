@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useNoteContext } from "../context/NoteContext";
+import DeleteNoteButton from "../components/DeleteNote";
 import Sidebar from "../components/Sidebar";
 import "../App.css";
 
@@ -15,7 +16,7 @@ function BoardNotes() {
   const navigate = useNavigate();
 
   const handleGoBack = () => {
-    navigate(-1);
+    navigate("/boards");
   };
 
   // Filtering notes based on the board name (using the URL parameter)
@@ -49,7 +50,8 @@ function BoardNotes() {
               <p>Date: {note.date}</p>
               <p>Visibility: {note.visibility}</p>
               <p>Tags: {note.tags.join(", ")}</p>
-              <Link to={`/notes/${note._id}`}>Edit</Link>
+              <Link to={`/boards/name/${boardName}/${note._id}`}>Edit</Link>
+              <DeleteNoteButton noteId={note._id}></DeleteNoteButton>
             </div>
           ))}
         </div>

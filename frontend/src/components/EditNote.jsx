@@ -4,11 +4,11 @@ import "../App.css";
 
 const EditNote = () => {
   const [note, setNote] = useState({ title: "", content: "", tags: [] });
-  const { noteId } = useParams();
+  const { noteId, boardName } = useParams();
   const navigate = useNavigate();
 
   const handleGoBack = () => {
-    navigate(-1);
+    navigate(`/boards/name/${boardName}`);
   };
 
   const handleChange = (event) => {
@@ -49,7 +49,7 @@ const EditNote = () => {
 
     console.log("Updated Note:", note);
 
-    navigate("/boards");
+    navigate(`/boards/name/${boardName}`);
   };
 
   return (

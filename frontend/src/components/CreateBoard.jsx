@@ -1,22 +1,24 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useBoardContext } from "../context/BoardContext";
 import "../App.css";
 
-// For creating a new board
+// For creating the board
 function CreateBoard() {
+  const { addBoard } = useBoardContext(); 
   const [boardName, setBoardName] = useState("");
   const [boardDescription, setBoardDescription] = useState("");
   const [boardNameValid, setBoardNameValid] = useState(true);
   const [boardDescriptionValid, setBoardDescriptionValid] = useState(true);
 
-  // For going back to the previous page
+  // Navigate back to the last page the user was on
   const navigate = useNavigate();
 
   const handleGoBack = () => {
     navigate(-1);
   };
 
-  // Uploading json data to the server when creating a new board
+  // For creating a new board
   const handleCreateBoard = async () => {
     setBoardNameValid(!!boardName);
     setBoardDescriptionValid(!!boardDescription);
@@ -38,6 +40,9 @@ function CreateBoard() {
         },
         body: JSON.stringify(newBoard),
       });
+      
+      // Update the context API state
+      await addBoard(newBoard);
 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
@@ -50,9 +55,10 @@ function CreateBoard() {
       console.error("Failed to create board:", error);
     }
 
-    navigate("/");
+    navigate(-1);
   };
 
+  // i havent really done any styling so i'm just using the note styling from before
   return (
     <div className="create-note">
       <input
@@ -61,7 +67,7 @@ function CreateBoard() {
         placeholder="Enter board name..."
         value={boardName}
         onChange={(e) => setBoardName(e.target.value)}
-        className={boardNameValid ? '' : 'invalid'}
+        className={boardNameValid ? "" : "invalid"}
       />
       <input
         type="text"
@@ -69,7 +75,7 @@ function CreateBoard() {
         placeholder="Enter board description..."
         value={boardDescription}
         onChange={(e) => setBoardDescription(e.target.value)}
-        className={boardDescriptionValid ? '' : 'invalid'}
+        className={boardDescriptionValid ? "" : "invalid"}
       />
       <button onClick={handleCreateBoard}>Create Board</button>
       <button onClick={handleGoBack}>Go Back</button>

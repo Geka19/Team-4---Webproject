@@ -13,24 +13,26 @@ export function BoardProvider({ children }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    async function fetchBoards() {
-      try {
-        const response = await axios.get("/api/boards");
-        setBoards(response.data);
-        setLoading(false);
-      } catch (error) {
-        console.error("Failed to fetch boards:", error);
-      }
-    }
-
     fetchBoards();
   }, []);
 
-  if (loading) {
-    return <Spinner animation="border" />
+  async function fetchBoards() {
+    try {
+      const response = await axios.get("/api/boards");
+      setBoards(response.data);
+      setLoading(false);
+    } catch (error) {
+      console.error("Failed to fetch boards:", error);
+    }
+  }
+
+  function addBoard(board) {
+    setBoards(prevBoards => [...prevBoards, board]);
   }
 
   return (
-    <BoardContext.Provider value={{ boards }}>{children}</BoardContext.Provider>
+    <BoardContext.Provider value={{ boards, setBoards, loading, addBoard }}>
+    {loading ? <Spinner /> : children}
+  </BoardContext.Provider>
   );
 }

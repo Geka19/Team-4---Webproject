@@ -13,21 +13,25 @@ export function NoteProvider({ children }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    async function fetchNotes() {
-      try {
-        const response = await axios.get("/api/notes");
-        setNotes(response.data);
-        setLoading(false);
-      } catch (error) {
-        console.error("Failed to fetch notes:", error);
-      }
-    }
-
     fetchNotes();
   }, []);
 
+  async function fetchNotes() {
+    try {
+      const response = await axios.get("/api/notes");
+      setNotes(response.data);
+      setLoading(false);
+    } catch (error) {
+      console.error("Failed to fetch notes:", error);
+    }
+  }
+
+  function addNote(notes) {
+    setNotes(prevNotes => [...prevNotes, notes]);
+  }
+
   return (
-    <NoteContext.Provider value={{ notes, loading }}>
+    <NoteContext.Provider value={{ notes, setNotes, loading, addNote }}>
       {loading ? <Spinner /> : children}
     </NoteContext.Provider>
   );
