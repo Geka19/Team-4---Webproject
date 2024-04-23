@@ -76,6 +76,7 @@ function CreateNote() {
       console.error("Failed to add note:", error);
     }
 
+    // Redirect the user back to the previous page they were on
     navigate(-1);
   };
 

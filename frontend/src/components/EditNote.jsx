@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { useNoteContext } from "../context/NoteContext";
 import "../App.css";
 
+// For editing a note
 const EditNote = () => {
   const [note, setNote] = useState({ title: "", content: "", tags: [] });
   const { noteId, boardName } = useParams();
+  const { setNotes } = useNoteContext();
+
+  // Using navigate to go back to the previous page
   const navigate = useNavigate();
 
   const handleGoBack = () => {
@@ -47,8 +52,16 @@ const EditNote = () => {
       return;
     }
 
+    // Update the notes context API state
+    setNotes((prevNotes) =>
+    prevNotes.map((prevNote) =>
+      prevNote._id === noteId ? { ...prevNote, ...note } : prevNote
+    )
+  );
+
     console.log("Updated Note:", note);
 
+    // navigate to previous page when note is updated
     navigate(`/boards/name/${boardName}`);
   };
 

@@ -4,6 +4,9 @@ import { Spinner } from 'react-bootstrap';
 
 const BoardContext = createContext();
 
+// For creating a new context with the board data
+// Will be used to not call upon the API every time we need to fetch the board data
+// Will only be updated when the state changes
 export function useBoardContext() {
   return useContext(BoardContext);
 }
@@ -16,6 +19,7 @@ export function BoardProvider({ children }) {
     fetchBoards();
   }, []);
 
+  // For fetching the list of boards and saving it in the context API state
   async function fetchBoards() {
     try {
       const response = await axios.get("/api/boards");
@@ -26,6 +30,7 @@ export function BoardProvider({ children }) {
     }
   }
 
+  // Update the state when a new board is added to the database
   function addBoard(board) {
     setBoards(prevBoards => [...prevBoards, board]);
   }
