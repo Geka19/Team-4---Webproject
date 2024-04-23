@@ -1,17 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { useNoteContext } from "../context/NoteContext";
 
 // For fetching the list of notes
 function GetNotes() {
-  const [notes, setNotes] = useState([]);
-
-  // Fetch the list of notes from the server
-  useEffect(() => {
-    fetch("http://localhost:8050/api/notes/")
-      .then((response) => response.json())
-      .then((data) => {
-        setNotes(data);
-      });
-  }, []);
+  const { notes } = useNoteContext();
 
   // Display a list of notes
   const noteItems = notes.map((note) => {

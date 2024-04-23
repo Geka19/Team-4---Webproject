@@ -1,26 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
+import { useBoardContext } from "../context/BoardContext";
 
 // For fetching the list of boards
 function GetBoard() {
-  const [boards, setBoards] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  // Fetch the list of boards from the server
-  useEffect(() => {
-    async function fetchBoards() {
-      const response = await fetch("http://localhost:8050/api/boards/");
-      const data = await response.json();
-      setBoards(data);
-      setLoading(false);
-    }
-    fetchBoards();
-  }, []);
-
-  // Display a loading message while the list of boards is being fetched
-  if (loading) {
-    return <h1>Loading...</h1>;
-  }
+  const { boards } = useBoardContext();
 
   return (
     <>

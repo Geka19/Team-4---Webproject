@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useNoteContext } from "../context/NoteContext";
 import Sidebar from "../components/Sidebar";
 import "../App.css";
 
 // This page will be used to display notes for a specific board
 function BoardNotes() {
   const { boardName } = useParams();
-  const [notes, setNotes] = useState([]);
+  const { notes } = useNoteContext();
 
   // Using navigate to go back to the previous page
   const navigate = useNavigate();
@@ -16,28 +18,8 @@ function BoardNotes() {
     navigate(-1);
   };
 
-  // Fetch notes for the specific board that the user clicks on
-  useEffect(() => {
-    const fetchNotes = async () => {
-      try {
-        const response = await fetch(
-          `http://localhost:8050/api/notes/name/${boardName}`
-        );
-
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        const data = await response.json();
-        console.log(data); // Log data to the console
-        setNotes(data); // Set notes to data
-      } catch (error) {
-        console.error("Failed to fetch notes:", error);
-      }
-    };
-
-    fetchNotes();
-  }, [boardName]);
+  // Filtering notes based on the board name (using the URL parameter)
+  const filteredNotes = notes.filter((note) => note.board === boardName);
 
   // If there are no notes in the board display a message
   const message = notes.length === 0 ? <p>No notes found</p> : null;
@@ -54,10 +36,10 @@ function BoardNotes() {
             display: "flex",
             flexDirection: "row",
             flexWrap: "wrap",
-            gap: "20px",    
+            gap: "20px",
           }}
         >
-          {notes.map((note) => (
+          {filteredNotes.map((note) => (
             <div
               key={note._id}
               style={{ border: "1px solid", padding: "10px", margin: "10px 0" }}
@@ -67,6 +49,7 @@ function BoardNotes() {
               <p>Date: {note.date}</p>
               <p>Visibility: {note.visibility}</p>
               <p>Tags: {note.tags.join(", ")}</p>
+              <Link to={`/notes/${note._id}`}>Edit</Link>
             </div>
           ))}
         </div>
