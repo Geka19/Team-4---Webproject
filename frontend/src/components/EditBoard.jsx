@@ -7,9 +7,9 @@ import "../App.css";
 const EditBoard = () => {
   const [board, setBoard] = useState({ title: "", description: "", tags: [] });
   const { boardId } = useParams();
-  const navigate = useNavigate();
   const { boards, setBoards } = useBoardContext();
-
+  
+  const navigate = useNavigate();
   const handleGoBack = () => {
     navigate("/boards");
   };

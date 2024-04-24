@@ -5,7 +5,11 @@ import "../App.css";
 
 // For editing a note
 const EditNote = () => {
-  const [note, setNote] = useState({ title: "", content: "", tags: [] });
+  const [note, setNote] = useState({
+    title: "",
+    content: "",
+    tags: [],
+  });
   const { noteId, boardName } = useParams();
   const { setNotes } = useNoteContext();
 
@@ -32,6 +36,7 @@ const EditNote = () => {
           title: data.title,
           content: data.content,
           tags: data.tags,
+          date: data.date,
         });
       });
   }, [noteId]);
@@ -54,10 +59,10 @@ const EditNote = () => {
 
     // Update the notes context API state
     setNotes((prevNotes) =>
-    prevNotes.map((prevNote) =>
-      prevNote._id === noteId ? { ...prevNote, ...note } : prevNote
-    )
-  );
+      prevNotes.map((prevNote) =>
+        prevNote._id === noteId ? { ...prevNote, ...note } : prevNote
+      )
+    );
 
     console.log("Updated Note:", note);
 

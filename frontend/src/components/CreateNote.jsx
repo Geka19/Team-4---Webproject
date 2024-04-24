@@ -50,20 +50,8 @@ function CreateNote() {
   // Uploading json data to the server when creating a new note
   const handleAddNote = async () => {
     try {
-      const response = await fetch("http://localhost:8050/api/notes/upload/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(note),
-      });
-
       // Updating the note context API state
       await addNote(note);
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
 
       // Clearing the note data after the user submits the form
       setNote({
@@ -83,6 +71,7 @@ function CreateNote() {
   return (
     <div className="create-note">
       <h2>Create a new note</h2>
+
       <label>
         Title:
         <input
@@ -129,8 +118,11 @@ function CreateNote() {
       </label>
 
       <Link to="/create-board">Create New Board</Link>
-      <button onClick={handleAddNote}>Add Note</button>
-      <button onClick={handleGoBack}>Go back</button>
+
+      <div className="buttons">
+        <button onClick={handleAddNote}>Add Note</button>
+        <button onClick={handleGoBack}>Go back</button>
+      </div>
     </div>
   );
 }

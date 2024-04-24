@@ -69,10 +69,13 @@ const uploadJson = async (req, res) => {
   // Get the title and content properties
   if (data.title && data.content) {
     try {
+      const tags = data.tags || [];
+
       let newNote = new Note({
         title: data.title,
         content: data.content,
         board: data.board,
+        tags: data.tags,
       });
       await newNote.save(); // Save the note to the database
       res.status(200).json({ message: "Note uploaded successfully" });
