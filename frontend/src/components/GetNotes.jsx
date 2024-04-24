@@ -1,4 +1,3 @@
-import React from "react";
 import { useNoteContext } from "../context/NoteContext";
 
 // For fetching the list of notes

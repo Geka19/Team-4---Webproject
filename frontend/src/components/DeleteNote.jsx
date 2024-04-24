@@ -1,4 +1,3 @@
-import React from "react";
 import axios from "../api/axios";
 import { useNoteContext } from "../context/NoteContext";
 
