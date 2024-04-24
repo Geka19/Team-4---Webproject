@@ -60,7 +60,7 @@ function CreateBoard() {
 
   // i havent really done any styling so i'm just using the note styling from before
   return (
-    <div className="create-note">
+    <form className="create-note" onSubmit="handleCreateBoard">
       <input
         type="text"
         name="boardName"
@@ -79,7 +79,7 @@ function CreateBoard() {
       />
       <button onClick={handleCreateBoard}>Create Board</button>
       <button onClick={handleGoBack}>Go Back</button>
-    </div>
+    </form>
   );
 }
 

@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import Boards from "./pages/Board";
 import BoardNotes from "./pages/BoardNotes";
@@ -10,16 +11,23 @@ import EditBoard from "./components/EditBoard";
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/boards" element={<Boards />} />
-      <Route path="/boards/name/:boardName" element={<BoardNotes />} />
-      <Route path="/create-board" element={<CreateBoard />} />
-      <Route path="/create-note" element={<CreateNote />} />
-      <Route path="/boards/name/:boardName/:noteId" element={<EditNote />} />
-      <Route path="/boards/edit-board/:boardId" element={<EditBoard />} />
-      <Route path="/profile" element={<Profile />} />
-    </Routes>
+    <>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/boards" element={<Boards />} />
+          <Route path="/boards/name/:boardName" element={<BoardNotes />} />
+          <Route path="/create-board" element={<CreateBoard />} />
+          <Route path="/create-note" element={<CreateNote />} />
+          <Route
+            path="/boards/name/:boardName/:noteId"
+            element={<EditNote />}
+          />
+          <Route path="/boards/edit-board/:boardId" element={<EditBoard />} />
+          <Route path="/profile" element={<Profile />} />
+        </Route>
+      </Routes>
+    </>
   );
 }
 

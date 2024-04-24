@@ -10,6 +10,9 @@ function GetNotes() {
       <li key={note._id} className="note">
         <h3>{note.title}</h3>
         <p>{note.content}</p>
+        <p>{note.tags}</p>
+        <p>{note.visibility}</p>
+        <p>{note.date}</p>
       </li>
     );
   });

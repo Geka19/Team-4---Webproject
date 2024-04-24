@@ -3,13 +3,14 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans-serif;
+    width: 100%;
 
 }
 
-.app {
+.root {
     display: grid;
     grid-template-columns: 200px auto;
-    overflow: hidden;
+    overflow: auto;
 }
 
 .sidebar {
@@ -24,7 +25,6 @@ body {
 .main-content {
     grid-column: 2;
     height: 100%;
-    width: 100%;
     padding: 20px;
 
 }
