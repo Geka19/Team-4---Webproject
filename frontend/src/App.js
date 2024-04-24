@@ -6,6 +6,7 @@ import Profile from "./pages/Profile";
 import CreateBoard from "./components/CreateBoard";
 import CreateNote from "./components/CreateNote";
 import EditNote from "./components/EditNote";
+import EditBoard from "./components/EditBoard";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Route path="/create-board" element={<CreateBoard />} />
       <Route path="/create-note" element={<CreateNote />} />
       <Route path="/boards/name/:boardName/:noteId" element={<EditNote />} />
+      <Route path="/boards/edit-board/:boardId" element={<EditBoard />} />
       <Route path="/profile" element={<Profile />} />
     </Routes>
   );

@@ -108,6 +108,7 @@ function CreateNote() {
         Tags:
         <input
           type="text"
+          placeholder="Write down tags separated by commas..."
           name="tags"
           value={note.tags.join(",")}
           onChange={handleChange}

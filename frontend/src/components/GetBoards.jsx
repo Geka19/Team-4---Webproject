@@ -9,12 +9,24 @@ function GetBoard() {
   return (
     <>
       <Link to="/create-board">Create New Board</Link>
-      <div className="board-container" style={{ display: 'flex', flexWrap: 'wrap' }}>
+      <div
+        className="board-container"
+        style={{ display: "flex", flexWrap: "wrap" }}
+      >
         {boards.map((board) => (
-          <Link key={board._id} to={`/boards/name/${board.title}`} >
-            <div className="board-item" key={board._id} style={{ order: board.isDraft ? -1 : 0 }}>
+          <Link key={board._id} to={`/boards/name/${board.title}`}>
+            <div
+              className="board-item"
+              key={board._id}
+              style={{ order: board.isDraft ? -1 : 0 }}
+            >
               <h1>{board.title}</h1>
               <p>{board.description}</p>
+              {board.isDraft ? (
+                <p></p>
+              ) : (
+                <Link to={`/boards/edit-board/${board._id}`}>Edit Board</Link>
+              )}
             </div>
           </Link>
         ))}

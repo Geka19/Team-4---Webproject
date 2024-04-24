@@ -20,6 +20,10 @@ function BoardNotes() {
   };
 
   // Filtering notes based on the board name (using the URL parameter)
+  // Major bug currently is that the notes are not being filtered correctly 
+  // We need to add a better way to filter notes
+  // The issue is that when you update the board name. The notes boardName does not update for notes 
+  // So when you changet the name of a board it loses the notes that are supposed to belong to it
   const filteredNotes = notes.filter((note) => note.board === boardName);
 
   // If there are no notes in the board display a message
