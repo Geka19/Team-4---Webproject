@@ -1,22 +1,17 @@
 const express = require("express");
 const router = express.Router();
+
+// Importing user controller functions
 const {
   getAllUsers,
   getUser,
-  createUser,
   updateUser,
   deleteUser,
-} = require("../controllers/userControllers");
+} = require("../controllers/userController");
 
-// routes
-router.get("/", getAllUsers);
-
-router.get("/:name", getUser);
-
-router.post("/", createUser);
-
-router.put("/:email", updateUser);
-
-router.delete("/:email", deleteUser);
+router.get("/", getAllUsers); 
+router.get("/:id", getUser); 
+router.put("/:id", updateUser); 
+router.delete("/:id", deleteUser); 
 
 module.exports = router;

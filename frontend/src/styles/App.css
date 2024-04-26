@@ -1,0 +1,153 @@
+/* We should move all styles to their individual file so it's easier to seperate them*/
+/* Main styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    width: 100%;
+
+}
+
+.root {
+    display: grid;
+    grid-template-columns: 200px auto;
+}
+
+.sidebar {
+    grid-column: 1;
+    background-color: rgb(49, 64, 81);
+    color: white;
+    width: 200px;
+    height: 100%;
+}
+
+.main-content {
+    grid-column: 2;
+    height: 100vh;
+    padding: 20px;
+
+}
+
+img {
+    background-color: white;
+    width: 50%;
+    height: 50%;
+    padding: 15px;
+    border-radius: 100%;
+}
+
+li {
+    list-style-type: none;
+}
+
+li img:hover {
+    background-color: rgb(175, 75, 75);
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+
+/* For the create note component */
+form {
+    width: 500px;
+}
+
+.create-note {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+    width: 500px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+}
+
+.create-note input,
+.create-note textarea,
+.create-note select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+button {
+    padding: 10px 20px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-right: 15px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+
+/* For boards page */
+.board-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.board-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 200px;
+    margin: 10px;
+    padding: 10px;
+    border: solid 1px black;
+    border-radius: 10px;
+    background-color: #f5f5f5;
+
+}
+
+/* For edit note component */
+.note {
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.note-title,
+.note-content,
+.note-tags {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.note-save {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+/* For errors */
+.invalid {
+    border: 2px solid red !important;
+}
+
+/* Media Queries */
+@media screen and (max-width: 600px) {
+    .app {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar,
+    .main-content {
+        width: 100%;
+    }
+}

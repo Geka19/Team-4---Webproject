@@ -1,19 +1,26 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
-import { BrowserRouter as Router } from "react-router-dom";
-import "./styles/index.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BoardProvider } from "./context/BoardContext";
+import { NoteProvider } from "./context/NoteContext";
+import { AuthProvider } from "./context/AuthContext";
 import App from "./App";
-import { Routes, Route } from "react-router-dom";
 
 const container = document.getElementById("root");
 const root = createRoot(container);
 
 root.render(
   <React.StrictMode>
-    <Router>
-      <Routes>
-        <Route path="/*" element={<App />} />
-      </Routes>
-    </Router>
+    <BrowserRouter>
+      <AuthProvider>
+        <BoardProvider>
+          <NoteProvider>
+            <Routes>
+              <Route path="/*" element={<App />} />
+            </Routes>
+          </NoteProvider>
+        </BoardProvider>
+      </AuthProvider>
+    </BrowserRouter>
   </React.StrictMode>
 );

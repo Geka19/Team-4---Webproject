@@ -1,38 +1,51 @@
 import { Routes, Route } from "react-router-dom";
-import NotFound from "./pages/NotFound";
-import Home from "./pages/Home";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Layout from "./components/Layout";
-import Board from "./pages/Board";
-import Notes from "./pages/Notes";
-import Share from "./pages/Share";
-import Settings from "./pages/Settings";
+import SecureRoute from "./components/AuthRoutes";
+import Welcome from "./pages/Welcome";
+import Home from "./pages/Home";
+import Boards from "./pages/Board";
+import BoardNotes from "./pages/BoardNotes";
+import Profile from "./pages/Profile";
+import Register from "./pages/Register";
+import Login from "./pages/Login";
+import CreateBoard from "./components/CreateBoard";
+import CreateNote from "./components/CreateNote";
+import EditNote from "./components/EditNote";
+import EditBoard from "./components/EditBoard";
 
 function App() {
   return (
-    <Routes>
-      {/* Here you can add more routes for example if you create another page */}
-      <Route path="/" element={<Layout />}>
-    
-        {/* Home/welcome route */}
-        <Route path="/" element={<Home />} />
+    <>
+      <Routes>
+        {/* Public routes */}
+        <Route path="/" element={<Welcome />} />
 
-        {/* Board route */}
-        <Route path="board" element={<Board />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
 
-        {/* Notes route */}
-        <Route path="notes" element={<Notes />} />
+        {/* Protected routes */}
+        <Route element={<SecureRoute />}>
+          <Route path="/" element={<Layout />}>
+            <Route path="/home" element={<Home />} />
+            <Route path="/boards" element={<Boards />} />
+            <Route path="/boards/name/:boardName" element={<BoardNotes />} />
+            <Route path="/create-board" element={<CreateBoard />} />
+            <Route path="/create-note" element={<CreateNote />} />
+            <Route
+              path="/boards/name/:boardName/:noteId"
+              element={<EditNote />}
+            />
+            <Route path="/boards/edit-board/:boardId" element={<EditBoard />} />
+            <Route path="/profile" element={<Profile />} />
+          </Route>
+        </Route>
+      </Routes>
 
-        {/* Share route */}
-        <Route path="share" element={<Share />} />
-
-        {/* Settings route */}
-        <Route path="settings" element={<Settings />} />
-
-      </Route>
-
-      {/* Fallback route for paths that does not exist*/}
-      <Route path="*" element={<NotFound />} />
-    </Routes>
+      {/* Toast notifications */}
+      <ToastContainer />
+    </>
   );
 }
 
