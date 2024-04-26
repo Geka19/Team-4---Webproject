@@ -19,13 +19,14 @@ function App() {
   return (
     <>
       <Routes>
-          <Route path="/" element={<Welcome />} />
+        {/* Public routes */}
+        <Route path="/" element={<Welcome />} />
 
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
 
-          {/* Protected routes */}
-          <Route element={<SecureRoute />}>
+        {/* Protected routes */}
+        <Route element={<SecureRoute />}>
           <Route path="/" element={<Layout />}>
             <Route path="/home" element={<Home />} />
             <Route path="/boards" element={<Boards />} />
@@ -42,6 +43,7 @@ function App() {
         </Route>
       </Routes>
 
+      {/* Toast notifications */}
       <ToastContainer />
     </>
   );

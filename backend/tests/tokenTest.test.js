@@ -19,7 +19,7 @@ describe("Auth middleware", () => {
 
     // Create a token for the test user
     const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
-    
+
     // Make a request to a protected route with the token
     const res = await request(app)
       .get("/api/auth/verify")
@@ -27,7 +27,9 @@ describe("Auth middleware", () => {
 
     // Check that the request was successful
     expect(res.statusCode).toEqual(200);
-  
+
+    // Delete the user afterwards 
+    await User.findByIdAndDelete(user._id);
   }); 
 
   // Checking if it rejects an invalid web token

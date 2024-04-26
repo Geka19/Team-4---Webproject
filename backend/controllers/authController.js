@@ -89,7 +89,6 @@ const loginUser = async (req, res) => {
       message: "Logged in successfully",
     });
 
-    console.log(`Token for user ${user._id}: ${token}`);
   } catch (error) {
     // Handle any errors
     console.error(error);
