@@ -90,6 +90,7 @@ function Register() {
                 onChange={handleChange}
                 placeholder="Enter your username"
                 required
+                autoComplete="current-username"
               />
             </label>
           </div>
@@ -104,6 +105,7 @@ function Register() {
                 onChange={handleChange}
                 placeholder="Enter your email address"
                 required
+                autoComplete="current-email"
               />
             </label>
           </div>
@@ -118,6 +120,7 @@ function Register() {
                 onChange={handleChange}
                 placeholder="Enter your password"
                 required
+                autoComplete="current-password"
               />
             </label>
           </div>
@@ -127,7 +130,7 @@ function Register() {
         </form>
         <p>
           Looking to sign in instead?{" "}
-          <Link to="/login">Click here to access your account</Link>
+          <Link to="/login">Click here to login</Link>
         </p>
       </div>
     </div>

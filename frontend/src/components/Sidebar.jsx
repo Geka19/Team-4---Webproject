@@ -16,9 +16,9 @@ function Sidebar() {
   const handleLogout = async () => {
     try {
       // Wait for the logout request to complete
-      await logout(); 
+      await logout();
       // Redirect to the login page after successful logout
-      navigate("/login"); 
+      navigate("/login");
       toast.success("Successfully logged out.");
     } catch (error) {
       console.error("Logout failed", error);
@@ -29,7 +29,12 @@ function Sidebar() {
   return (
     <div className="sidebar">
       <div className="sidebar-user">
-        <h2>Welcome {currentUser.username}!</h2>
+        <h2>
+          Welcome{" "}
+          {currentUser.username.charAt(0).toUpperCase() +
+            currentUser.username.slice(1)}
+          !
+        </h2>
       </div>
       <ul className="list-group">
         <li className="list-group-item">

@@ -69,6 +69,7 @@ function Login() {
                 onChange={handleChange}
                 placeholder="Enter your email"
                 required
+                autoComplete="current-email"
               />
             </label>
           </div>
@@ -83,6 +84,7 @@ function Login() {
                 onChange={handleChange}
                 placeholder="Enter your password"
                 required
+                autoComplete="current-password"
               />
             </label>
           </div>

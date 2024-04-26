@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useBoardContext } from "../context/BoardContext";
 import { useNoteContext } from "../context/NoteContext";
+import "../styles/CreateNote.css";
 
 // For creating a new note
 function CreateNote() {
@@ -72,7 +73,7 @@ function CreateNote() {
     <div className="create-note">
       <h2>Create a new note</h2>
 
-      <label>
+      <label className="create-note-content-wrapper">
         Title:
         <input
           type="text"
@@ -83,7 +84,7 @@ function CreateNote() {
         />
       </label>
 
-      <label>
+      <label className="create-note-content-wrapper">
         Content:
         <textarea
           placeholder="Write down your ideas here..."
@@ -93,7 +94,7 @@ function CreateNote() {
         />
       </label>
 
-      <label>
+      <label className="create-note-content-wrapper">
         Tags:
         <input
           type="text"
@@ -101,11 +102,11 @@ function CreateNote() {
           name="tags"
           value={note.tags.join(",")}
           onChange={handleChange}
-          className="note-tags"
+          className="create-note-tags"
         />
       </label>
 
-      <label>
+      <label className="create-note-content-wrapper">
         Board:
         <select value={note.board} onChange={handleBoardChange}>
           <option value="">Select a board</option>
@@ -119,7 +120,7 @@ function CreateNote() {
 
       <Link to="/create-board">Create New Board</Link>
 
-      <div className="buttons">
+      <div className="create-note-buttons">
         <button onClick={handleAddNote}>Add Note</button>
         <button onClick={handleGoBack}>Go back</button>
       </div>

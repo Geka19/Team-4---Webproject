@@ -2,7 +2,6 @@ require("dotenv").config();
 
 const express = require("express");
 const cors = require('cors');
-const PORT = process.env.PORT || 3000;
 const connectDB = require("./config/connectDB");
 
 const cookieParser = require("cookie-parser");
@@ -39,9 +38,12 @@ app.use("/api/notes", require("./routes/noteRoutes"));
 // Board routes
 app.use("/api/boards", require("./routes/boardRoutes"));
 
+// Set the port
+const PORT = process.env.PORT || 3000;
+
 // listen on port
-app.listen(PORT, () => {
-  console.log(`Server is listening on port ${PORT}`);
+let server = app.listen(PORT, () => {
+  console.log(`Server is listening on port:${PORT}`);
 });
 
 process.on("SIGINT", async () => {
@@ -51,5 +53,5 @@ process.on("SIGINT", async () => {
   process.exit(0); 
 });
 
-module.exports = app;
+module.exports = server;
 

@@ -11,7 +11,8 @@ function ProfilePage() {
 
   return (
     <div>
-      <h1>Welcome, {currentUser.username}!</h1>
+      <h1>Welcome, {currentUser.username.charAt(0).toUpperCase() +
+            currentUser.username.slice(1)}!</h1>
       <p>Username: {currentUser.username}</p>
       <p>Email: {currentUser.email}</p>
       <p>Role: {currentUser.role}</p>
