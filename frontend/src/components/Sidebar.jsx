@@ -11,6 +11,7 @@ import "../styles/App.css";
 function Sidebar() {
   const navigate = useNavigate();
   const { logout } = useAuth();
+  const { currentUser } = useAuth();
 
   const handleLogout = async () => {
     try {
@@ -27,6 +28,9 @@ function Sidebar() {
 
   return (
     <div className="sidebar">
+      <div className="sidebar-user">
+        <h2>Welcome {currentUser.username}!</h2>
+      </div>
       <ul className="list-group">
         <li className="list-group-item">
           <Link to="/home">

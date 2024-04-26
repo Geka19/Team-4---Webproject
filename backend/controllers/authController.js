@@ -88,7 +88,6 @@ const loginUser = async (req, res) => {
       role: user.role,
       message: "Logged in successfully",
     });
-
   } catch (error) {
     // Handle any errors
     console.error(error);
@@ -96,7 +95,7 @@ const loginUser = async (req, res) => {
   }
 };
 
-// Logs the user out by clearing the authentication token cookie 
+// Logs the user out by clearing the authentication token cookie
 const logoutUser = async (req, res) => {
   try {
     // Clear the authentication token cookie

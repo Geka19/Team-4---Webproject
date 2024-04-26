@@ -13,6 +13,8 @@ body {
     grid-template-columns: 200px auto;
 }
 
+/* For the sidebar property */
+/* Will move it to its own css file soon */ 
 .sidebar {
     grid-column: 1;
     background-color: rgb(49, 64, 81);
@@ -45,6 +47,11 @@ li img:hover {
     cursor: pointer;
     transform: scale(1.1);
     transition: transform 0.3s ease;
+}
+
+.sidebar-user h2 {
+    text-align: center;
+    margin-top: 10px;
 }
 
 /* For the create note component */

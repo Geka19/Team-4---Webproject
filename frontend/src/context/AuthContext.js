@@ -21,6 +21,9 @@ export const AuthProvider = ({ children }) => {
         email,
         password,
       });
+
+      console.log(response.data);
+
       //  If the login is successful, set the current user
       setCurrentUser(response.data);
     } catch (error) {
@@ -50,7 +53,7 @@ export const AuthProvider = ({ children }) => {
     currentUser,
     isAuthenticated: !!currentUser, // Bollean value to check if the user is authenticated
   };
-
+  
   return (
     <AuthContext.Provider value={value}>
        {children}

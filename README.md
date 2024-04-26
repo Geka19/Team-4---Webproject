@@ -53,7 +53,7 @@ To start the frontend part use
 npm run start 
 ```
 
-The frontend should now be avaiable at localhost:3000
+The frontend should now be avaiable at http://localhost:3000
 
 ## Team Members
 Sebastian Skrøvseth Haugen, Guro Eline Karlsen, Johan Filip Karlsson, Simen Elvhaug

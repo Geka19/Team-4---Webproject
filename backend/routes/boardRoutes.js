@@ -10,13 +10,9 @@ const {
 
 // routes
 router.get("/", getAllBoards);
-
 router.get("/:_id", getBoard);
-
 router.post("/", createBoard);
-
 router.put("/:_id", updateBoard);
-
 router.delete("/:_id", deleteBoard);
 
 module.exports = router;
