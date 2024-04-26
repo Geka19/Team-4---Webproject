@@ -4,6 +4,7 @@ const connectDB = require("./config/connectDB");
 
 connectDB();
 
+// For populating the board database
 const boards = [
   {
     title: "Zero Waste Lifestyle",
@@ -15,6 +16,7 @@ const boards = [
   },
 ];
 
+// Save the boards to the database
 Promise.all(
   boards.map((boardData) => {
     const board = new Board(boardData);

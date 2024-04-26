@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useNoteContext } from "../context/NoteContext";
-import "../App.css";
+import "../styles/App.css";
 
 // For editing a note
 const EditNote = () => {

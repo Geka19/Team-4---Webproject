@@ -1,5 +1,5 @@
 import GetBoards from "../components/GetBoards";
-import "../App.css";
+import "../styles/App.css";
 
 function Board() {
   return (

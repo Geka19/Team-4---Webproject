@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useBoardContext } from "../context/BoardContext";
-import "../App.css";
+import "../styles/App.css";
 
 // For editing a board
 const EditBoard = () => {

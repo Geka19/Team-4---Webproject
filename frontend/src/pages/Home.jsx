@@ -1,6 +1,6 @@
 import GetNotes from "../components/GetNotes";
 import CreateNote from "../components/CreateNote";
-import "../App.css";
+import "../styles/App.css";
 
 function Home() {
   return (

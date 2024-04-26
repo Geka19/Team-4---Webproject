@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useNoteContext } from "../context/NoteContext";
 import DeleteNoteButton from "../components/DeleteNote";
-import "../App.css";
+import "../styles/App.css";
 
 // This page will be used to display notes for a specific board
 function BoardNotes() {

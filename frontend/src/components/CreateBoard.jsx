@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useBoardContext } from "../context/BoardContext";
-import "../App.css";
+import "../styles/App.css";
 
 // For creating the board
 function CreateBoard() {
@@ -15,7 +15,7 @@ function CreateBoard() {
   const navigate = useNavigate();
 
   const handleGoBack = () => {
-    navigate(-1);
+    navigate("/boards");
   };
 
   // For creating a new board
@@ -55,7 +55,7 @@ function CreateBoard() {
       console.error("Failed to create board:", error);
     }
 
-    navigate(-1);
+    navigate("/boards");
   };
 
   // i havent really done any styling so i'm just using the note styling from before

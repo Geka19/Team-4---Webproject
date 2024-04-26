@@ -41,9 +41,9 @@ const createBoard = async (req, res) => {
 const updateBoard = async (req, res) => {
   try {
     const updatedBoard = await Board.findByIdAndUpdate(
-      req.params._id, // id of the note to update
-      req.body, // new data
-      { new: true } // to return the updated data
+      req.params._id,
+      req.body, 
+      { new: true } 
     );
     res.json(updatedBoard);
   } catch (err) {
