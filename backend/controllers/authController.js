@@ -86,7 +86,7 @@ const loginUser = async (req, res) => {
       username: user.username,
       email: user.email,
       role: user.role,
-      message: "Logged in successfully",
+      message: "Login successful",
     });
   } catch (error) {
     // Handle any errors
@@ -106,7 +106,7 @@ const logoutUser = async (req, res) => {
     });
 
     // Respond with success message
-    res.status(200).json({ message: "Logged out successfully" });
+    res.status(200).json({ message: "Logout successful" });
   } catch (error) {
     // Handle any errors
     console.error(error);
@@ -120,7 +120,7 @@ const getUserRole = async (req, res) => {
     // Respond with user role
     res.status(200).json({
       userRole: req.user.role,
-      message: "User role fetched successfully",
+      message: "Role fetched",
     });
   } catch (error) {
     // Handle any errors

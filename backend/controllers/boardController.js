@@ -31,9 +31,9 @@ const createBoard = async (req, res) => {
     const savedBoard = await newBoard.save();
     res
       .status(201)
-      .json({ message: "Card created successfully", card: savedBoard });
+      .json({ message: "Board created successfully", board: savedBoard });
   } catch (err) {
-    res.status(500).json({ error: `Error creating card: ${err.message}` });
+    res.status(500).json({ error: `Error creating board: ${err.message}` });
   }
 };
 
@@ -42,8 +42,8 @@ const updateBoard = async (req, res) => {
   try {
     const updatedBoard = await Board.findByIdAndUpdate(
       req.params._id,
-      req.body, 
-      { new: true } 
+      req.body,
+      { new: true }
     );
     res.json(updatedBoard);
   } catch (err) {
@@ -54,10 +54,14 @@ const updateBoard = async (req, res) => {
 // delete a board
 const deleteBoard = async (req, res) => {
   try {
-    const deleteBoard = await Board.deleteOne({ _id: req.params._id });
-    res.json({ message: "Board deleted" });
+    const deletedBoard = await Board.deleteOne({ _id: req.params._id });
+    if (deletedBoard.deletedCount === 1) {
+      res.json({ message: "Board deleted" });
+    } else {
+      res.status(404).json({ message: "Board not found" });
+    }
   } catch (err) {
-    res.status(400).json({ message: err });
+    res.status(500).json({ message: "Internal server error" });
   }
 };
 

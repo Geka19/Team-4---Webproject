@@ -7,7 +7,7 @@ function GetBoard() {
 
   return (
     <>
-      <Link to="/create-board">Create New Board</Link>
+      <Link to="/boards/create-board">Create New Board</Link>
       <div
         className="board-container"
         style={{ display: "flex", flexWrap: "wrap" }}

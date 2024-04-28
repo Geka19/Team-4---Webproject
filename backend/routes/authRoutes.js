@@ -10,6 +10,7 @@ const {
   registerUser,
   loginUser,
   logoutUser,
+  getUserRole,
   verifyToken,
 } = require("../controllers/authController");
 
@@ -36,5 +37,6 @@ router.post("/register", registerValidation, registerUser);
 router.post("/login", loginValidation, loginUser);
 router.post("/logout", logoutUser);
 router.get("/verify", auth, verifyToken);
+router.get("/role", auth, getUserRole);
 
 module.exports = router;

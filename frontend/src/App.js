@@ -31,7 +31,7 @@ function App() {
             <Route path="/home" element={<Home />} />
             <Route path="/boards" element={<Boards />} />
             <Route path="/boards/name/:boardName" element={<BoardNotes />} />
-            <Route path="/create-board" element={<CreateBoard />} />
+            <Route path="/boards/create-board" element={<CreateBoard />} />
             <Route path="/create-note" element={<CreateNote />} />
             <Route
               path="/boards/name/:boardName/:noteId"

@@ -37,6 +37,7 @@ export function NoteProvider({ children }) {
         headers: {
           "Content-Type": "application/json",
         },
+        useCredentials: true,
       });
 
       if (response.status !== 200) {

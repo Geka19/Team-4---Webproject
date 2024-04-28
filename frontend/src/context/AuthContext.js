@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState} from "react";
+import React, { createContext, useContext, useState } from "react";
 import axios from "../api/axios";
 
 // Initialize the Authentication Context
@@ -15,7 +15,7 @@ export const AuthProvider = ({ children }) => {
 
   // Function to handle user login
   const login = async ({ email, password }) => {
-    try { 
+    try {
       // Wait for response from the server
       const response = await axios.post("/api/auth/login", {
         email,
@@ -30,7 +30,7 @@ export const AuthProvider = ({ children }) => {
       const errorMessage = "Login failed. Please try again.";
       console.error("Login Error:", errorMessage);
       throw new Error(errorMessage);
-    } 
+    }
   };
 
   // Handle user logout
@@ -53,10 +53,6 @@ export const AuthProvider = ({ children }) => {
     currentUser,
     isAuthenticated: !!currentUser, // Bollean value to check if the user is authenticated
   };
-  
-  return (
-    <AuthContext.Provider value={value}>
-       {children}
-    </AuthContext.Provider>
-  );
+
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };

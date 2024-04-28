@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useBoardContext } from "../context/BoardContext";
-import "../styles/App.css";
+import "../styles/CreateBoard.css";
 
 // For creating the board
 function CreateBoard() {
@@ -14,12 +14,16 @@ function CreateBoard() {
   // Navigate back to the last page the user was on
   const navigate = useNavigate();
 
-  const handleGoBack = () => {
+  const handleGoBack = (event) => {
+    event.preventDefault();
+
     navigate("/boards");
   };
 
   // For creating a new board
-  const handleCreateBoard = async () => {
+  const handleCreateBoard = async (event) => {
+    event.preventDefault();
+
     setBoardNameValid(!!boardName);
     setBoardDescriptionValid(!!boardDescription);
 
@@ -60,7 +64,7 @@ function CreateBoard() {
 
   // i havent really done any styling so i'm just using the note styling from before
   return (
-    <form className="create-note" onSubmit="handleCreateBoard">
+    <form className="create-note" onSubmit={handleCreateBoard}>
       <input
         type="text"
         name="boardName"

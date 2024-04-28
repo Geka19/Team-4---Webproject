@@ -118,7 +118,7 @@ function CreateNote() {
         </select>
       </label>
 
-      <Link to="/create-board">Create New Board</Link>
+      <Link to="/boards/create-board">Create New Board</Link>
 
       <div className="create-note-buttons">
         <button onClick={handleAddNote}>Add Note</button>
