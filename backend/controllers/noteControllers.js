@@ -5,9 +5,9 @@ const Note = require("../models/noteSchema");
 const getAllNotes = async (req, res) => {
   try {
     const showNotes = await Note.find({});
-    res.json(showNotes);
+    res.status(200).json(showNotes);
   } catch (err) {
-    res.json({ message: err });
+    res.status(500).json({ message: err });
   }
 };
 
@@ -15,27 +15,30 @@ const getAllNotes = async (req, res) => {
 const getNote = async (req, res) => {
   try {
     const showNotes = await Note.findOne({ _id: req.params._id });
-    res.json(showNotes);
+    res.status(200).json(showNotes);
   } catch (err) {
-    res.json({ message: err });
+    res.status(500).json({ message: err });
   }
 };
 
 // create a new Note
 const createNote = async (req, res) => {
-  const newNote = new Note({
-    title: req.body.title,
-    user: req.body.user,
-    tags: req.body.tags,
-    content: req.body.content,
-    board: req.body.board,
-    visibility: req.body.visibility,
-  });
   try {
+    const newNote = new Note({
+      title: req.body.title,
+      user: req.body.user,
+      tags: req.body.tags,
+      content: req.body.content,
+      board: req.body.board,
+      visibility: req.body.visibility,
+    });
+
     const saveNote = await newNote.save();
-    res.send(saveNote);
+    res
+      .status(201)
+      .json({ message: "Card created successfully", note: saveNote });
   } catch (err) {
-    res.status(400).send(err);
+    res.status(500).json({ error: `Error creating card: ${err.message}` });
   }
 };
 
@@ -47,7 +50,7 @@ const updateNote = async (req, res) => {
       req.body, // new data
       { new: true } // to return the updated data
     );
-    res.json(updatedNote);
+    res.status(200).json(updatedNote);
   } catch (err) {
     res.status(400).json({ message: err });
   }
@@ -56,10 +59,14 @@ const updateNote = async (req, res) => {
 // delete a Note
 const deleteNote = async (req, res) => {
   try {
-    const deleteNote = await Note.deleteOne({ _id: req.params._id });
-    res.json({ message: "Note deleted" });
+    const deletedNote = await Note.deleteOne({ _id: req.params._id });
+    if (deletedNote.deletedCount === 0) {
+      res.status(404).json({ error: "Note not found" });
+    } else {
+      res.status(200).json({ message: "Note deleted" });
+    }
   } catch (err) {
-    res.status(400).json({ message: err });
+    res.status(500).json({ message: err });
   }
 };
 
@@ -91,9 +98,9 @@ const uploadJson = async (req, res) => {
 const getNoteByBoardName = async (req, res) => {
   try {
     const showNotes = await Note.find({ board: req.params.boardName });
-    res.json(showNotes);
+    res.status(200).json(showNotes);
   } catch (err) {
-    res.json({ message: err });
+    res.status(500).json({ message: err });
   }
 };
 

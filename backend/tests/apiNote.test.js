@@ -17,9 +17,9 @@ describe("Note API", () => {
         board: "Test Board",
         visibility: "public",
       });
-    expect(res.statusCode).toEqual(200);
+    expect(res.statusCode).toEqual(201);
     // Save the note id for the next tests
-    noteId = res.body._id;
+    noteId = res.body.note._id;
   });
 
   it("should get all notes", async () => {
@@ -47,6 +47,24 @@ describe("Note API", () => {
     const res = await request(server).delete(`/api/notes/${noteId}`);
     expect(res.statusCode).toEqual(200);
     expect(res.body).toHaveProperty("message", "Note deleted");
+  });
+
+  it("should fail to create a note with title and content length exceeding the maximum allowed length", async () => {
+    const res = await request(server)
+      .post("/api/notes")
+      .send({
+        title: "a".repeat(51), // 50 characters is the max allowed length for title
+        content: "b".repeat(501), // 500 characters exceeds the maximum allowed length for content
+      });
+
+    // Assertions
+    // Expect a 400 status code for validation error
+    expect(res.statusCode).toEqual(500);
+    // Expect the error message to be sent in the response
+    expect(res.body).toEqual({
+      error:
+        "Error creating card: Note validation failed: title: Title is too long., content: Content is too long.",
+    });
   });
 
   // close the server afterward

@@ -118,16 +118,22 @@ describe("User API endpoints", () => {
     // Check that the request was unauthorized
     expect(res.statusCode).toEqual(401);
   });
-});
 
-// close the server afterward
-afterAll(async () => {
-  await mongoose.connection.close();
-  server.close();
-});
+  // Checking if it rejects a request without a token
+  it("should reject registration with invalid email format", async () => {
+    const res = await request(server).post("/api/auth/register").send({
+      username: "Test User",
+      email: "invalid-email",
+      password: "test123456789",
+    });
 
-// close the server afterward
-afterAll(async () => {
-  await mongoose.connection.close();
-  server.close();
+    expect(res.statusCode).toEqual(400);
+    expect(res.body.errors[0]).toHaveProperty("msg", "Invalid email");
+  });
+
+  // close the server afterward
+  afterAll(async () => {
+    await mongoose.connection.close();
+    server.close();
+  });
 });
