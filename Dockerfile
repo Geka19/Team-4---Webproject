@@ -19,4 +19,4 @@ RUN npm install
 
 USER usr
 
-CMD ["node", "server.js"]
+CMD ["node", "backend/server.js"]
