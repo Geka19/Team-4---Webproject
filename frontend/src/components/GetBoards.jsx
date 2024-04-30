@@ -18,7 +18,7 @@ function GetBoard() {
             key={board._id}
             style={{ order: board.isDraft ? -1 : 0 }}
           >
-            <Link key={board._id} to={`/boards/name/${board.title}`}>
+            <Link to={`/boards/name/${board.title}`}>
               <h1>{board.title}</h1>
               <p>{board.description}</p>
             </Link>

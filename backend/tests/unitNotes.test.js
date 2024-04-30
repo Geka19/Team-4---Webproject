@@ -1,13 +1,13 @@
 const {
   getNote,
   deleteNote,
-  createNote,
+  updateNote,
 } = require("../controllers/noteControllers");
 const Note = require("../models/noteSchema");
 
 jest.mock("../models/noteSchema");
 
-describe("Unit test for note controller", () => {
+describe("Unit test for the note controller", () => {
   it("should return a note successfully", async () => {
     // Mock request parameters
     const req = { params: { _id: "noteId" } };
@@ -69,5 +69,27 @@ describe("Unit test for note controller", () => {
     expect(Note.deleteOne).toHaveBeenCalledWith({ _id: "nonExistingNoteId" });
     expect(res.status).toHaveBeenCalledWith(404);
     expect(res.json).toHaveBeenCalledWith({ error: "Note not found" });
+  });
+
+  it("should update a note successfully", async () => {
+    const updatedNote = {
+      _id: "noteId",
+      title: "Updated Note Title",
+      content: "Updated Note Content",
+    };
+
+    // Mock the updateNote function
+    const updateNote = jest.fn().mockResolvedValue({
+      status: 200,
+      data: { message: "Note updated successfully", note: updatedNote },
+    });
+
+    const res = await updateNote(updatedNote);
+
+    expect(updateNote).toHaveBeenCalledWith(updatedNote);
+    expect(res).toEqual({
+      status: 200,
+      data: { message: "Note updated successfully", note: updatedNote },
+    });
   });
 });

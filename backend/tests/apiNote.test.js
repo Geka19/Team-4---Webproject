@@ -57,8 +57,7 @@ describe("Note API", () => {
         content: "b".repeat(501), // 500 characters exceeds the maximum allowed length for content
       });
 
-    // Assertions
-    // Expect a 400 status code for validation error
+    // Expect a 500 status code for validation error
     expect(res.statusCode).toEqual(500);
     // Expect the error message to be sent in the response
     expect(res.body).toEqual({

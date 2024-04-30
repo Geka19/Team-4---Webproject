@@ -39,6 +39,12 @@
     ]
   },
   "devDependencies": {
-    "file-loader": "^6.2.0"
+    "file-loader": "^6.2.0",
+    "jest": "^27.5.1"
+  },
+  "jest": {
+    "transformIgnorePatterns": [
+       "/node_modules/(?!(axios)/)"
+     ]
   }
 }

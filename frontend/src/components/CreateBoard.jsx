@@ -5,7 +5,7 @@ import "../styles/CreateBoard.css";
 
 // For creating the board
 function CreateBoard() {
-  const { addBoard } = useBoardContext(); 
+  const { addBoard } = useBoardContext();
   const [boardName, setBoardName] = useState("");
   const [boardDescription, setBoardDescription] = useState("");
   const [boardNameValid, setBoardNameValid] = useState(true);
@@ -37,24 +37,8 @@ function CreateBoard() {
     };
 
     try {
-      const response = await fetch("http://localhost:8050/api/boards/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newBoard),
-      });
-      
       // Update the context API state
       await addBoard(newBoard);
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
-      // Resetting the board name and description after the user submits the form
-      setBoardName("");
-      setBoardDescription("");
     } catch (error) {
       console.error("Failed to create board:", error);
     }

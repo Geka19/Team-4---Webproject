@@ -74,6 +74,7 @@ const EditBoard = () => {
             value={board.title}
             onChange={handleChange}
             className="note-title"
+            data-testid="title-input"
           />
         </label>
         <label>
@@ -83,9 +84,10 @@ const EditBoard = () => {
             value={board.description}
             onChange={handleChange}
             className="note-content"
+            data-testid="description-textarea"
           />
         </label>
-        <button type="submit">Update Board</button>
+        <button className="edit-board" type="submit">Update Board</button>
         <button onClick={handleGoBack}>Go Back</button>
       </form>
     </div>
