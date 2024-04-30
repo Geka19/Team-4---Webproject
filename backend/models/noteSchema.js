@@ -4,8 +4,8 @@ const noteSchema = new mongoose.Schema({
   title: {
     type: String,
     required: true,
-    min: 2,
-    max: 50,
+    minlength: [2, "Title is too short."],
+    maxlength: [50, "Title is too long."],
   },
   user: {
     // comment out ref and replace type with String to test easier
@@ -17,8 +17,8 @@ const noteSchema = new mongoose.Schema({
   content: {
     type: String,
     required: true,
-    min: 2,
-    max: 500,
+    minlength: [2, "Content is too short."],
+    maxlength: [500, "Content is too long."],
   },
   board: {
     type: String,

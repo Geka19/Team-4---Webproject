@@ -5,9 +5,9 @@ const Board = require("../models/boardSchema");
 const getAllBoards = async (req, res) => {
   try {
     const boards = await Board.find({});
-    res.json(boards);
+    res.status(200).json(boards);
   } catch (err) {
-    res.json({ message: err });
+    res.status(500).json({ message: err });
   }
 };
 
@@ -15,7 +15,7 @@ const getAllBoards = async (req, res) => {
 const getBoard = async (req, res) => {
   try {
     const board = await Board.findOne({ _id: req.params._id });
-    res.json(board);
+    res.status(200).json(board);
   } catch (err) {
     res.status(500).json({ message: err });
   }
@@ -45,7 +45,7 @@ const updateBoard = async (req, res) => {
       req.body,
       { new: true }
     );
-    res.json(updatedBoard);
+    res.status(200).json(updatedBoard);
   } catch (err) {
     res.status(400).json({ message: err });
   }
@@ -56,7 +56,7 @@ const deleteBoard = async (req, res) => {
   try {
     const deletedBoard = await Board.deleteOne({ _id: req.params._id });
     if (deletedBoard.deletedCount === 1) {
-      res.json({ message: "Board deleted" });
+      res.status(200).json({ message: "Board deleted" });
     } else {
       res.status(404).json({ message: "Board not found" });
     }

@@ -52,10 +52,10 @@ describe("Board API endpoints", () => {
     expect(res.statusCode).toEqual(200);
     expect(res.body).toHaveProperty("message", "Board deleted");
   });
-});
 
-// close the server afterward
-afterAll(async () => {
-  await mongoose.connection.close();
-  server.close();
+  // close the server afterward
+  afterAll(async () => {
+    await mongoose.connection.close();
+    server.close();
+  });
 });

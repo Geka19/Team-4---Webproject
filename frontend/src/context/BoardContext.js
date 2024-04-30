@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import axios from "../api/axios";
-import { Spinner } from 'react-bootstrap'; 
+import { Spinner } from "react-bootstrap";
 
 const BoardContext = createContext();
 
@@ -31,13 +31,31 @@ export function BoardProvider({ children }) {
   }
 
   // Update the state when a new board is added to the database
-  function addBoard(board) {
-    setBoards(prevBoards => [...prevBoards, board]);
-  }
+  const addBoard = async (newBoard) => {
+    try {
+      const response = await axios.post("/api/boards/", newBoard, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (response.status !== 201) {
+        throw new Error("Failed to add board");
+      }
+
+      // Update local state with the newly created board
+      setBoards((prevBoards) => [...prevBoards, response.data]);
+
+      // Fetch boards again to update the list with the latest data
+      fetchBoards();
+    } catch (error) {
+      console.error("Failed to add board:", error);
+    }
+  };
 
   return (
     <BoardContext.Provider value={{ boards, setBoards, loading, addBoard }}>
-    {loading ? <Spinner /> : children}
-  </BoardContext.Provider>
+      {loading ? <Spinner /> : children}
+    </BoardContext.Provider>
   );
 }
