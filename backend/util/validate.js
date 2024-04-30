@@ -14,7 +14,7 @@ function validateUserName(name){
 		throw "User name can't be empty";
 	}
 	name = name.toString().trim();
-	// max length is sane
+	// max length is same
 	if(name.length > MAX_NAME_LEN){
 		throw new Error("User name is unrealistically long");
 	}
