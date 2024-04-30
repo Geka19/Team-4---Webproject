@@ -3,6 +3,7 @@ import "@testing-library/jest-dom";
 import Footer from "../Footer";
 
 describe("Footer", () => {
+  // Realistic usage case
   test("renders footer with copyright information", () => {
     render(<Footer />);
     const footerElement = screen.getByText(

@@ -28,7 +28,7 @@ describe("Note API", () => {
         board: "Test Board",
         visibility: "public",
       });
-    expect(res.statusCode).toEqual(200);
+    expect(res.statusCode).toEqual(201);
     // Save the note id for the next tests
     noteId = "123";
   });

@@ -18,36 +18,6 @@ git https://github.com/Geka19/Team-4---Webproject.git
 cd Team-4---Webproject
 ```
 
-## Backend Setup
-
-Navigate to the backend directory and install dependencies:
-
-```bash
-cd backend
-npm install
-```
-
-To start the backend part use 
-```bash
-npm run start 
-```
-
-The backend should now be avaiable at http://localhost:8085
-
-## Testing
-To run the tests on the frontend you can use the command 
-```bash
-cd frontend
-npm run test 
-```
-
-To run the tests on the backend you can use the command 
-```bash
-cd /backend
-npm run test 
-(If it says no tests files found you can press A to run all tests)
-```
-
 ## Frontend Setup
 In a terminal window, navigate to the frontend directory and install dependencies:
 
@@ -77,6 +47,13 @@ npm run start
 ```
 
 The backend should now be avaiable at http://localhost:8085
+
+## Testing
+To run the tests on the frontend you can use the command 
+```bash
+cd frontend
+npm run test 
+```
 
 ## Team Members
 Sebastian Skrøvseth Haugen, Guro Eline Karlsen, Johan Filip Karlsson, Simen Elvhaug
