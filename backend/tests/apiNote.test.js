@@ -10,12 +10,12 @@ describe("Note API", () => {
     const res = await request(server)
       .post("/api/notes")
       .send({
-        title: "Test Note",
-        user: "Test User",
-        tags: ["tag1", "tag2"],
-        content: "Test Content",
-        board: "Test Board",
-        visibility: "public",
+        Title: "Welcome Message",
+        User: "John Doe",
+        Tags: ["welcome", "greeting"],
+        Content: "Welcome to our platform! We're excited to have you join us.",
+        Board: "General",
+        Visibility: "public",
       });
     expect(res.statusCode).toEqual(200);
     // Save the note id for the next tests

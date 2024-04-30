@@ -22,7 +22,7 @@ describe("Note API", () => {
       .post("/api/notes")
       .send({
         title: "Test Note",
-        user: "Test User",
+        user: "Alice Johnson",
         tags: ["tag1", "tag2"],
         content: "Test Content",
         board: "Test Board",
@@ -39,7 +39,7 @@ describe("Note API", () => {
       {
         _id: "123",
         title: "Test Note",
-        user: "Test User",
+        user: "Alice Johnson",
         tags: ["tag1", "tag2"],
         content: "Test Content",
         board: "Test Board",
@@ -57,7 +57,7 @@ describe("Note API", () => {
     jest.spyOn(Note, "findOne").mockResolvedValueOnce({
       _id: "123",
       title: "Test Note",
-      user: "Test User",
+      user: "Alice Johnson",
       tags: ["tag1", "tag2"],
       content: "Test Content",
       board: "Test Board",
@@ -74,7 +74,7 @@ describe("Note API", () => {
     jest.spyOn(Note, "findByIdAndUpdate").mockResolvedValueOnce({
       _id: "123",
       title: "Updated Test Note",
-      user: "Test User",
+      user: "Alice Johnson",
       tags: ["tag1", "tag2"],
       content: "Updated Test Content",
       board: "Test Board",
