@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../styles/Welcome.css";
+import NewsComponent from "../components/NewsComponent";
 
 function Welcome() {
   return (
@@ -20,6 +21,7 @@ function Welcome() {
             <button>Register</button>
           </Link>
         </div>
+        <NewsComponent />
       </section>
     </main>
   );
