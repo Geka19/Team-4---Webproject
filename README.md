@@ -35,13 +35,21 @@ npm run start
 The backend should now be avaiable at http://localhost:8085
 
 ## Testing
-To run the test on the backend you can use the command 
+To run the tests on the frontend you can use the command 
 ```bash
+cd frontend
 npm run test 
 ```
 
+To run the tests on the backend you can use the command 
+```bash
+cd /backend
+npm run test 
+(If it says no tests files found you can press A to run all tests)
+```
+
 ## Frontend Setup
-In a new terminal window, navigate to the frontend directory and install dependencies:
+In a terminal window, navigate to the frontend directory and install dependencies:
 
 ```bash
 cd frontend
@@ -54,6 +62,21 @@ npm run start
 ```
 
 The frontend should now be avaiable at http://localhost:3000
+
+## Backend Setup
+In a new terminal window, navigate to the backend directory and install dependencies:
+
+```bash
+cd backend
+npm install
+```
+
+To start the backend part use 
+```bash
+npm run start 
+```
+
+The backend should now be avaiable at http://localhost:8085
 
 ## Team Members
 Sebastian Skrøvseth Haugen, Guro Eline Karlsen, Johan Filip Karlsson, Simen Elvhaug
