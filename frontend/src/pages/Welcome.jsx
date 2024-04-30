@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../styles/Welcome.css";
+import NewsComponent from "../components/NewsComponent";
 
 function Welcome() {
   return (
@@ -14,12 +15,13 @@ function Welcome() {
         </p>
         <div className="buttons-welcome">
           <Link to="/login">
-            <button>Login</button>
+            <button className="test-login">Login</button>
           </Link>
           <Link to="/register">
-            <button>Register</button>
+            <button className="test-register">Register</button>
           </Link>
         </div>
+        <NewsComponent />
       </section>
     </main>
   );

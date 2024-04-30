@@ -74,6 +74,7 @@ function CreateNote() {
         Title:
         <input
           type="text"
+          id="title"
           placeholder="Title"
           name="title"
           value={note.title}
@@ -84,6 +85,7 @@ function CreateNote() {
       <label className="create-note-content-wrapper">
         Content:
         <textarea
+          id="content"
           placeholder="Write down your ideas here..."
           name="content"
           value={note.content}
@@ -94,6 +96,7 @@ function CreateNote() {
       <label className="create-note-content-wrapper">
         Tags:
         <input
+          id="tags"
           type="text"
           placeholder="Write down tags separated by commas..."
           name="tags"
@@ -115,7 +118,9 @@ function CreateNote() {
         </select>
       </label>
 
-      <Link to="/boards/create-board">Create New Board</Link>
+      <Link id="create-new-board" to="/boards/create-board">
+        Create New Board
+      </Link>
 
       <div className="create-note-buttons">
         <button onClick={handleAddNote}>Add Note</button>

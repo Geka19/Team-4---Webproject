@@ -46,6 +46,7 @@ function CreateBoard() {
     <form className="create-note" onSubmit={handleCreateBoard}>
       <input
         type="text"
+        id="newBoardTitle"
         name="boardName"
         placeholder="Enter board name..."
         value={boardName}
@@ -54,6 +55,7 @@ function CreateBoard() {
       />
       <input
         type="text"
+        id="boardDescription"
         name="boardDescription"
         placeholder="Enter board description..."
         value={boardDescription}
@@ -62,6 +64,7 @@ function CreateBoard() {
       />
       <button onClick={handleCreateBoard}>Create Board</button>
       <GoBackButton>Go Back</GoBackButton>
+
     </form>
   );
 }
