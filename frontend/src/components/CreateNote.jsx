@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useBoardContext } from "../context/BoardContext";
 import { useNoteContext } from "../context/NoteContext";
+import GoBackButton from "./HandleGoBack";
 import "../styles/CreateNote.css";
 
 // For creating a new note
@@ -18,10 +19,6 @@ function CreateNote() {
 
   // For navigating to the last page
   const navigate = useNavigate();
-
-  const handleGoBack = () => {
-    navigate(-1);
-  };
 
   const handleBoardChange = (event) => {
     setNote({
@@ -126,10 +123,8 @@ function CreateNote() {
       </Link>
 
       <div className="create-note-buttons">
-        <button id="submit-note" onClick={handleAddNote}>
-          Add Note
-        </button>
-        <button onClick={handleGoBack}>Go back</button>
+        <button onClick={handleAddNote}>Add Note</button>
+        <GoBackButton>Go Back</GoBackButton>
       </div>
     </div>
   );

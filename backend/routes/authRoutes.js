@@ -16,7 +16,7 @@ const {
 
 // Validation rules for user registration
 const registerValidation = [
-  check("email", "Invalid email").isEmail(),
+  check("email").isEmail().withMessage("Invalid email"),
   check("password", "Password must be at least 8 characters long").isLength({
     min: 8,
   }),

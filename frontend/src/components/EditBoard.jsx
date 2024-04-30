@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useBoardContext } from "../context/BoardContext";
+import GoBackButton from "./HandleGoBack";
+
 import "../styles/App.css";
 
 // For editing a board
@@ -10,9 +12,6 @@ const EditBoard = () => {
   const { boards, setBoards } = useBoardContext();
   
   const navigate = useNavigate();
-  const handleGoBack = () => {
-    navigate("/boards");
-  };
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -74,6 +73,7 @@ const EditBoard = () => {
             value={board.title}
             onChange={handleChange}
             className="note-title"
+            data-testid="title-input"
           />
         </label>
         <label>
@@ -83,10 +83,11 @@ const EditBoard = () => {
             value={board.description}
             onChange={handleChange}
             className="note-content"
+            data-testid="description-textarea"
           />
         </label>
-        <button type="submit">Update Board</button>
-        <button onClick={handleGoBack}>Go Back</button>
+        <button className="edit-board" type="submit">Update Board</button>
+        <GoBackButton>Go Back</GoBackButton>
       </form>
     </div>
   );
