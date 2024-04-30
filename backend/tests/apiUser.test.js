@@ -119,7 +119,7 @@ describe("User API endpoints", () => {
     expect(res.statusCode).toEqual(401);
   });
 
-  // Checking if it rejects a request without a token
+  // Checking if it rejects a a user with invalid email
   it("should reject registration with invalid email format", async () => {
     const res = await request(server).post("/api/auth/register").send({
       username: "Test User",
