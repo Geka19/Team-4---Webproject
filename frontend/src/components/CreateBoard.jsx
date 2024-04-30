@@ -5,7 +5,7 @@ import "../styles/CreateBoard.css";
 
 // For creating the board
 function CreateBoard() {
-  const { addBoard } = useBoardContext(); 
+  const { addBoard } = useBoardContext();
   const [boardName, setBoardName] = useState("");
   const [boardDescription, setBoardDescription] = useState("");
   const [boardNameValid, setBoardNameValid] = useState(true);
@@ -44,7 +44,7 @@ function CreateBoard() {
         },
         body: JSON.stringify(newBoard),
       });
-      
+
       // Update the context API state
       await addBoard(newBoard);
 
@@ -67,6 +67,7 @@ function CreateBoard() {
     <form className="create-note" onSubmit={handleCreateBoard}>
       <input
         type="text"
+        id="newBoardTitle"
         name="boardName"
         placeholder="Enter board name..."
         value={boardName}
@@ -75,13 +76,16 @@ function CreateBoard() {
       />
       <input
         type="text"
+        id="boardDescription"
         name="boardDescription"
         placeholder="Enter board description..."
         value={boardDescription}
         onChange={(e) => setBoardDescription(e.target.value)}
         className={boardDescriptionValid ? "" : "invalid"}
       />
-      <button onClick={handleCreateBoard}>Create Board</button>
+      <button id="submit-board" onClick={handleCreateBoard}>
+        Create Board
+      </button>
       <button onClick={handleGoBack}>Go Back</button>
     </form>
   );
