@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useBoardContext } from "../context/BoardContext";
 import "../styles/CreateBoard.css";
+import GoBackButton from "./HandleGoBack";
 
 // For creating the board
 function CreateBoard() {
@@ -11,14 +12,8 @@ function CreateBoard() {
   const [boardNameValid, setBoardNameValid] = useState(true);
   const [boardDescriptionValid, setBoardDescriptionValid] = useState(true);
 
-  // Navigate back to the last page the user was on
+  // Navigate back to the the boards if request succesful 
   const navigate = useNavigate();
-
-  const handleGoBack = (event) => {
-    event.preventDefault();
-
-    navigate("/boards");
-  };
 
   // For creating a new board
   const handleCreateBoard = async (event) => {
@@ -66,7 +61,7 @@ function CreateBoard() {
         className={boardDescriptionValid ? "" : "invalid"}
       />
       <button onClick={handleCreateBoard}>Create Board</button>
-      <button onClick={handleGoBack}>Go Back</button>
+      <GoBackButton>Go Back</GoBackButton>
     </form>
   );
 }

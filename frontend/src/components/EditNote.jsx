@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useNoteContext } from "../context/NoteContext";
+import GoBackButton from "./HandleGoBack";
 import "../styles/App.css";
 
 // For editing a note
@@ -15,10 +16,6 @@ const EditNote = () => {
 
   // Using navigate to go back to the previous page
   const navigate = useNavigate();
-
-  const handleGoBack = () => {
-    navigate(`/boards/name/${boardName}`);
-  };
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -103,7 +100,7 @@ const EditNote = () => {
           />
         </label>
         <button type="submit">Update Note</button>
-        <button onClick={handleGoBack}>Go Back</button>
+        <GoBackButton>Go Back</GoBackButton>
       </form>
     </div>
   );
