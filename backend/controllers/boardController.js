@@ -17,7 +17,7 @@ const getBoard = async (req, res) => {
     const board = await Board.findOne({ _id: req.params._id });
     res.json(board);
   } catch (err) {
-    res.json({ message: err });
+    res.status(500).json({ message: err });
   }
 };
 
