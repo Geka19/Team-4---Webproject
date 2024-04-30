@@ -41,16 +41,16 @@ function Login() {
 
     try {
       // Wait for the login request to complete
-      await auth.login({ email, password }); 
+      await auth.login({ email, password });
       toast.success("Login successful.");
       // Redirect the user to the home page after successful login
-      navigate("/home"); 
+      navigate("/home");
     } catch (error) {
       // Handles any login errors
       toast.error(
         "Login unsuccessful. Please verify that your email and password are correct."
       );
-    } 
+    }
   };
 
   return (
@@ -89,12 +89,12 @@ function Login() {
             </label>
           </div>
 
-          <button type="submit">
+          <button id="login-button" type="submit">
             {"Login"}
           </button>
         </form>
         <p>
-          New here? <Link to="/register">Sign up now</Link>.  
+          New here? <Link to="/register">Sign up now</Link>.
         </p>
       </div>
     </div>

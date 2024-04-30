@@ -49,6 +49,7 @@ function Sidebar() {
         <li className="list-group-item">
           <Link to="/boards">
             <img
+              id="link-to-boards"
               className="icon board"
               src={boardIcon}
               alt="icon for home page"

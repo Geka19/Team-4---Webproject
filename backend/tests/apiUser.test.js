@@ -74,6 +74,18 @@ describe("User API endpoints", () => {
     expect(res.body.email).toEqual("jane@email.com");
   });
 
+  // Not able to register an existing user
+  it("should reject an invalid registration with existing user email", async () => {
+    const res = await request(server).post("/api/auth/register").send({
+      username: "JaneDoe",
+      email: "jane@email.com",
+      password: "test123456789",
+    });
+
+    expect(res.statusCode).toEqual(400);
+    expect(res.body).toHaveProperty("error", "Email already exists");
+  });
+
   // Test case for deleting a user
   it("should delete a user", async () => {
     const user = await User.findOne({ username: "JaneDoe" });
@@ -118,16 +130,21 @@ describe("User API endpoints", () => {
     // Check that the request was unauthorized
     expect(res.statusCode).toEqual(401);
   });
-});
 
-// close the server afterward
-afterAll(async () => {
-  await mongoose.connection.close();
-  server.close();
-});
+  // Login unsuccessful
+  it("should reject an invalid login", async () => {
+    const res = await request(server).post("/api/auth/login").send({
+      email: "invalid@invalid.com",
+      password: "invalid!",
+    });
 
-// close the server afterward
-afterAll(async () => {
-  await mongoose.connection.close();
-  server.close();
+    expect(res.statusCode).toEqual(400);
+    expect(res.body).toHaveProperty("error", "Invalid credentials");
+  });
+
+  // close the server afterward
+  afterAll(async () => {
+    await mongoose.connection.close();
+    server.close();
+  });
 });
