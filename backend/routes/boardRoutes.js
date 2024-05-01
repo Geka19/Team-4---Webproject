@@ -7,11 +7,12 @@ const {
   updateBoard,
   deleteBoard,
 } = require("../controllers/boardController");
+const auth = require("../middleware/verifyToken");
 
-// routes
+// routes for boards
 router.get("/", getAllBoards);
 router.get("/:_id", getBoard);
-router.post("/", createBoard);
+router.post("/", auth, createBoard);
 router.put("/:_id", updateBoard);
 router.delete("/:_id", deleteBoard);
 

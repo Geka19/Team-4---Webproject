@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import axios from "../api/axios";
 import { Spinner } from "react-bootstrap";
+import { useAuth } from "./AuthContext";
 
 const BoardContext = createContext();
 
@@ -14,19 +15,38 @@ export function useBoardContext() {
 export function BoardProvider({ children }) {
   const [boards, setBoards] = useState([]);
   const [loading, setLoading] = useState(true);
+  const { currentUser } = useAuth();
 
   useEffect(() => {
-    fetchBoards();
-  }, []);
+    // Check if currentUser is available before fetching boards
+    if (currentUser && currentUser.id) {
+      fetchBoards();
+    } else {
+      // If currentUser is not available, set loading to false
+      setLoading(false);
+    }
+  }, [currentUser]); // Trigger useEffect whenever currentUser changes
 
   // For fetching the list of boards and saving it in the context API state
   async function fetchBoards() {
     try {
       const response = await axios.get("/api/boards");
-      setBoards(response.data);
+      const allBoards = response.data;
+
+      // Filter boards if currentUser is available
+      const userBoards = currentUser ? allBoards.filter((board) => board.user === currentUser.id) : [];
+
+      // All uses should have the draft board on their page
+      const draftBoard = allBoards.find((board) => board.isDraft === true);
+
+      // Combine the draft board and user boards to display all user boards
+      const boards = [draftBoard, ...userBoards];
+
+      setBoards(boards);
       setLoading(false);
     } catch (error) {
       console.error("Failed to fetch boards:", error);
+      setLoading(false); // Ensure loading state is updated even in case of error
     }
   }
 

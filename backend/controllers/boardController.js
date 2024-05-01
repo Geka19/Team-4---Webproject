@@ -24,9 +24,15 @@ const getBoard = async (req, res) => {
 // create a new board
 const createBoard = async (req, res) => {
   try {
+    const userId = req.user.id;
+    if (!userId) {
+      return res.status(400).json({ error: "Invalid user ID" });
+    }
+
     const newBoard = new Board({
       title: req.body.title,
       description: req.body.description,
+      user: userId,
     });
     const savedBoard = await newBoard.save();
     res

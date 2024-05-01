@@ -9,6 +9,7 @@ const {
   deleteUser,
 } = require("../controllers/userController");
 
+// routes for users
 router.get("/", getAllUsers); 
 router.get("/:id", getUser); 
 router.put("/:id", updateUser); 
