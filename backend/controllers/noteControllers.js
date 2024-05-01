@@ -110,6 +110,21 @@ const getNoteByBoardName = async (req, res) => {
   }
 };
 
+const getNoteByUser = async (req, res) => {
+  try {
+    const userId = req.params.userId;
+    if (!userId) {
+      return res.status(400).json({ error: "Invalid user ID" });
+    }
+
+    const showNotes = await Note.find({ user: userId });
+    res.status(200).json(showNotes);
+  } catch (err) {
+    console.error("Error in getNoteByUser:", err);
+    res.status(500).json({ message: err.message });
+  }
+};
+
 // export the functions
 module.exports = {
   getAllNotes,
@@ -119,4 +134,5 @@ module.exports = {
   deleteNote,
   uploadJson,
   getNoteByBoardName,
+  getNoteByUser,
 };

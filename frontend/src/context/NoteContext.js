@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import axios from "../api/axios";
 import { Spinner } from "react-bootstrap";
+import { useAuth } from "./AuthContext";
 
 const NoteContext = createContext();
 
@@ -14,19 +15,34 @@ export function useNoteContext() {
 export function NoteProvider({ children }) {
   const [notes, setNotes] = useState([]);
   const [loading, setLoading] = useState(true);
+  const { currentUser } = useAuth();
 
   useEffect(() => {
-    fetchNotes();
-  }, []);
+    // Check if currentUser is available before fetching notes
+    if (currentUser && currentUser.id) {
+      fetchNotes();
+    } else {
+      // If currentUser is not available, set loading to false
+      setLoading(false);
+    }
+  }, [currentUser]); // Trigger useEffect whenever currentUser changes
 
   // For fetching the list of notes and saving it in the context API state
   async function fetchNotes() {
     try {
       const response = await axios.get("/api/notes");
-      setNotes(response.data);
+      const allNotes = response.data;
+
+      // Filter notes if currentUser is available
+      const userNotes = currentUser
+        ? allNotes.filter((note) => note.user === currentUser.id)
+        : [];
+
+      setNotes(userNotes);
       setLoading(false);
     } catch (error) {
       console.error("Failed to fetch notes:", error);
+      setLoading(false); // Ensure loading state is updated even in case of error
     }
   }
 
