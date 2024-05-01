@@ -78,14 +78,20 @@ const uploadJson = async (req, res) => {
     try {
       const tags = data.tags || [];
 
+      const userId = req.user.id;
+      if (!userId) {
+        return res.status(400).json({ error: "Invalid user ID" });
+      }
+
       let newNote = new Note({
         title: data.title,
         content: data.content,
         board: data.board,
         tags: data.tags,
+        user: userId,
       });
       await newNote.save(); // Save the note to the database
-      res.status(200).json({ message: "Note uploaded successfully" });
+      res.status(201).json({ message: "Note uploaded successfully" });
     } catch (err) {
       console.error(err);
       res.status(500).json({ error: "Error saving note to database" });

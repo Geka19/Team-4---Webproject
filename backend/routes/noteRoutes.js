@@ -9,6 +9,7 @@ const {
   uploadJson,
   getNoteByBoardName,
 } = require("../controllers/noteControllers");
+const auth = require("../middleware/verifyToken");
 
 // routes
 router.get("/", getAllNotes);
@@ -23,6 +24,6 @@ router.put("/:_id", updateNote);
 
 router.delete("/:_id", deleteNote);
 
-router.post("/upload", uploadJson)
+router.post("/upload", auth, uploadJson)
 
 module.exports = router;

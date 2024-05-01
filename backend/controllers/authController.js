@@ -77,7 +77,7 @@ const loginUser = async (req, res) => {
       path: "/",
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
-      sameSite: "none",
+      sameSite: "strict",
       expires: new Date(Date.now() + 3600000),
     });
 
