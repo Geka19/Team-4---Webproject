@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useBoardContext } from "../context/BoardContext";
 import { useNoteContext } from "../context/NoteContext";
+import GoBackButton from "./HandleGoBack";
 import "../styles/CreateNote.css";
 
 // For creating a new note
@@ -18,10 +19,6 @@ function CreateNote() {
 
   // For navigating to the last page
   const navigate = useNavigate();
-
-  const handleGoBack = () => {
-    navigate(-1);
-  };
 
   const handleBoardChange = (event) => {
     setNote({
@@ -77,6 +74,7 @@ function CreateNote() {
         Title:
         <input
           type="text"
+          id="title"
           placeholder="Title"
           name="title"
           value={note.title}
@@ -87,6 +85,7 @@ function CreateNote() {
       <label className="create-note-content-wrapper">
         Content:
         <textarea
+          id="content"
           placeholder="Write down your ideas here..."
           name="content"
           value={note.content}
@@ -97,6 +96,7 @@ function CreateNote() {
       <label className="create-note-content-wrapper">
         Tags:
         <input
+          id="tags"
           type="text"
           placeholder="Write down tags separated by commas..."
           name="tags"
@@ -118,11 +118,13 @@ function CreateNote() {
         </select>
       </label>
 
-      <Link to="/boards/create-board">Create New Board</Link>
+      <Link id="create-new-board" to="/boards/create-board">
+        Create New Board
+      </Link>
 
       <div className="create-note-buttons">
         <button onClick={handleAddNote}>Add Note</button>
-        <button onClick={handleGoBack}>Go back</button>
+        <GoBackButton>Go Back</GoBackButton>
       </div>
     </div>
   );

@@ -15,10 +15,10 @@ function Welcome() {
         </p>
         <div className="buttons-welcome">
           <Link to="/login">
-            <button>Login</button>
+            <button className="test-login">Login</button>
           </Link>
           <Link to="/register">
-            <button>Register</button>
+            <button className="test-register">Register</button>
           </Link>
         </div>
         <NewsComponent />
