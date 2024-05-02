@@ -111,7 +111,7 @@ function CreateNote() {
         <select value={note.board} onChange={handleBoardChange}>
           <option value="">Select a board</option>
           {boards.map((board) => (
-            <option key={board._id} value={board.title}>
+            <option key={board._id} value={board._id}>
               {board.title}
             </option>
           ))}

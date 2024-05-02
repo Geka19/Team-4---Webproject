@@ -36,10 +36,15 @@ const createNote = async (req, res) => {
         return res.status(401).json({ error: "Not logged in" });
       }
 
+      // If no board is provided, set it to the _id of the "Drafts" board
+      // This might be a little to hardcoded but i think for our application it should be fine
+      // Should be a more dynamic way to get the draft board ID
+      const board = data.board || '66265000065976d80747f287'; 
+
       let newNote = new Note({
         title: data.title,
         content: data.content,
-        board: data.board,
+        board: board,
         tags: data.tags,
         user: userId,
       });

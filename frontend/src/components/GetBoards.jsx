@@ -14,13 +14,13 @@ function GetBoard() {
         className="board-container"
         style={{ display: "flex", flexWrap: "wrap" }}
       >
-        {boards.map((board) => (
+        {boards.map((board, index) => (
           <div
             className="board-item"
-            key={board._id}
+            key={board.id || index}
             style={{ order: board.isDraft ? -1 : 0 }}
           >
-            <Link to={`/boards/name/${board.title}`}>
+            <Link to={`/boards/id/${board._id}`}>
               <h1>{board.title}</h1>
               <p>{board.description}</p>
             </Link>

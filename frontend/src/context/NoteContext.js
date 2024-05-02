@@ -43,7 +43,7 @@ export function NoteProvider({ children }) {
 
   async function addNote(newNote) {
     try {
-      // Add the new note to your backend
+      // Add the new note to the backend
       const response = await axios.post("/api/notes/upload", newNote, {
         headers: {
           "Content-Type": "application/json",
@@ -55,9 +55,8 @@ export function NoteProvider({ children }) {
         throw new Error("Failed to add note");
       }
 
-      // Fetch the latest notes from your backend
-      const latestNotes = await axios.get("/api/notes");
-      setNotes(latestNotes.data);
+      // Fetch the latest notes from the backend
+      await fetchNotes();
     } catch (error) {
       console.error("Failed to add note:", error);
     }
