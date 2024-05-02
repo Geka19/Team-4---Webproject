@@ -8,10 +8,9 @@ const noteSchema = new mongoose.Schema({
     maxlength: [50, "Title is too long."],
   },
   user: {
-    // comment out ref and replace type with String to test easier
-    // type: mongoose.Schema.Types.ObjectId,
-    // ref: "User",
-    // required: true,
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+    required: true,
   },
   tags: [String],
   content: {

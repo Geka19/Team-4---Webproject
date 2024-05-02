@@ -31,6 +31,8 @@ function BoardNotes() {
     <>
       <h1>{boardName}</h1>
       {message}
+      <button onClick={handleGoBack}>Go Back</button>
+      <button onClick={() => navigate(`/create-note`)}>Create Note</button>
       <div
         style={{
           display: "flex",
@@ -54,8 +56,6 @@ function BoardNotes() {
           </div>
         ))}
       </div>
-      <button onClick={handleGoBack}>Go Back</button>
-      <button onClick={() => navigate(`/create-note`)}>Create Note</button>
     </>
   );
 }
