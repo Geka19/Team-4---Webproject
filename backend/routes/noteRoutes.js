@@ -6,15 +6,15 @@ const {
   createNote,
   updateNote,
   deleteNote,
-  uploadJson,
   getNoteByBoardName,
   getNoteByUser,
 } = require("../controllers/noteControllers");
-const auth = require("../middleware/verifyToken");
+const auth  = require("../middleware/verifyToken");
 
 // routes for notes
 router.get("/", getAllNotes);
 router.get("/:_id", getNote);
+router.get("/user/:userId", getNoteByUser);
 router.get("/name/:boardName", getNoteByBoardName);
 router.post("/upload", auth, createNote)
 router.put("/:_id", updateNote);

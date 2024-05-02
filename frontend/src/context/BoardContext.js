@@ -30,17 +30,16 @@ export function BoardProvider({ children }) {
   // For fetching the list of boards and saving it in the context API state
   async function fetchBoards() {
     try {
-      const response = await axios.get("/api/boards");
-      const allBoards = response.data;
+      const userId = currentUser.id;
 
-      // Filter boards if currentUser is available
-      const userBoards = currentUser ? allBoards.filter((board) => board.user === currentUser.id) : [];
+      // Fetch both the user's boards and the draft board
+      const [responseUserBoards, responseDraft] = await Promise.all([
+        axios.get(`/api/boards/user/${userId}`),
+        axios.get(`/api/boards/default/draft`),
+      ]);
 
-      // All uses should have the draft board on their page
-      const draftBoard = allBoards.find((board) => board.isDraft === true);
-
-      // Combine the draft board and user boards to display all user boards
-      const boards = [draftBoard, ...userBoards];
+      // Combine the boards into a single array
+      const boards = [...responseUserBoards.data, responseDraft.data];
 
       setBoards(boards);
       setLoading(false);

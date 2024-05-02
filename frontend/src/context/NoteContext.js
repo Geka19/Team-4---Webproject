@@ -30,13 +30,8 @@ export function NoteProvider({ children }) {
   // For fetching the list of notes and saving it in the context API state
   async function fetchNotes() {
     try {
-      const response = await axios.get("/api/notes");
-      const allNotes = response.data;
-
-      // Filter notes if currentUser is available
-      const userNotes = currentUser
-        ? allNotes.filter((note) => note.user === currentUser.id)
-        : [];
+      const response = await axios.get(`/api/notes/user/${currentUser.id}`);
+      const userNotes = response.data;
 
       setNotes(userNotes);
       setLoading(false);

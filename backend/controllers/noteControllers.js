@@ -1,5 +1,6 @@
 // import the Note model
 const Note = require("../models/noteSchema");
+const mongoose = require("mongoose");
 
 // get all Notes
 const getAllNotes = async (req, res) => {
@@ -32,7 +33,7 @@ const createNote = async (req, res) => {
 
       const userId = req.user.id;
       if (!userId) {
-        return res.status(400).json({ error: "Invalid user ID" });
+        return res.status(401).json({ error: "Not logged in" });
       }
 
       let newNote = new Note({
@@ -90,6 +91,25 @@ const getNoteByBoardName = async (req, res) => {
   }
 };
 
+const getNoteByUser = async (req, res) => {
+  try {
+    const userId = req.params.userId;
+
+    if (!userId) {
+      return res.status(401).json({ error: "User ID is required" });
+    }
+
+    const userNotes = await Note.find({
+      user: userId,
+    });
+
+    res.status(200).json(userNotes);
+  } catch (err) {
+    console.error("Failed to get notes for user:", err);
+    res.status(500).json({ message: err });
+  }
+};
+
 // export the functions
 module.exports = {
   getAllNotes,
@@ -98,4 +118,5 @@ module.exports = {
   updateNote,
   deleteNote,
   getNoteByBoardName,
+  getNoteByUser,
 };

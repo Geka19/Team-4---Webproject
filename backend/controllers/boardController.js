@@ -71,6 +71,34 @@ const deleteBoard = async (req, res) => {
   }
 };
 
+const getBoardByUser = async (req, res) => {
+  try {
+    const userId = req.params.userId;
+
+    if (!userId) {
+      return res.status(401).json({ error: "User ID is required" });
+    }
+
+    const userBoards = await Board.find({
+      user: userId,
+    });
+
+    res.status(200).json(userBoards);
+  } catch (err) {
+    console.error("Failed to get boards for user:", err);
+    res.status(500).json({ message: err });
+  }
+};
+
+const getDraftBoard = async (req, res) => {
+  try {
+    const draftBoard = await Board.findOne({ title: "Drafts" });
+    res.status(200).json(draftBoard);
+  } catch (err) {
+    res.status(500).json({ message: err });
+  }
+};
+
 // export the functions
 module.exports = {
   getAllBoards,
@@ -78,4 +106,6 @@ module.exports = {
   createBoard,
   updateBoard,
   deleteBoard,
+  getBoardByUser,
+  getDraftBoard,
 };
