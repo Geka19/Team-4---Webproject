@@ -1,4 +1,10 @@
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  useCallback,
+} from "react";
 import axios from "../api/axios";
 import { Spinner } from "react-bootstrap";
 import { useAuth } from "./AuthContext";
@@ -17,19 +23,10 @@ export function BoardProvider({ children }) {
   const [loading, setLoading] = useState(true);
   const { currentUser } = useAuth();
 
-  useEffect(() => {
-    // Check if currentUser is available before fetching boards
-    if (currentUser && currentUser.id) {
-      fetchBoards();
-    } else {
-      // If currentUser is not available, set loading to false
-      setLoading(false);
-    }
-  }, [currentUser]); // Trigger useEffect whenever currentUser changes
-
   // For fetching the list of boards and saving it in the context API state
-  async function fetchBoards() {
+  const fetchBoards = useCallback(async () => {
     try {
+      // Get the current user's ID
       const userId = currentUser.id;
 
       // Fetch both the user's boards and the draft board
@@ -41,13 +38,24 @@ export function BoardProvider({ children }) {
       // Combine the boards into a single array
       const boards = [...responseUserBoards.data, responseDraft.data];
 
+      // Update the state with the fetched boards
       setBoards(boards);
       setLoading(false);
     } catch (error) {
       console.error("Failed to fetch boards:", error);
-      setLoading(false); // Ensure loading state is updated even in case of error
+      setLoading(false);
     }
-  }
+  }, [currentUser]); // Dependecies of fetchboards
+
+  useEffect(() => {
+    // Check if currentUser is available before fetching boards
+    if (currentUser && currentUser.id) {
+      fetchBoards();
+    } else {
+      // If currentUser is not available, set loading to false
+      setLoading(false);
+    }
+  }, [currentUser, fetchBoards]); // Trigger useEffect whenever currentUser or fetchBoards changes
 
   // Update the state when a new board is added to the database
   const addBoard = async (newBoard) => {

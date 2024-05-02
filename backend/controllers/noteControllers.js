@@ -87,23 +87,19 @@ const deleteNote = async (req, res) => {
   }
 };
 
-const getNoteByBoardName = async (req, res) => {
-  try {
-    const showNotes = await Note.find({ board: req.params.boardName });
-    res.status(200).json(showNotes);
-  } catch (err) {
-    res.status(500).json({ message: err });
-  }
-};
-
+// This is for getting all the notes belonging to a specific user
+// Will be used to only show the users the note that are theirs
 const getNoteByUser = async (req, res) => {
   try {
+    // We can get the userId from the URL
     const userId = req.params.userId;
 
+    // If the userId is not provided, return an error
     if (!userId) {
       return res.status(401).json({ error: "User ID is required" });
     }
 
+    // Find all the notes that belong to the user
     const userNotes = await Note.find({
       user: userId,
     });
@@ -122,6 +118,5 @@ module.exports = {
   createNote,
   updateNote,
   deleteNote,
-  getNoteByBoardName,
   getNoteByUser,
 };

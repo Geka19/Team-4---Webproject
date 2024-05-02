@@ -6,7 +6,6 @@ const {
   createNote,
   updateNote,
   deleteNote,
-  getNoteByBoardName,
   getNoteByUser,
 } = require("../controllers/noteControllers");
 const auth  = require("../middleware/verifyToken");
@@ -15,7 +14,6 @@ const auth  = require("../middleware/verifyToken");
 router.get("/", getAllNotes);
 router.get("/:_id", getNote);
 router.get("/user/:userId", getNoteByUser);
-router.get("/name/:boardName", getNoteByBoardName);
 router.post("/upload", auth, createNote)
 router.put("/:_id", updateNote);
 router.delete("/:_id", deleteNote);

@@ -71,14 +71,19 @@ const deleteBoard = async (req, res) => {
   }
 };
 
+// Get all boards belonging to a specific user
+// Will be used to only show the users the boards that are theirs
 const getBoardByUser = async (req, res) => {
   try {
+    // We can get the userId from the URL
     const userId = req.params.userId;
 
+    // If the userId is not provided, return an error
     if (!userId) {
       return res.status(401).json({ error: "User ID is required" });
     }
 
+    // Find all the boards that belong to the user
     const userBoards = await Board.find({
       user: userId,
     });

@@ -19,18 +19,23 @@ function CreateBoard() {
   const handleCreateBoard = async (event) => {
     event.preventDefault();
 
+    // Validate the input fields before sending a create board request
     setBoardNameValid(!!boardName);
     setBoardDescriptionValid(!!boardDescription);
 
+    // Stop the function if the input fields are invalid
     if (!boardName || !boardDescription) {
       return;
     }
 
+    // Create a new board object
     const newBoard = {
       title: boardName,
       description: boardDescription,
     };
 
+    // Try to create a new board
+    // Logic is handled inside the note context
     try {
       // Update the context API state
       await addBoard(newBoard);
@@ -38,6 +43,7 @@ function CreateBoard() {
       console.error("Failed to create board:", error);
     }
 
+    // Navigate back to the boards page
     navigate("/boards");
   };
 

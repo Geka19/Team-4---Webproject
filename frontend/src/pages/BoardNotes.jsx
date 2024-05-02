@@ -24,7 +24,6 @@ function BoardNotes() {
   // If there are no notes in the board display a message
   const message = notes.length === 0 ? <p>No notes found</p> : null;
 
-
   return (
     <>
       <h1>{board.title}</h1>
