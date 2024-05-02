@@ -36,8 +36,9 @@
   }
   
   
+
      /* Styling for mobile view */
-@media (max-width: 768px) {
+@media (max-width: 600px) {
     .navbar {
         display: flex;
         justify-content: space-between;

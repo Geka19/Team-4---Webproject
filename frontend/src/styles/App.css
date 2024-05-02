@@ -114,4 +114,7 @@ li img:hover {
     .main-content {
         width: 100%;
     }
+    .sidebar {
+        display: none;
+    }
 }
