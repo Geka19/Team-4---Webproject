@@ -102,6 +102,8 @@ li img:hover {
     border: 2px solid red !important;
 }
 
+
+
 /* Media Queries */
 @media screen and (max-width: 600px) {
     .app {
