@@ -32,7 +32,7 @@ const loginValidation = [
   check("password", "Password is required").exists(),
 ];
 
-// Routes
+// Routes for authentication
 router.post("/register", registerValidation, registerUser);
 router.post("/login", loginValidation, loginUser);
 router.post("/logout", logoutUser);

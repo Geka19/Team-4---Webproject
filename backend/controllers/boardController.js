@@ -24,9 +24,15 @@ const getBoard = async (req, res) => {
 // create a new board
 const createBoard = async (req, res) => {
   try {
+    const userId = req.user.id;
+    if (!userId) {
+      return res.status(400).json({ error: "Invalid user ID" });
+    }
+
     const newBoard = new Board({
       title: req.body.title,
       description: req.body.description,
+      user: userId,
     });
     const savedBoard = await newBoard.save();
     res
@@ -65,6 +71,39 @@ const deleteBoard = async (req, res) => {
   }
 };
 
+// Get all boards belonging to a specific user
+// Will be used to only show the users the boards that are theirs
+const getBoardByUser = async (req, res) => {
+  try {
+    // We can get the userId from the URL
+    const userId = req.params.userId;
+
+    // If the userId is not provided, return an error
+    if (!userId) {
+      return res.status(401).json({ error: "User ID is required" });
+    }
+
+    // Find all the boards that belong to the user
+    const userBoards = await Board.find({
+      user: userId,
+    });
+
+    res.status(200).json(userBoards);
+  } catch (err) {
+    console.error("Failed to get boards for user:", err);
+    res.status(500).json({ message: err });
+  }
+};
+
+const getDraftBoard = async (req, res) => {
+  try {
+    const draftBoard = await Board.findOne({ title: "Drafts" });
+    res.status(200).json(draftBoard);
+  } catch (err) {
+    res.status(500).json({ message: err });
+  }
+};
+
 // export the functions
 module.exports = {
   getAllBoards,
@@ -72,4 +111,6 @@ module.exports = {
   createBoard,
   updateBoard,
   deleteBoard,
+  getBoardByUser,
+  getDraftBoard,
 };

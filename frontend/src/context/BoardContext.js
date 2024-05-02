@@ -1,6 +1,13 @@
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  useCallback,
+} from "react";
 import axios from "../api/axios";
 import { Spinner } from "react-bootstrap";
+import { useAuth } from "./AuthContext";
 
 const BoardContext = createContext();
 
@@ -14,21 +21,41 @@ export function useBoardContext() {
 export function BoardProvider({ children }) {
   const [boards, setBoards] = useState([]);
   const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    fetchBoards();
-  }, []);
+  const { currentUser } = useAuth();
 
   // For fetching the list of boards and saving it in the context API state
-  async function fetchBoards() {
+  const fetchBoards = useCallback(async () => {
     try {
-      const response = await axios.get("/api/boards");
-      setBoards(response.data);
+      // Get the current user's ID
+      const userId = currentUser.id;
+
+      // Fetch both the user's boards and the draft board
+      const [responseUserBoards, responseDraft] = await Promise.all([
+        axios.get(`/api/boards/user/${userId}`),
+        axios.get(`/api/boards/default/draft`),
+      ]);
+
+      // Combine the boards into a single array
+      const boards = [...responseUserBoards.data, responseDraft.data];
+
+      // Update the state with the fetched boards
+      setBoards(boards);
       setLoading(false);
     } catch (error) {
       console.error("Failed to fetch boards:", error);
+      setLoading(false);
     }
-  }
+  }, [currentUser]); // Dependecies of fetchboards
+
+  useEffect(() => {
+    // Check if currentUser is available before fetching boards
+    if (currentUser && currentUser.id) {
+      fetchBoards();
+    } else {
+      // If currentUser is not available, set loading to false
+      setLoading(false);
+    }
+  }, [currentUser, fetchBoards]); // Trigger useEffect whenever currentUser or fetchBoards changes
 
   // Update the state when a new board is added to the database
   const addBoard = async (newBoard) => {

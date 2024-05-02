@@ -8,10 +8,9 @@ const noteSchema = new mongoose.Schema({
     maxlength: [50, "Title is too long."],
   },
   user: {
-    // comment out ref and replace type with String to test easier
-    // type: mongoose.Schema.Types.ObjectId,
-    // ref: "User",
-    // required: true,
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+    required: true,
   },
   tags: [String],
   content: {
@@ -21,9 +20,10 @@ const noteSchema = new mongoose.Schema({
     maxlength: [500, "Content is too long."],
   },
   board: {
-    type: String,
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Board',
     required: true,
-    default: "Drafts",
+    default: '66265000065976d80747f287', // This is the ID of the drafts board
   },
   visibility: {
     required: true,
