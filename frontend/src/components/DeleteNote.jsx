@@ -1,5 +1,7 @@
 import axios from "../api/axios";
 import { useNoteContext } from "../context/NoteContext";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 // For deleting a note
 function DeleteNoteButton({ noteId }) {
@@ -9,10 +11,13 @@ function DeleteNoteButton({ noteId }) {
   const deleteNote = async () => {
     try {
       await axios.delete(`/api/notes/${noteId}`);
-      console.log("Note deleted successfully");
+      // Display a success toast
+      toast.success("Note deleted successfully"); 
       const updatedNotes = notes.filter((note) => note._id !== noteId);
       setNotes(updatedNotes);
     } catch (error) {
+      // Display an error toast
+      toast.error("Failed to delete note"); 
       console.error("Failed to delete note:", error);
     }
   };

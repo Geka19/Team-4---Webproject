@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useBoardContext } from "../context/BoardContext";
-import "../styles/CreateBoard.css";
+import { toast } from "react-toastify";
 import GoBackButton from "./HandleGoBack";
+import "react-toastify/dist/ReactToastify.css";
+import "../styles/CreateBoard.css";
 
 // For creating the board
 function CreateBoard() {
@@ -12,7 +14,7 @@ function CreateBoard() {
   const [boardNameValid, setBoardNameValid] = useState(true);
   const [boardDescriptionValid, setBoardDescriptionValid] = useState(true);
 
-  // Navigate back to the the boards if request succesful 
+  // Navigate back to the the boards if request succesful
   const navigate = useNavigate();
 
   // For creating a new board
@@ -39,15 +41,18 @@ function CreateBoard() {
     try {
       // Update the context API state
       await addBoard(newBoard);
+      toast.success("Board created successfully"); 
     } catch (error) {
+      toast.error("Failed to create board");
       console.error("Failed to create board:", error);
     }
 
     // Navigate back to the boards page
-    navigate("/boards");
+    navigate(-1);
   };
 
   // i havent really done any styling so i'm just using the note styling from before
+  // Feel free to add styling
   return (
     <form className="create-note" onSubmit={handleCreateBoard}>
       <input
@@ -70,7 +75,6 @@ function CreateBoard() {
       />
       <button onClick={handleCreateBoard}>Create Board</button>
       <GoBackButton>Go Back</GoBackButton>
-
     </form>
   );
 }

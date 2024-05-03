@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useNoteContext } from "../context/NoteContext";
+import { useBoardContext } from "../context/BoardContext";
+import { toast } from "react-toastify";
 import GoBackButton from "./HandleGoBack";
+import "react-toastify/dist/ReactToastify.css";
 import "../styles/App.css";
 
 // For editing a note
@@ -10,13 +13,16 @@ const EditNote = () => {
     title: "",
     content: "",
     tags: [],
+    board: "",
   });
-  const { noteId, boardName } = useParams();
+  const { noteId } = useParams();
   const { setNotes } = useNoteContext();
+  const { boards } = useBoardContext();
 
   // Using navigate to go back to the previous page
   const navigate = useNavigate();
 
+  // For changing the note data when the user types in the input fields
   const handleChange = (event) => {
     const { name, value } = event.target;
     setNote((prevNote) => ({
@@ -25,6 +31,14 @@ const EditNote = () => {
     }));
   };
 
+  // For changing the board data when the user selects a board
+  const handleBoardChange = (event) => {
+    const selectedBoardId = event.target.value;
+    setNote((prevNote) => ({ ...prevNote, board: selectedBoardId }));
+  };
+
+  // This will get the current note from the database
+  // So the user can see what has previously been written in the note
   useEffect(() => {
     fetch(`http://localhost:8050/api/notes/${noteId}`)
       .then((response) => response.json())
@@ -34,37 +48,48 @@ const EditNote = () => {
           content: data.content,
           tags: data.tags,
           date: data.date,
+          board: data.board,
         });
       });
   }, [noteId]);
 
+  // For updating the note data
+  // This function will be called when the user submits the form
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const response = await fetch(`http://localhost:8050/api/notes/${noteId}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(note),
-    });
+    // Send the updated note data to the server
+    try {
+      const response = await fetch(
+        `http://localhost:8050/api/notes/${noteId}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ ...note, board: note.board }),
+        }
+      );
 
-    if (!response.ok) {
-      console.error("Failed to update note");
-      return;
+      // If the request fails, throw an error
+      if (!response.ok) {
+        throw new Error("Failed to update note");
+      }
+
+      // If the request is successful, display a success message to the user 
+      toast.success("Note updated successfully");
+      navigate(-1);
+
+      // Update the notes context API state
+      setNotes((prevNotes) =>
+        prevNotes.map((prevNote) =>
+          prevNote._id === noteId ? { ...prevNote, ...note } : prevNote
+        )
+      );
+    } catch (error) {
+      // If the request fails, display an error message to the user
+      toast.error(error.message || "An error occurred while updating the note");
     }
-
-    // Update the notes context API state
-    setNotes((prevNotes) =>
-      prevNotes.map((prevNote) =>
-        prevNote._id === noteId ? { ...prevNote, ...note } : prevNote
-      )
-    );
-
-    console.log("Updated Note:", note);
-
-    // navigate to previous page when note is updated
-    navigate(`/boards/name/${boardName}`);
   };
 
   return (
@@ -99,6 +124,19 @@ const EditNote = () => {
             className="note-tags"
           />
         </label>
+
+        <label>
+          Board:
+          <select value={note.board} onChange={handleBoardChange}>
+            <option value="">Select a board</option>
+            {boards.map((board) => (
+              <option key={board._id} value={board._id}>
+                {board.title}
+              </option>
+            ))}
+          </select>
+        </label>
+
         <button type="submit">Update Note</button>
         <GoBackButton>Go Back</GoBackButton>
       </form>

@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useBoardContext } from "../context/BoardContext";
 import { useNoteContext } from "../context/NoteContext";
+import { toast } from "react-toastify";
 import GoBackButton from "./HandleGoBack";
+import "react-toastify/dist/ReactToastify.css";
 import "../styles/CreateNote.css";
 
 // For creating a new note
@@ -50,6 +52,7 @@ function CreateNote() {
     try {
       // Updating the note context API state
       await addNote(note);
+      toast.success("Note added successfully"); 
 
       // Clearing the note data after the user submits the form
       setNote({
@@ -59,6 +62,7 @@ function CreateNote() {
         board: "",
       });
     } catch (error) {
+      toast.error("Failed to add note"); 
       console.error("Failed to add note:", error);
     }
 

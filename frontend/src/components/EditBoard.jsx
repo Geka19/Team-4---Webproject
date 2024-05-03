@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useBoardContext } from "../context/BoardContext";
+import { toast } from "react-toastify";
 import GoBackButton from "./HandleGoBack";
-
+import "react-toastify/dist/ReactToastify.css";
 import "../styles/App.css";
 
 // For editing a board
@@ -10,9 +11,11 @@ const EditBoard = () => {
   const [board, setBoard] = useState({ title: "", description: "", tags: [] });
   const { boardId } = useParams();
   const { boards, setBoards } = useBoardContext();
-  
+
+  // Using navigate to go back to the previous page
   const navigate = useNavigate();
 
+  // For changing the board data when the user types in the input fields
   const handleChange = (event) => {
     const { name, value } = event.target;
     setBoard((prevBoard) => ({
@@ -21,6 +24,8 @@ const EditBoard = () => {
     }));
   };
 
+  // This will get the current board from the database
+  // So the user can see what has previously been written in the board
   useEffect(() => {
     const fetchedBoard = boards.find((board) => board._id === boardId);
     if (fetchedBoard) {
@@ -28,9 +33,12 @@ const EditBoard = () => {
     }
   }, [boardId, boards]);
 
+  // For updating the board data
+  // This function will be called when the user submits the form
   const handleSubmit = async (event) => {
     event.preventDefault();
 
+    // Send the updated board data to the server
     try {
       const response = await fetch(
         `http://localhost:8050/api/boards/${boardId}`,
@@ -43,9 +51,14 @@ const EditBoard = () => {
         }
       );
 
+      // If the request fails, throw an error
       if (!response.ok) {
         throw new Error("Failed to update board");
       }
+
+      // Display a success message to the user
+      toast.success("Board updated successfully");
+      navigate(-1);
 
       // Update the boards context API state
       setBoards((prevBoards) =>
@@ -53,11 +66,11 @@ const EditBoard = () => {
           prevBoard._id === boardId ? { ...prevBoard, ...board } : prevBoard
         )
       );
-
-      // navigate to previous page when board is updated
-      navigate("/boards");
     } catch (error) {
-      console.error(error);
+      // Display an error message to the user
+      toast.error(
+        error.message || "An error occurred while updating the board"
+      );
     }
   };
 
@@ -86,7 +99,9 @@ const EditBoard = () => {
             data-testid="description-textarea"
           />
         </label>
-        <button className="edit-board" type="submit">Update Board</button>
+        <button className="edit-board" type="submit">
+          Update Board
+        </button>
         <GoBackButton>Go Back</GoBackButton>
       </form>
     </div>

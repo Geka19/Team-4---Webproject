@@ -5,10 +5,6 @@ import "../styles/Profile.css";
 function ProfilePage() {
   const { currentUser } = useAuth();
     
-  if (!currentUser) {
-    return <div>Loading...</div>;
-  }
-
   return (
     <div>
       <h1>Welcome, {currentUser.username.charAt(0).toUpperCase() +

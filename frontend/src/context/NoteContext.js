@@ -6,7 +6,6 @@ import React, {
   useCallback,
 } from "react";
 import axios from "../api/axios";
-import { Spinner } from "react-bootstrap";
 import { useAuth } from "./AuthContext";
 
 const NoteContext = createContext();
@@ -70,7 +69,7 @@ export function NoteProvider({ children }) {
 
   return (
     <NoteContext.Provider value={{ notes, setNotes, loading, addNote }}>
-      {loading ? <Spinner /> : children}
+      {children}
     </NoteContext.Provider>
   );
 }
