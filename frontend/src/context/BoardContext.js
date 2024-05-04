@@ -6,14 +6,11 @@ import React, {
   useCallback,
 } from "react";
 import axios from "../api/axios";
-import { Spinner } from "react-bootstrap";
 import { useAuth } from "./AuthContext";
 
 const BoardContext = createContext();
 
 // For creating a new context with the board data
-// Will be used to not call upon the API every time we need to fetch the board data
-// Will only be updated when the state changes
 export function useBoardContext() {
   return useContext(BoardContext);
 }
@@ -82,7 +79,7 @@ export function BoardProvider({ children }) {
 
   return (
     <BoardContext.Provider value={{ boards, setBoards, loading, addBoard }}>
-      {loading ? <Spinner /> : children}
+      {children}
     </BoardContext.Provider>
   );
 }
