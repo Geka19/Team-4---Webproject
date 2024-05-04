@@ -6,6 +6,7 @@ const getAllUsers = async (req, res) => {
     const users = await User.find().select("-password");
     res.status(200).json(users);
   } catch (error) {
+    // Log and send back any errors
     console.error(error);
     res.status(500).json({ error: "Error getting users" });
   }
@@ -20,6 +21,7 @@ const getUser = async (req, res) => {
     }
     res.status(200).json(user);
   } catch (error) {
+    // Log and send back any errors
     console.error(error);
     res.status(500).json({ error: "Error getting user" });
   }
@@ -46,6 +48,7 @@ const updateUser = async (req, res) => {
     }
     res.status(200).json(user);
   } catch (error) {
+    // Log and send back any errors
     console.error(error);
     res.status(500).json({ error: "Error updating user" });
   }
@@ -61,6 +64,7 @@ const deleteUser = async (req, res) => {
     }
     res.status(200).json({ message: "User deleted" });
   } catch (error) {
+    // Log and send back any errors
     console.error(error);
     res.status(500).json({ error: "Error deleting user" });
   }

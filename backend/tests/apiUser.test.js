@@ -109,7 +109,7 @@ describe("User API endpoints", () => {
     // Make a request to a protected route with the token
     const res = await request(server)
       .get("/api/auth/role")
-      .set("Cookie", `authToken=${token}`);
+      .set("Cookie", `auth-token=${token}`);
 
     // Check that the request was successful
     expect(res.statusCode).toEqual(200);
@@ -125,7 +125,7 @@ describe("User API endpoints", () => {
     // Make a request to a protected route with an invalid token
     const res = await request(server)
       .get("/api/auth/verify")
-      .set("Cookie", "authToken=invalid");
+      .set("Cookie", "auth-token=invalid");
 
     // Check that the request was unauthorized
     expect(res.statusCode).toEqual(401);

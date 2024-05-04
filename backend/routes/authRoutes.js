@@ -11,7 +11,7 @@ const {
   loginUser,
   logoutUser,
   getUserRole,
-  verifyToken,
+  validateToken,
 } = require("../controllers/authController");
 
 // Validation rules for user registration
@@ -36,7 +36,7 @@ const loginValidation = [
 router.post("/register", registerValidation, registerUser);
 router.post("/login", loginValidation, loginUser);
 router.post("/logout", logoutUser);
-router.get("/verify", auth, verifyToken);
+router.get("/verify", auth, validateToken);
 router.get("/role", auth, getUserRole);
 
 module.exports = router;

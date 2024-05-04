@@ -1,5 +1,6 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState, useEffect } from "react";
 import axios from "../api/axios";
+import { useNavigate } from "react-router-dom";
 
 // Initialize the Authentication Context
 const AuthContext = createContext();
@@ -12,6 +13,7 @@ export function useAuth() {
 // Export the AuthProvider component
 export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
+  const navigate = useNavigate();
 
   // Function to handle user login
   const login = async ({ email, password }) => {
@@ -46,12 +48,29 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  useEffect(() => {
+    const verifySession = async () => {
+      try {
+        // Make sure axios is configured to send the JWT token with the request
+        const response = await axios.get("/api/auth/verify");
+        // Assuming the response data contains user information
+        setCurrentUser(response.data);
+        navigate("/home");
+      } catch (error) {
+        console.error("Session verification failed:", error);
+        setCurrentUser(null);
+      }
+    };
+
+    verifySession();
+  }, []);
+
   // Values to be provided through the context
   const value = {
     login,
     logout,
     currentUser,
-    isAuthenticated: !!currentUser, // Bollean value to check if the user is authenticated
+    isAuthenticated: !!currentUser, // boolean value to check if the user is authenticated
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
