@@ -1,13 +1,4 @@
-.create-note {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-}
+
 
 .create-note input[type="text"] {
     width: 100%;
@@ -37,4 +28,21 @@
 
 .create-note button:not(:last-child) {
     margin-right: 10px;
+}
+.create-note {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 400px; /* Adjust as needed */
+    margin: 0 auto;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Media query for smaller screens */
+@media screen and (max-width: 600px) {
+    .create-note {
+        max-width: 100%; /* Adjust for full-width on smaller screens */
+    }
 }

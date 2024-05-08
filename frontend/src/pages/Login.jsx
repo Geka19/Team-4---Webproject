@@ -3,12 +3,15 @@ import { useNavigate, Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useAuth } from "../context/AuthContext";
 import "../styles/AuthForms.css";
+import Button from "../components/Button.jsx";
+import "../styles/Button.css";
 
 // The Login component is used to allow users to log in to the application.
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const auth = useAuth();
+  const [showPopup, setShowPopup] = useState(false); // Add state for the popup
 
   // To navigate the user to the home page after successful login
   const navigate = useNavigate();
@@ -45,6 +48,8 @@ function Login() {
       toast.success("Login successful.");
       // Redirect the user to the home page after successful login
       navigate("/home");
+      // Set showPopup to true after successful login
+      setShowPopup(true);
     } catch (error) {
       // Handles any login errors
       toast.error(
@@ -60,7 +65,6 @@ function Login() {
         <form onSubmit={handleSubmit} noValidate>
           <div className="input-group">
             <label>
-              Email
               <input
                 id="email"
                 type="email"
@@ -73,9 +77,8 @@ function Login() {
               />
             </label>
           </div>
-          <div>
+          <div className="input-group">
             <label>
-              Password
               <input
                 id="password"
                 type="password"
@@ -89,9 +92,9 @@ function Login() {
             </label>
           </div>
 
-          <button id="login-button" type="submit">
-            {"Login"}
-          </button>
+          <Button variant="login" onClick={handleSubmit}>
+            Login
+          </Button>
         </form>
         <p>
           New here? <Link to="/register">Sign up now</Link>.
