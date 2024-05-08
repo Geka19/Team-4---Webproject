@@ -1,17 +1,23 @@
+/* AuthForms.css */
+
 /* Container for login and registration */
 .auth-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 500px;
+  justify-content: center;
   padding: 20px;
-  margin: 50px auto;
   border-radius: 10px;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
 }
 
 /* Wrapper for login and registration content */
 .auth-content-wrapper {
+  width: 100%;
+  text-align: center;
+}
+/* Wrapper for login and registration content */
+.auth-content-wrapper > form{
   width: 100%;
   text-align: center;
 }
@@ -34,16 +40,13 @@
   margin: auto;
 }
 
-/* Label alignment and width */
-.auth-content-wrapper label {
-  text-align: left;
-  width: 85%;
-}
+
 
 /* Input and select styles */
 .auth-content-wrapper form input,
 .auth-content-wrapper form select {
-  width: 95%;
+  width: 100%; /* Change width to 100% */
+  max-width: 50vw; /* Limit max-width to prevent overflowing */
   border: 1px solid black;
   padding: 10px;
   margin-bottom: 10px;
@@ -51,18 +54,45 @@
   cursor: pointer;
 }
 
-/* Focus styles for input and select */
-.auth-content-wrapper form input:focus,
-.auth-content-wrapper form select:focus {
-  border-color: black;
-}
+
 
 /* Button styles */
 .auth-content-wrapper button {
-  width: 80%;
+  width: 100%; 
+  max-width: 50vw; 
   font-size: 18px;
   border-radius: 20px;
   background: rgb(138, 99, 140);
   cursor: pointer;
-  padding: 10px;
+}
+
+
+/* Media query for smaller screens */
+@media screen and (max-width: 600px) {
+
+  body {
+    margin-top: 20vh;
+  }
+  /* Wrapper for login and registration content */
+  .auth-content-wrapper {
+    width: 90%; /* Adjust width for smaller screens */
+  }
+
+  /* Label and input styles */
+  .auth-content-wrapper label,
+  .auth-content-wrapper input {
+    width: calc(100% - 20px); /* Make inputs full-width with padding on smaller screens */
+  }
+
+  /* Button styles */
+  .auth-content-wrapper button {
+    width: 100%; /* Make button full-width on smaller screens */
+  }
+  .input-group {
+    width: 50%;
+  }
+  #login-button {
+    width: 30%;
+  }
+
 }

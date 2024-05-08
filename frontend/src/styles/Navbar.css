@@ -1,5 +1,11 @@
 .navbar {
   display: none;
+}
+@media (max-width: 600px) {
+  /* Styling for mobile view */
+  /* Default styles */
+.navbar {
+  display: none;
   position: fixed;
   bottom: 0;
   left: 0;
@@ -17,48 +23,45 @@
   transform: translateY(0);
   height: 10vh;
   width: 100%;
-
 }
 
 .navbar.hide {
   transform: translateY(100%);
 }
 
-.logo {
+.list-group {
   display: flex;
-  text-align: center;
-  overflow: hidden;
+  justify-content: space-evenly; /* Evenly space the list items */
+  align-items: center;
+  width: 60%; /* Adjust the width of the list group */
 }
 
-.logo img {
-  height: 40px;
-  width: auto;
+.list-group-item {
+  flex: 1; /* Distribute available space equally among list items */
 }
 
-@media (max-width: 600px) {
-  /* Styling for mobile view */
-
- 
-  /* For the logo */
-  .logo {
+.icon {
+  height: auto;
+}
+  .navbar {
     display: flex;
-    text-align: center;
-    overflow: hidden;
-    padding: 10px;
-    margin-bottom: 0;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #ffbf00;
+    width: 100%;
   }
 
-  .logo img {
-    height: 40px;
-    width: auto;
+  .list-group {
+    width: 100%; /* Full width for smaller screens */
   }
-    .navbar {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1rem;
-        background-color: #ffbf00; /* Background color for the navbar */
-        width: 100%;
-      }
+
+  .list-group-item {
+    width: auto; /* Auto width for smaller screens */
+  }
+
+  .icon {
+    width: 8vw; /* Adjust width for smaller screens */
+  }
 
 }

@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import Logo from "../assets/svg/newNote.svg";
 import "../styles/Navbar.css";
+import homeIcon from "../assets/img/home.png";
+import boardIcon from "../assets/img/board.png";
+import profileIcon from "../assets/img/profile.png";
 
 const Navbar = () => {
   const [showNavbar, setShowNavbar] = useState(true);
@@ -21,21 +23,36 @@ const Navbar = () => {
 
   return (
     <nav className={`navbar ${showNavbar ? "show" : "hide"}`}>
-      <div className="logo">
-        <Link to="/">
-          <img src={Logo} alt="Logo1" />
-        </Link>
-      </div>
-      <div className="logo">
-        <Link to="/">
-          <img src={Logo} alt="Logo2" />
-        </Link>
-      </div>
-      <div className="logo">
-        <Link to="/">
-          <img src={Logo} alt="Logo3" />
-        </Link>
-      </div>
+      <ul className="list-group">
+        <li className="list-group-item">
+          <Link to="/home">
+            <img
+              className="icon home"
+              src={homeIcon}
+              alt="icon for home page"
+            />
+          </Link>
+        </li>
+        <li className="list-group-item">
+          <Link to="/boards">
+            <img
+              id="link-to-boards"
+              className="icon board"
+              src={boardIcon}
+              alt="icon for home page"
+            />
+          </Link>
+        </li>
+        <li className="list-group-item">
+          <Link to="/profile">
+            <img
+              className="icon profile"
+              src={profileIcon}
+              alt="icon for home page"
+            />
+          </Link>
+        </li>
+      </ul>
     </nav>
   );
 };
