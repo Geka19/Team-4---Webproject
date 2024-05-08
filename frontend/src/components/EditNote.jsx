@@ -77,7 +77,7 @@ const EditNote = () => {
       }
 
       // If the request is successful, display a success message to the user 
-      toast.success("Note updated successfully");
+      toast.success("Note Updated");
       navigate(-1);
 
       // Update the notes context API state

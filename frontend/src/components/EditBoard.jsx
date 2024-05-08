@@ -57,7 +57,7 @@ const EditBoard = () => {
       }
 
       // Display a success message to the user
-      toast.success("Board updated successfully");
+      toast.success("Board Updated");
       navigate(-1);
 
       // Update the boards context API state

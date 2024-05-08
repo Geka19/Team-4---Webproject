@@ -22,7 +22,13 @@ function BoardNotes() {
   const board = boards.find((board) => board._id === boardId);
 
   // If there are no notes in the board display a message
-  const message = notes.length === 0 ? <p>No notes found</p> : null;
+  const message =
+    filteredNotes.length === 0 ? (
+      <p>
+        No notes here yet! Click the 'Create Note' button to start creating your
+        notes.
+      </p>
+    ) : null;
 
   return (
     <>

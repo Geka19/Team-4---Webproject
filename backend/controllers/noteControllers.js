@@ -33,6 +33,11 @@ const createNote = async (req, res) => {
   // Get the title and content properties
   if (data.title && data.content) {
     try {
+      // Check if the title or content length exceeds the maximum allowed length
+      if (data.title.length > 50 || data.content.length > 500) {
+        return res.status(400).json({ error: "Title or content length exceeds the maximum allowed length" });
+      }
+
       // Get the tags property, if it exists
       const tags = data.tags || [];
 

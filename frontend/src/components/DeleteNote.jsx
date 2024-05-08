@@ -12,7 +12,7 @@ function DeleteNoteButton({ noteId }) {
     try {
       await axios.delete(`/api/notes/${noteId}`);
       // Display a success toast
-      toast.success("Note deleted successfully"); 
+      toast.success("Note Deleted"); 
       const updatedNotes = notes.filter((note) => note._id !== noteId);
       setNotes(updatedNotes);
     } catch (error) {
