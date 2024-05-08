@@ -2,6 +2,7 @@
 require("dotenv").config();
 
 // Import dependencies
+const mongoose = require("mongoose");
 const express = require("express");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
