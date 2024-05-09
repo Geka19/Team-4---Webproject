@@ -2,9 +2,7 @@ services:
   backend:
     build: ./backend
     ports:
-      - '8050:8085'
-    volumes:
-      - ../backend/usr/src/app
+      - '8050:8050'
     command: npm start
 
   frontend:

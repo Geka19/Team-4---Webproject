@@ -3,20 +3,14 @@ FROM node:21.6.1-slim
 LABEL author="Team4"
 LABEL version="1.0"
 
-EXPOSE 8085/tcp
+EXPOSE 8050/tcp
 
-RUN groupadd app-gr
+RUN mkdir -p /usr/src/app
 
-RUN useradd -g app-gr usr
+WORKDIR /usr/src/app
 
-RUN mkdir /app
-
-WORKDIR /app
-
-COPY --chown=usr:app-gr . /app
+COPY . .
 
 RUN npm install
-
-USER usr
 
 CMD ["node", "server.js"]

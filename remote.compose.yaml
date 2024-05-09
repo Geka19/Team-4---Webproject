@@ -1,0 +1,32 @@
+services:
+  backend:
+    image: team-4---webproject-backend:latest
+    restart: unless-stopped
+    ports:
+      - '8050:8050'
+    env_file:
+      - .backend-env
+    logging:
+      driver: "local"
+      options:
+        max-size: 10M
+        max-file: 5
+    networks:
+      - your-network
+
+  frontend:
+    image: team-4---webproject-frontend:latest
+    depends_on:
+      - backend
+    restart: unless-stopped
+    ports:
+      - '3000:3000'
+    env_file:
+      - .frontend-env
+    logging:
+      driver: "local"
+      options:
+        max-size: 10M
+        max-file: 5
+    networks:
+      - your-network
