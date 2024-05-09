@@ -3,7 +3,7 @@ const server = require("../server");
 const Note = require("../models/noteSchema");
 const mongoose = require("mongoose");
 
-describe("Note API", () => {
+describe("Mock note API", () => {
   let noteId;
 
   beforeEach(async () => {

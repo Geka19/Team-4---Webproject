@@ -41,7 +41,7 @@ function CreateBoard() {
     try {
       // Update the context API state
       await addBoard(newBoard);
-      toast.success("Board created successfully"); 
+      toast.success("Board Created"); 
     } catch (error) {
       toast.error("Failed to create board");
       console.error("Failed to create board:", error);
