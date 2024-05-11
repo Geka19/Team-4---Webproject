@@ -22,12 +22,12 @@ cd Team-4---Webproject
 
 To build and run the project with Docker, you need to have Docker and Docker Compose installed on your machine. Once you have those installed, you can use the following commands:
 
-# Build the Docker images
+## Build the Docker images
 ```bash
 docker-compose build
 ```
 
-# Run the Docker containers
+## Run the Docker containers
 ```bash
 docker-compose up
 ```

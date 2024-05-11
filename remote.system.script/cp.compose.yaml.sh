@@ -27,11 +27,11 @@ else
 fi
 
 curl -sS "${REPO_URL}/${COMPOSE_FNAME}" |
-	sed '/build: ./d' |
-	sed 's|image: yt-app-comp:0.2|image: aliakseix/idg2671:latest|' > "${WD}/compose.yaml"
+    sed '/build: ./d' |
+    sed 's|image: team-4---webproject-backend:latest|image: team-4---webproject-backend-1:latest' |
+    sed 's|image: team-4---webproject-frontend:latest|image: team-4---webproject-frontend-1:latest|' > "${WD}/compose.yaml"
 for envF in "${ENV_FNAME[@]}"; do
-	# echo "$envF"
-	curl -sS "${REPO_URL}/${envF}" > "${WD}/${envF}"
+    curl -sS "${REPO_URL}/${envF}" > "${WD}/${envF}"
 done
 
 echo "Donwloaded compose.yaml"

@@ -2,7 +2,7 @@
 
 set -e
 
-DEFAULT_WD="/home/tst/test-project"
+DEFAULT_WD="/home/team4/project-folder"
 COMPOSE_FILE="compose.yaml"
 
 wd="${WD:-$DEFAULT_WD}"

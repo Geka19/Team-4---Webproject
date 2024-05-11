@@ -3,6 +3,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Layout from "./components/Layout";
 import SecureRoute from "./components/AuthRoutes";
+import NotFound from "./pages/NotFound";
 import Welcome from "./pages/Welcome";
 import Home from "./pages/Home";
 import Boards from "./pages/Board";
@@ -41,6 +42,9 @@ function App() {
             <Route path="/profile" element={<Profile />} />
           </Route>
         </Route>
+
+        {/* For pages not found */}
+        <Route path="*" element={<NotFound />} />
       </Routes>
 
       {/* Toast notifications */}

@@ -1,10 +1,11 @@
 /* We should move all styles to their individual file so it's easier to seperate them*/
 /* Main styles */
-body, html {
-        min-height: 100vh;
-        max-width: 100vw;
-        margin: 0;
-        padding: 0;
+body,
+html {
+    min-height: 100vh;
+    max-width: 100vw;
+    margin: 0;
+    padding: 0;
     font-family: 'Roboto', sans-serif;
 }
 
@@ -14,7 +15,7 @@ body, html {
 }
 
 /* For the sidebar property */
-/* Will move it to its own css file soon */ 
+/* Will move it to its own css file soon */
 .sidebar {
     grid-column: 1;
     background-color: rgb(49, 64, 81);
@@ -102,8 +103,6 @@ li img:hover {
     border: 2px solid red !important;
 }
 
-
-
 /* Media Queries */
 @media screen and (max-width: 600px) {
     .app {
@@ -114,18 +113,21 @@ li img:hover {
     .main-content {
         width: 100%;
     }
+
     .sidebar {
         display: none;
     }
+
     .list-group {
         display: flex;
         flex-direction: row;
         align-items: center;
     }
+
     .navbar {
         display: flex;
         justify-content: space-between;
         align-items: center;
         padding: 1rem;
-      }
+    }
 }

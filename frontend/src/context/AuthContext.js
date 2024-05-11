@@ -15,6 +15,11 @@ export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
   const navigate = useNavigate();
 
+  // For updating the user (When the user changes username or email)
+  const updateUser = (updatedUser) => {
+    setCurrentUser(updatedUser);
+  };
+
   // Function to handle user login
   const login = async ({ email, password }) => {
     try {
@@ -69,6 +74,7 @@ export const AuthProvider = ({ children }) => {
   const value = {
     login,
     logout,
+    updateUser,
     currentUser,
     isAuthenticated: !!currentUser, // boolean value to check if the user is authenticated
   };

@@ -40,8 +40,6 @@
   margin: auto;
 }
 
-
-
 /* Input and select styles */
 .auth-content-wrapper form input,
 .auth-content-wrapper form select {
@@ -53,8 +51,6 @@
   border-radius: 5px;
   cursor: pointer;
 }
-
-
 
 /* Button styles */
 .auth-content-wrapper button {
@@ -81,7 +77,7 @@
   /* Label and input styles */
   .auth-content-wrapper label,
   .auth-content-wrapper input {
-    width: calc(100% - 20px); /* Make inputs full-width with padding on smaller screens */
+    width: 80%; /* Make inputs full-width with padding on smaller screens */
   }
 
   /* Button styles */
