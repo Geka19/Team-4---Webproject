@@ -5,7 +5,7 @@ import { useNoteContext } from "../context/NoteContext";
 import { useBoardContext } from "../context/BoardContext";
 import DeleteNoteButton from "../components/DeleteNote";
 import GoBackButton from "../components/HandleGoBack";
-import "../styles/App.css";
+import "../styles/BoardNotes.css";
 
 // This page will be used to display notes for a specific board
 function BoardNotes() {
@@ -22,37 +22,33 @@ function BoardNotes() {
   const board = boards.find((board) => board._id === boardId);
 
   // If there are no notes in the board display a message
-  const message = notes.length === 0 ? <p>No notes found</p> : null;
+  const message =
+    filteredNotes.length === 0 ? (
+      <p>
+        No notes here yet! Click the 'Create Note' button to start creating your
+        notes.
+      </p>
+    ) : null;
 
   return (
     <>
       <h1>{board.title}</h1>
       {message}
-      <button onClick={() => navigate(`/create-note`)}>Create Note</button>
-      <GoBackButton>Go Back</GoBackButton>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          flexWrap: "wrap",
-          gap: "20px",
-        }}
-      >
+      <div className="note-card">
         {filteredNotes.map((note) => (
-          <div
-            key={note._id}
-            style={{ border: "1px solid", padding: "10px", margin: "10px 0" }}
-          >
-            <h2>Title: {note.title}</h2>
-            <p>Content: {note.content}</p>
+          <div className="note-item" key={note._id}>
+            <h2>{note.title}</h2>
+            <p>{note.content}</p>
             <p>Date: {note.date}</p>
-            <p>Visibility: {note.visibility}</p>
             <p>Tags: {note.tags.join(", ")}</p>
+            <p>Visibility: {note.visibility}</p>
             <Link to={`/boards/id/${boardId}/${note._id}`}>Edit</Link>
             <DeleteNoteButton noteId={note._id}></DeleteNoteButton>
           </div>
         ))}
       </div>
+      <button onClick={() => navigate(`/create-note`)}>Create Note</button>
+      <GoBackButton>Go Back</GoBackButton>
     </>
   );
 }

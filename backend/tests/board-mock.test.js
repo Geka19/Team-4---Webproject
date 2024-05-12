@@ -16,6 +16,7 @@ describe("Board Controller", () => {
       const req = {};
       const res = {
         json: jest.fn(),
+        status: jest.fn(() => res), // Add this line
       };
 
       await boardController.getAllBoards(req, res);

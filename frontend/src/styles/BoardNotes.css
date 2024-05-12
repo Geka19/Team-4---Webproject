@@ -1,0 +1,32 @@
+.note-card {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.note-item {
+    border: 1px solid #000;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.note-item h2 {
+    margin: 0 0 0.5rem 0;
+}
+
+.note-item p {
+    margin: 0.5rem 0;
+}
+
+.note-item a:visited {
+    color: inherit;
+}
+
+@media screen and (max-width: 600px) {
+    .note-card {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}

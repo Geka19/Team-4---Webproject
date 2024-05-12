@@ -1,16 +1,41 @@
 const request = require("supertest");
-const server = require("../server");
-const Board = require("../models/boardSchema");
 const mongoose = require("mongoose");
+const jwt = require("jsonwebtoken");
+const server = require("../server");
+const User = require("../models/userSchema"); // Import the User model
+const Board = require("../models/boardSchema");
 
 // Test the board API endpoints
 describe("Board API endpoints", () => {
+  // Define a test user
+  let user;
+
+  // Create a test user before running the tests
+  beforeAll(async () => {
+    user = new User({
+      username: "test",
+      email: "test@email.com",
+      password: "test",
+    });
+    await user.save();
+  });
+
   // Test case for creating a new board
   it("should create a new board", async () => {
-    const res = await request(server).post("/api/boards").send({
-      title: "Test Board",
-      description: "Test Description",
-    });
+    // Create a token for the test user
+    const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
+
+    // Make a request to create a board with the token
+    const res = await request(server)
+      .post("/api/boards")
+      .set("Cookie", `auth-token=${token}`)
+      .send({
+        title: "Test Board",
+        description: "Test Description",
+        user: user._id,
+      });
+
+    // Check that the board was created successfully
     expect(res.statusCode).toEqual(201);
     expect(res.body).toHaveProperty("message", "Board created successfully");
   });
@@ -51,11 +76,12 @@ describe("Board API endpoints", () => {
     const res = await request(server).delete(`/api/boards/${board._id}`);
     expect(res.statusCode).toEqual(200);
     expect(res.body).toHaveProperty("message", "Board deleted");
+    await User.findByIdAndDelete(user._id);
   });
+});
 
-  // close the server afterward
-  afterAll(async () => {
-    await mongoose.connection.close();
-    server.close();
-  });
+// Close the server and MongoDB connection after running the tests
+afterAll(async () => {
+  await mongoose.connection.close();
+  server.close();
 });

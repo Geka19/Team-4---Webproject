@@ -18,6 +18,20 @@ git https://github.com/Geka19/Team-4---Webproject.git
 cd Team-4---Webproject
 ```
 
+# Building and Running with Docker
+
+To build and run the project with Docker, you need to have Docker and Docker Compose installed on your machine. Once you have those installed, you can use the following commands:
+
+## Build the Docker images
+```bash
+docker-compose build
+```
+
+## Run the Docker containers
+```bash
+docker-compose up
+```
+
 ## Frontend Setup
 In a terminal window, navigate to the frontend directory and install dependencies:
 
@@ -52,6 +66,12 @@ The backend should now be avaiable at http://localhost:8085
 To run the tests on the frontend you can use the command 
 ```bash
 cd frontend
+npm run test 
+```
+
+To run the tests on the backend you can use the command 
+```bash
+cd backend
 npm run test 
 ```
 

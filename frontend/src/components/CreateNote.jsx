@@ -52,7 +52,7 @@ function CreateNote() {
     try {
       // Updating the note context API state
       await addNote(note);
-      toast.success("Note added successfully"); 
+      toast.success("Note Added"); 
 
       // Clearing the note data after the user submits the form
       setNote({

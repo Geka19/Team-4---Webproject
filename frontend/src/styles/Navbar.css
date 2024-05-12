@@ -1,48 +1,54 @@
 .navbar {
   display: none;
 }
+
 @media (max-width: 600px) {
+
   /* Styling for mobile view */
   /* Default styles */
-.navbar {
-  display: none;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 10vh;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem;
-  background-color: #ffbf00;
-  transition: transform 0.3s ease-in-out;
-  z-index: 1000;
-}
+  .navbar {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 10vh;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #ffbf00;
+    transition: transform 0.3s ease-in-out;
+    z-index: 1000;
+  }
 
-.navbar.show {
-  transform: translateY(0);
-  height: 10vh;
-  width: 100%;
-}
+  .navbar.show {
+    transform: translateY(0);
+    height: 10vh;
+    width: 100%;
+  }
 
-.navbar.hide {
-  transform: translateY(100%);
-}
+  .navbar.hide {
+    transform: translateY(100%);
+  }
 
-.list-group {
-  display: flex;
-  justify-content: space-evenly; /* Evenly space the list items */
-  align-items: center;
-  width: 60%; /* Adjust the width of the list group */
-}
+  .list-group {
+    display: flex;
+    justify-content: space-evenly;
+    /* Evenly space the list items */
+    align-items: center;
+    width: 60%;
+    /* Adjust the width of the list group */
+  }
 
-.list-group-item {
-  flex: 1; /* Distribute available space equally among list items */
-}
+  .list-group-item {
+    flex: 1;
+    /* Distribute available space equally among list items */
+  }
 
-.icon {
-  height: auto;
-}
+  .icon {
+    height: auto;
+  }
+
   .navbar {
     display: flex;
     justify-content: space-between;
@@ -53,15 +59,18 @@
   }
 
   .list-group {
-    width: 100%; /* Full width for smaller screens */
+    width: 100%;
+    /* Full width for smaller screens */
   }
 
   .list-group-item {
-    width: auto; /* Auto width for smaller screens */
+    width: auto;
+    /* Auto width for smaller screens */
   }
 
   .icon {
-    width: 8vw; /* Adjust width for smaller screens */
+    width: 8vw;
+    /* Adjust width for smaller screens */
   }
 
 }

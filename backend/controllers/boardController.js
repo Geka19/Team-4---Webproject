@@ -61,7 +61,7 @@ const updateBoard = async (req, res) => {
     res.status(200).json(updatedBoard);
   } catch (err) {
     // Send back any errors
-    res.status(400).json({ message: err });
+    res.status(500).json({ message: err });
   }
 };
 

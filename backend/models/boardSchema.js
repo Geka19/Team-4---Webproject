@@ -3,9 +3,7 @@ const mongoose = require('mongoose');
 const boardSchema = new mongoose.Schema({
   title: {
     type: String,
-    required: true,
     trim: true,
-    unique: true,
   },
   description: {
     type: String,
