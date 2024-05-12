@@ -1,22 +1,35 @@
-import React from "react";
-import CreateNote from "./CreateNote";
+import React, { useEffect, useRef } from "react";
 import "../styles/PopupNote.css";
+import "../styles/Button.css";
 
-const PopupNote = ({ showPopup, togglePopup }) => {
+function PopupNote({ onClose }) {
+  const popupRef = useRef();
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (popupRef.current && !popupRef.current.contains(event.target)) {
+        onClose();
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [onClose]);
+
   return (
-    showPopup && (
-      <div className="backdrop" onClick={togglePopup}>
-        <div className="popup">
-          {/* Close button */}
-          <button className="close-button" onClick={togglePopup}>
-            X
-          </button>
-          {/* CreateNote component */}
-          <CreateNote />
-        </div>
+    <div className="popup-wrapper">
+      <div ref={popupRef} className="popup-note">
+        <button className="close-btn" onClick={onClose}>
+          X
+        </button>
+        <h2>Popup Title</h2>
+        <p>Popup content goes here...</p>
       </div>
-    )
+    </div>
   );
-};
+}
 
 export default PopupNote;

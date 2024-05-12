@@ -14,4 +14,28 @@
     background-color: #28a745;
     color: #fff;
   }
+
+  /* PopupNote.css */
+
+.popup-wrapper {
+display: none;
+}
+
+/* Media Queries */
+@media screen and (max-width: 600px) {  
+
+  .popup-note > .close-button {
+    text-align: end;
+  }
   
+  .close-button {
+    background-color: red;
+    border: none;
+    cursor: pointer;
+  }
+  .close-btn {
+    background-color: red;
+    border: none;
+    cursor: pointer;
+  }
+}

@@ -1,12 +1,12 @@
-// ProfilePage.jsx
 import React from "react";
 import { useAuth } from "../context/AuthContext";
+// import { navigate } from "react-router-dom"; // Import navigate function
 import UpdateProfile from "../components/UpdateProfile";
 import { toast } from "react-toastify";
 import "../styles/Profile.css";
 
 function ProfilePage() {
-  const { currentUser, updateUser } = useAuth();
+  const { currentUser, updateUser, logout } = useAuth(); // Destructure logout function
 
   const handleUpdate = async ({ username, email }) => {
     console.log(`Updating user: ${username}, ${email}`);
@@ -22,9 +22,8 @@ function ProfilePage() {
       body: JSON.stringify({
         username,
         email,
-        role
+        role,
       }),
-      
     });
 
     if (response.status === 200) {
@@ -35,12 +34,27 @@ function ProfilePage() {
     }
   };
 
+  // const handleLogout = async () => {
+  //   try {
+  //     // Wait for the logout request to complete
+  //     await logout();
+  //     // Redirect to the login page after successful logout
+  //     navigate("./login");
+  //     toast.success("Successfully logged out.");
+  //   } catch (error) {
+  //     console.error("Logout failed", error);
+  //     toast.error("Logout failed. Please try again.");
+  //   }
+  // };
+
   return (
     <div>
-      <h1>
-       Profile
-      </h1>
+      <h1>Profile</h1>
       <UpdateProfile currentUser={currentUser} onUpdate={handleUpdate} />
+      {/* <button onClick={handleLogout} className="logout">
+        <i className="fas fa-sign-out-alt"></i>
+        <span className="nav-item">Log out</span>
+      </button> */}
     </div>
   );
 }

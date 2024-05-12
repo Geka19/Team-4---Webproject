@@ -39,7 +39,7 @@ const Navbar = () => {
               id="link-to-boards"
               className="icon board"
               src={boardIcon}
-              alt="icon for home page"
+              alt="icon for board page"
             />
           </Link>
         </li>
@@ -48,7 +48,7 @@ const Navbar = () => {
             <img
               className="icon profile"
               src={profileIcon}
-              alt="icon for home page"
+              alt="icon for profile page"
             />
           </Link>
         </li>

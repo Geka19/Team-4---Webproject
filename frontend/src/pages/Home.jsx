@@ -1,22 +1,21 @@
 import React, { useState } from "react";
 import PopupNote from "../components/PopupNote"; // Import the PopupNote component
 import "../styles/App.css";
-import "../styles/PopupNote.css";
+import "../styles/PopupNote.css"; // Import PopupNote CSS file
 
 function Home() {
-  const [showPopup, setShowPopup] = useState(false); // State to control the popup display
+  const [isPopupOpen, setIsPopupOpen] = useState(true);
 
-  // Function to toggle the popup display
-  const togglePopup = () => {
-    setShowPopup(!showPopup);
+  const handleClosePopup = () => {
+    setIsPopupOpen(false);
   };
 
   return (
     <>
       <h1>Home</h1>
       <p>Welcome to the sustainability diary!</p>
-      <PopupNote showPopup={showPopup} togglePopup={togglePopup} />{" "}
       {/* Render the PopupNote component */}
+      {isPopupOpen && <PopupNote onClose={handleClosePopup} />}
     </>
   );
 }
