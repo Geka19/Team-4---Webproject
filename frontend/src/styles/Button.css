@@ -38,4 +38,7 @@ display: none;
     border: none;
     cursor: pointer;
   }
+  .create-note-buttons > button {
+    margin: 0;
+  }
 }
