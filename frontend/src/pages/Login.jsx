@@ -65,6 +65,7 @@ function Login() {
         <form onSubmit={handleSubmit} noValidate>
           <div className="input-group">
             <label>
+              Email
               <input
                 id="email"
                 type="email"
@@ -79,6 +80,7 @@ function Login() {
           </div>
           <div className="input-group">
             <label>
+              Password
               <input
                 id="password"
                 type="password"

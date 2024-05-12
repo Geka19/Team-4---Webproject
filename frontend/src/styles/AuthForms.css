@@ -16,8 +16,9 @@
   width: 100%;
   text-align: center;
 }
+
 /* Wrapper for login and registration content */
-.auth-content-wrapper > form{
+.auth-content-wrapper>form {
   width: 100%;
   text-align: center;
 }
@@ -43,8 +44,10 @@
 /* Input and select styles */
 .auth-content-wrapper form input,
 .auth-content-wrapper form select {
-  width: 100%; /* Change width to 100% */
-  max-width: 50vw; /* Limit max-width to prevent overflowing */
+  width: 100%;
+  /* Change width to 100% */
+  max-width: 50vw;
+  /* Limit max-width to prevent overflowing */
   border: 1px solid black;
   padding: 10px;
   margin-bottom: 10px;
@@ -54,37 +57,33 @@
 
 /* Button styles */
 .auth-content-wrapper button {
-  width: 100%; 
-  max-width: 50vw; 
+  width: 100%;
+  max-width: 50vw;
   font-size: 18px;
   border-radius: 20px;
   background: rgb(138, 99, 140);
   cursor: pointer;
 }
 
-
 /* Media query for smaller screens */
 @media screen and (max-width: 600px) {
+
   /* Wrapper for login and registration content */
   .auth-content-wrapper {
-    width: 90%; /* Adjust width for smaller screens */
+    width: 90%;
+    /* Adjust width for smaller screens */
   }
 
   /* Label and input styles */
   .auth-content-wrapper label,
   .auth-content-wrapper input {
-    width: 80%; /* Make inputs full-width with padding on smaller screens */
+    width: 80%;
+    /* Make inputs full-width with p  adding on smaller screens */
   }
 
   /* Button styles */
   .auth-content-wrapper button {
-    width: 100%; /* Make button full-width on smaller screens */
+    width: 100%;
+    /* Make button full-width on smaller screens */
   }
-  .input-group {
-    width: 50%;
-  }
-  #login-button {
-    width: 30%;
-  }
-
 }
