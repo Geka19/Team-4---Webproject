@@ -36,14 +36,13 @@
     display: block;
     margin-bottom: 1rem;
     text-decoration: none;
-    color: #007bff;
+    color: #007bff; 
 }
 
 .edit-board-link {
     text-decoration: none;
     color: #007bff;
 }
-
 @media screen and (max-width: 600px) {
     .board-container {
         justify-content: center;

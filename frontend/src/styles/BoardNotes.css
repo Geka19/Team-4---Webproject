@@ -22,3 +22,11 @@
 .note-item a:visited {
     color: inherit;
 }
+
+@media screen and (max-width: 600px) {
+    .note-card {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
