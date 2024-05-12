@@ -38,10 +38,7 @@ function ProfilePage() {
   return (
     <div>
       <h1>
-        Welcome,{" "}
-        {currentUser.username.charAt(0).toUpperCase() +
-          currentUser.username.slice(1)}
-        !
+       Profile
       </h1>
       <UpdateProfile currentUser={currentUser} onUpdate={handleUpdate} />
     </div>

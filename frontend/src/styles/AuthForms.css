@@ -65,10 +65,6 @@
 
 /* Media query for smaller screens */
 @media screen and (max-width: 600px) {
-
-  body {
-    margin-top: 20vh;
-  }
   /* Wrapper for login and registration content */
   .auth-content-wrapper {
     width: 90%; /* Adjust width for smaller screens */

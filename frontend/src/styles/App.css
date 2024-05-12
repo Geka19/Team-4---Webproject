@@ -28,7 +28,7 @@ html {
     grid-column: 2;
     height: 100vh;
     padding: 20px;
-
+    margin-bottom: 60px;
 }
 
 img {
@@ -98,13 +98,8 @@ li img:hover {
     cursor: pointer;
 }
 
-/* For errors */
-.invalid {
-    border: 2px solid red !important;
-}
-
 /* Media Queries */
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 600px) {  
     .app {
         grid-template-columns: 1fr;
     }
@@ -112,6 +107,7 @@ li img:hover {
     .sidebar,
     .main-content {
         width: 100%;
+        padding: 0;
     }
 
     .sidebar {
