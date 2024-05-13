@@ -9,8 +9,8 @@
     padding: 1rem;
     border-radius: 8px;
     text-decoration: none;
-    color: inherit;
     width: 300px;
+    background-color: #ffbf00;
 }
 
 .board-item:hover {
