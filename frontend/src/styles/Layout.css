@@ -1,12 +1,34 @@
 .layout {
     display: grid;
-    grid-template-columns: 1fr 6fr; 
+    grid-template-columns: 1fr 6fr;
+    grid-template-rows: auto 1fr min-content;
+    min-height: 100vh;
 }
 
+.sidebar {
+    grid-column: 1;
+    grid-row: 1 / span 3;
+}
+
+.header {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.main-content {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.footer {
+    grid-column: 2;
+    grid-row: 3;
+}
 
 @media (max-width: 600px) {
     .layout {
-        display: block;
-        margin-bottom: 50vh;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
   }

@@ -5,7 +5,7 @@ import { useBoardContext } from "../context/BoardContext";
 import { toast } from "react-toastify";
 import GoBackButton from "./HandleGoBack";
 import "react-toastify/dist/ReactToastify.css";
-import "../styles/App.css";
+import "../styles/EditNote.css";
 
 // For editing a note
 const EditNote = () => {

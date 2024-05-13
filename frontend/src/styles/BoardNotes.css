@@ -23,10 +23,11 @@
     color: inherit;
 }
 
-@media screen and (max-width: 600px) {
+@media (max-width: 600px) {
     .note-card {
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        gap: 0.5rem;
+        margin-right: 10px;
+        margin-left: 10px;
     }
 }
