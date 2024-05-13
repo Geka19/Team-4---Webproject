@@ -32,3 +32,11 @@
 .button-welcome:hover {
     background-color: #0056b3;
 }
+
+
+/* Media Queries */
+@media screen and (max-width: 600px) {  
+    .home-container {
+        align-items: start;
+    }
+}
