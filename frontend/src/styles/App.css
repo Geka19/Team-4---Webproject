@@ -98,6 +98,8 @@ li img:hover {
 .homepage-container {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
     background-color: rgba(128, 128, 128, 0.62);
   }
   
@@ -161,5 +163,6 @@ li img:hover {
       }
       .homepage-container {
         flex-direction: column;
+       align-items: center;
       }
 }
