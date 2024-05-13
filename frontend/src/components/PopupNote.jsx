@@ -115,28 +115,30 @@ function PopupNote({ onClose }) {
         </label>
 
         <div className="create-note-buttons">
-          <label className="create-note-content-wrapper">
-            <input
-              id="tags"
-              type="text"
-              placeholder="Write down tags separated by commas..."
-              name="tags"
-              value={note.tags.join(",")}
-              onChange={handleChange}
-              className="create-note-tags"
-            />
-          </label>
+          <div>
+            <label className="create-note-content-wrapper">
+              <input
+                id="tags"
+                type="text"
+                placeholder="Write down tags separated by commas..."
+                name="tags"
+                value={note.tags.join(",")}
+                onChange={handleChange}
+                className="create-note-tags"
+              />
+            </label>
 
-          <label className="create-note-content-wrapper">
-            <select value={selectedBoard} onChange={handleBoardChange}>
-              <option value="">Select a board</option>
-              {boards.map((board) => (
-                <option key={board._id} value={board._id}>
-                  {board.title}
-                </option>
-              ))}
-            </select>
-          </label>
+            <label className="create-note-content-wrapper">
+              <select value={selectedBoard} onChange={handleBoardChange}>
+                <option value="">Select a board</option>
+                {boards.map((board) => (
+                  <option key={board._id} value={board._id}>
+                    {board.title}
+                  </option>
+                ))}
+              </select>
+            </label>
+          </div>
 
           <button onClick={handleAddNote}>Save Note</button>
         </div>
