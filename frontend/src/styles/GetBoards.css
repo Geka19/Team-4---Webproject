@@ -1,8 +1,12 @@
+/* Board Container */
 .board-container {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    /* Center items on smaller screens */
 }
 
+/* Board Item */
 .board-item {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     margin: 1rem;
@@ -17,36 +21,39 @@
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
-.board-link {
+/* Board Link */
+.board-link,
+.edit-board-link {
     text-decoration: none;
-    color: inherit;
+    color: #007bff;
+    /* Blue color for links */
 }
 
+/* Board Title */
 .board-title {
     margin: 0 0 0.5rem 0;
     font-size: 1.2rem;
 }
 
+/* Board Description */
 .board-description {
     margin: 0;
     font-size: 1rem;
 }
 
+/* Create New Board */
 .create-new-board {
     display: block;
     margin-bottom: 1rem;
     text-decoration: none;
     color: #007bff;
+    /* Blue color for links */
 }
 
-.edit-board-link {
-    text-decoration: none;
-    color: #007bff;
-}
-
+/* Media Query for smaller screens */
 @media screen and (max-width: 600px) {
     .board-container {
         justify-content: center;
+        /* Center items on smaller screens */
     }
-
 }

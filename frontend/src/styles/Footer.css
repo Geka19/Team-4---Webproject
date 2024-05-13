@@ -9,3 +9,11 @@
   color: #6c757d;
   font-size: 14px;
 }
+
+@media screen and (max-width: 600px) {  
+  .footer {
+    position: fixed;
+    bottom: 0;
+  }
+
+}
