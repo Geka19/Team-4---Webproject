@@ -56,7 +56,7 @@ jobs:
       - name: webfactory/ssh-agent
         uses: webfactory/ssh-agent@v0.9.0
         with:
-          ssh-private-key: ${{ secrets.SSH_KEY_PUB }}
+          ssh-private-key: ${{ secrets.SSH_KEY_PRIV }}
       - name: Adding our prod server to known hosts
         run: ssh-keyscan -H ${{ secrets.DEPLOY_HOST }} >> ~/.ssh/known_hosts
       - name: Login with SSH, aka run deployment script on the server
