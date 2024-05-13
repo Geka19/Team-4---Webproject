@@ -13,9 +13,7 @@ const Layout = () => {
         <Outlet />
       </div>
       <Navbar />
-      <div className="main-footer">
-        <Footer />
-      </div>
+      <Footer />
     </div>
   );
 };

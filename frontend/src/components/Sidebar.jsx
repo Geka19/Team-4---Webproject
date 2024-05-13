@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useAuth } from "../context/AuthContext";
 
-import "../styles/App.css";
+import "../styles/Sidebar.css";
 
 // For creating the sidebar
 function Sidebar() {
@@ -58,13 +58,11 @@ function Sidebar() {
             />
           </Link>
         </li>
-        <li className="logout-item">
-          <button onClick={handleLogout} className="logout">
-            <i className="fas fa-sign-out-alt"></i>
-            <span className="nav-item">Log out</span>
-          </button>
-        </li>
+        <li className="logout-item"></li>
       </ul>
+      <button onClick={handleLogout} className="logout">
+        <span className="nav-item">Log out</span>
+      </button>
     </div>
   );
 }
