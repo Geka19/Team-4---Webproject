@@ -19,32 +19,6 @@ button {
     border-radius: 5px;
     background-color: #007bff;
     color: white;
-    width: 200px;
-    height: 100%;
-}
-
-.main-content {
-    grid-column: 2;
-    padding: 20px;
-    margin-bottom: 60px;
-}
-
-img {
-    background-color: white;
-    width: 50%;
-    height: 50%;
-    padding: 15px;
-    border-radius: 100%;
-}
-
-li {
-    list-style-type: none;
-}
-
-li img:hover {
-    background-color: rgb(175, 75, 75);
-    cursor: pointer;
-    transition: background-color 0.3s;
 }
 
 button:hover {
