@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useAuth } from "../context/AuthContext";
 
-import "../styles/App.css";
+import "../styles/Sidebar.css";
 
 // For creating the sidebar
 function Sidebar() {

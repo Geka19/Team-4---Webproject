@@ -47,6 +47,7 @@ function BoardNotes() {
           </div>
         ))}
       </div>
+      
       <button onClick={() => navigate(`/create-note`)}>Create Note</button>
       <GoBackButton>Go Back</GoBackButton>
     </>

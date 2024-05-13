@@ -15,6 +15,7 @@
 .auth-content-wrapper {
   width: 100%;
   text-align: center;
+  max-width: 500px;
 }
 
 /* Wrapper for login and registration content */
@@ -45,7 +46,6 @@
 .auth-content-wrapper form input,
 .auth-content-wrapper form select {
   width: 100%;
-  /* Change width to 100% */
   max-width: 50vw;
   /* Limit max-width to prevent overflowing */
   border: 1px solid black;
@@ -63,6 +63,8 @@
   border-radius: 20px;
   background: rgb(138, 99, 140);
   cursor: pointer;
+  margin: 0 auto;
+  display: block;
 }
 
 /* Media query for smaller screens */
