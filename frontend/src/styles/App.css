@@ -12,8 +12,23 @@ html {
     grid-template-columns: 200px auto;
 }
 
+button {
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
 /* Media Queries */
-@media screen and (max-width: 600px) {  
+@media screen and (max-width: 600px) {
     .app {
         grid-template-columns: 1fr;
     }

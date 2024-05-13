@@ -65,13 +65,11 @@ function Sidebar() {
             />
           </Link>
         </li>
-        <li className="logout-item">
-          <button onClick={handleLogout} className="logout">
-            <i className="fas fa-sign-out-alt"></i>
-            <span className="nav-item">Log out</span>
-          </button>
-        </li>
+        <li className="logout-item"></li>
       </ul>
+      <button onClick={handleLogout} className="logout">
+        <span className="nav-item">Log out</span>
+      </button>
     </div>
   );
 }

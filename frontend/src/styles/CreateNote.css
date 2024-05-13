@@ -26,21 +26,6 @@ form {
     box-sizing: border-box;
 }
 
-button {
-    padding: 10px 20px;
-    margin-top: 10px;
-    border: none;
-    border-radius: 5px;
-    background-color: #007bff;
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    margin-right: 15px;
-}
-button:hover {
-    background-color: #0056b3;
-}
-
 /* Media query for smaller screens */
 @media screen and (max-width: 600px) {
     .create-note {

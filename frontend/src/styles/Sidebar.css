@@ -1,9 +1,11 @@
 .sidebar {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
     grid-column: 1;
     background-color: rgb(49, 64, 81);
     color: white;
     width: 200px;
-    height: 100%;
+    height: 100vh;
     position: sticky;
     top: 0;
 }
