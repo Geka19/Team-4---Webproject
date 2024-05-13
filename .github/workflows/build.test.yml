@@ -18,19 +18,42 @@ jobs:
       - name: build and push a docker image
         uses: docker/build-push-action@v5
         with:
+          context: .
+          file: compose.yaml
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/team4-webproject:latest
+      - name: Build and push frontend docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: compose.yaml
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/team4-webproject:latest
+
+  build-client:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: build and push a docker image
+        uses: docker/build-push-action@v5
+        with:
           context: ./backend
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/team-4---webproject-backend:latest
-      - name: Build and push frontend docker image
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/team4-webproject:latest
+      - name: build and push frontend docker image
         uses: docker/build-push-action@v5
         with:
           context: ./frontend
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/team-4---webproject-frontend:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/team4-webproject:latest
 
   deploy:
     runs-on: ubuntu-latest
-    needs: build-server
+    needs: [build-server, build-client]
     steps:
       - name: webfactory/ssh-agent
         uses: webfactory/ssh-agent@v0.9.0

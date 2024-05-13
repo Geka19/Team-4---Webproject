@@ -78,5 +78,4 @@ npm run test
 ## Team Members
 Sebastian Skrøvseth Haugen, Guro Eline Karlsen, Johan Filip Karlsson, Simen Elvhaug
 
-##trying this again remove later
 
