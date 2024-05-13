@@ -1,31 +1,55 @@
-/* PopupNote.css */
+.popup-wrapper {
+  display: none !important; /* Hide the popup by default */
+}
 
-.backdrop {
-    position: fixed;
+@media screen and (max-width: 600px) {
+  .popup-wrapper {
+    display: flex !important; /* Display the popup when screen width is less than 600px */
+    justify-content: center; /* Center the popup horizontally */
+    align-items: center; /* Center the popup vertically */
+    position: fixed; /* Ensure the popup stays fixed on the screen */
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
     backdrop-filter: blur(5px); /* Blurry effect */
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
-  
-  .popup {
+
+  .popup-note {
     background-color: white;
-    border-radius: 10px;
+    width: 80%;
+    height: 70%;
+    max-width: 600px;
     padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  }
-  
-  .close-button {
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
     position: absolute;
-    top: 10px;
-    right: 10px;
-    background: none;
+    top: 7vh; /* Position at the top of the container */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%);
+    overflow: auto; /* Enable scrolling for content overflow */
+  }
+ 
+  
+  .close-btn {
+    position: absolute; /* Position the close button absolutely within the popup */
+    top: 0; /* Align the close button to the top */
+    right: 0; /* Align the close button to the right */
+    background-color: red;
     border: none;
     cursor: pointer;
   }
-  
+
+  .close-btn {
+    background-color: red;
+    border: none;
+    cursor: pointer;
+  }
+  .create-note-buttons {
+    display: flex;
+   justify-content: space-evenly;
+    margin-top: 20px;
+  }
+}

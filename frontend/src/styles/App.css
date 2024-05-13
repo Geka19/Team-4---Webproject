@@ -24,6 +24,19 @@ button {
 button:hover {
     background-color: #0056b3;
 }
+.homepage-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    background-color: rgba(128, 128, 128, 0.62);
+  }
+  
+  .aside {
+    /* Flex the aside to columns on screens smaller than 600px */
+    display: flex;
+    flex-direction: column;
+  }
 
 /* Media Queries */
 @media screen and (max-width: 600px) {
@@ -35,6 +48,7 @@ button:hover {
     .main-content {
         width: 100%;
         padding: 0;
+        min-height: 100vh;
     }
 
     .sidebar {
@@ -53,4 +67,31 @@ button:hover {
         align-items: center;
         padding: 1rem;
     }
+    .aside {
+        flex-direction: row; /* Flex the sidebar back to row layout */
+        justify-content: flex-end;
+      }
+    
+      .news {
+        width: 100%; /* Take up full width when flexed into columns */
+        margin-bottom: 20px; /* Add some spacing between news items */
+      }
+    
+      .news img {
+        width: 100%; /* Make images fill the entire width of their container */
+        height: auto; /* Maintain aspect ratio */
+      }
+    
+      .recent-boards {
+        width: 100%; /* Take up full width when flexed into columns */
+      }
+    
+      .recent-boards ul {
+        padding-left: 0; /* Remove default padding from ul */
+        list-style: none; /* Remove default list styles */
+      }
+      .homepage-container {
+        flex-direction: column;
+       align-items: center;
+      }
 }

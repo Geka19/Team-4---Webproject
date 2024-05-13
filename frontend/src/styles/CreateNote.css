@@ -30,7 +30,20 @@ form {
 @media screen and (max-width: 600px) {
     .create-note {
         max-width: 100%; /* Adjust for full-width on smaller screens */
+
     }
+    #content {
+        width: 100%;
+        height: 75%;
+        overflow: scroll;
+        position: relative;
+        top: 10px;
+    }
+    /* #tags {
+        position: relative;
+        top: 2vh;
+        left: -20vw;
+    } */
 }
 
 

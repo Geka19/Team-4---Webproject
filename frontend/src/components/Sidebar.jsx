@@ -28,14 +28,7 @@ function Sidebar() {
 
   return (
     <div className="sidebar">
-      <div className="sidebar-user">
-        <h2>
-          Welcome{" "}
-          {currentUser.username.charAt(0).toUpperCase() +
-            currentUser.username.slice(1)}
-          !
-        </h2>
-      </div>
+      <div className="sidebar-user"></div>
       <ul className="list-group">
         <li className="list-group-item">
           <Link to="/home">
