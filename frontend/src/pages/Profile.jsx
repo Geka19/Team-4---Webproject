@@ -1,15 +1,14 @@
 import React from "react";
 import { useAuth } from "../context/AuthContext";
-import { navigate } from "react-router-dom"; // Import navigate function
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import UpdateProfile from "../components/UpdateProfile";
 import { toast } from "react-toastify";
 import "../styles/Profile.css";
 
 function ProfilePage() {
   const navigate = useNavigate();
-  const { logout } = useAuth();
-  const { currentUser } = useAuth();
+  const { logout, currentUser, updateUser } = useAuth(); // Assuming updateUser is part of your useAuth hook
+
   const handleUpdate = async ({ username, email }) => {
     console.log(`Updating user: ${username}, ${email}`);
 
@@ -30,7 +29,7 @@ function ProfilePage() {
 
     if (response.status === 200) {
       toast.success("User updated successfully");
-      updateUser({ ...currentUser, username, email });
+      updateUser({ ...currentUser, username, email }); // Assuming updateUser is defined here
     } else {
       toast.error("Failed to update user");
     }
@@ -38,9 +37,7 @@ function ProfilePage() {
 
   const handleLogout = async () => {
     try {
-      // Wait for the logout request to complete
       await logout();
-      // Redirect to the login page after successful logout
       navigate("/login");
       toast.success("Successfully logged out.");
     } catch (error) {
