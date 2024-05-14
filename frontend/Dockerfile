@@ -16,4 +16,4 @@ RUN npm run build
 
 EXPOSE 3000/tcp
 
-CMD ["serve", "-s" "build"]
+CMD ["serve", "-s", "build"]
