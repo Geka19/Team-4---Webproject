@@ -10,7 +10,7 @@ services:
         max-size: 10M
         max-file: 5
     networks:
-      some-fancy-app:
+      - some-fancy-app
 
   frontend:
     image: team4-webproject:latest
@@ -25,7 +25,7 @@ services:
         max-size: 10M
         max-file: 5
     networks:
-      some-fancy-app:
+      - some-fancy-app
 
 networks:
-  some-fancy-app: 
+  some-fancy-app:
