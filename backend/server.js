@@ -24,8 +24,17 @@ app.use(express.json());
 app.use(cookieParser());
 
 // Set up CORS
+let origin;
+
+if (process.env.NODE_ENV === 'production') {
+  origin = 'https://team4.sustainability.it.ntnu.no';
+} else {
+  origin = 'http://localhost:3000';
+}
+
+// Set up CORS
 const corsOptions = {
-  origin: process.env.FRONTEND_ORIGIN || "http://localhost:3000",
+  origin: origin || "http://localhost:3000",
   credentials: true,
 };
 app.use(cors(corsOptions));
