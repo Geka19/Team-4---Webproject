@@ -1,6 +1,6 @@
 services:
   backend:
-    image: team4-webproject-backend:latest
+    image: sebassha/team4-webproject-backend:latest
     restart: unless-stopped
     ports:
       - '8050:8050'
@@ -13,7 +13,7 @@ services:
       - some-fancy-app
 
   frontend:
-    image: team4-webproject:latest
+    image: sebassha/team4-webproject:latest
     depends_on:
       - backend
     restart: unless-stopped
