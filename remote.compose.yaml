@@ -26,3 +26,6 @@ services:
         max-file: 5
     networks:
       some-fancy-app:
+
+  networks:
+    some-fancy-app: 
