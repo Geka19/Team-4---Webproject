@@ -11,7 +11,6 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const auth = useAuth();
-  const [showPopup, setShowPopup] = useState(false); // Add state for the popup
 
   // To navigate the user to the home page after successful login
   const navigate = useNavigate();
@@ -48,8 +47,6 @@ function Login() {
       toast.success("Login successful.");
       // Redirect the user to the home page after successful login
       navigate("/home");
-      // Set showPopup to true after successful login
-      setShowPopup(true);
     } catch (error) {
       // Handles any login errors
       toast.error(

@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 import { useAuth } from "../context/AuthContext";
 import PopupNote from "../components/PopupNote"; // Import the PopupNote component
 import "../styles/App.css";
@@ -12,7 +10,6 @@ function Home() {
   const handleClosePopup = () => {
     setIsPopupOpen(false);
   };
-  const { logout } = useAuth();
   const { currentUser } = useAuth();
   return (
     <>
