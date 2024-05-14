@@ -4,9 +4,9 @@ let BASE_URL;
 
 // Use the environment variable to get the base URL
 if (process.env.NODE_ENV === 'production') {
-  BASE_URL = process.env.REACT_APP_API_BASE_URL = 'https://team4.sustainability.it.ntnu.no';
+  BASE_URL = 'https://team4.sustainability.it.ntnu.no';
 } else {
-  BASE_URL = process.env.REACT_APP_API_BASE_URL = 'http://localhost:3000';
+  BASE_URL = 'http://localhost:8085';
 }
 
 // Create an axios instance
