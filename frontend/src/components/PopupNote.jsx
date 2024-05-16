@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import "../styles/PopupNote.css";
 import "../styles/Button.css";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useBoardContext } from "../context/BoardContext";
 import { useNoteContext } from "../context/NoteContext";
 import { toast } from "react-toastify";
@@ -154,6 +155,9 @@ function PopupNote({ onClose }) {
                 ))}
               </select>
             </label>
+            <Link id="create-new-board" to="/boards/create-board">
+              Create New Board
+            </Link>
           </div>
 
           <button onClick={handleAddNote}>Save Note</button>
