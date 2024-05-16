@@ -15,6 +15,7 @@ import CreateBoard from "./components/CreateBoard";
 import CreateNote from "./components/CreateNote";
 import EditNote from "./components/EditNote";
 import EditBoard from "./components/EditBoard";
+import CreateNotePage from "./pages/CreateNotePage";
 
 function App() {
   return (
@@ -30,14 +31,12 @@ function App() {
         <Route element={<SecureRoute />}>
           <Route path="/" element={<Layout />}>
             <Route path="/home" element={<Home />} />
+            <Route path="/createnotepage" element={<CreateNotePage />} />
             <Route path="/boards" element={<Boards />} />
             <Route path="/boards/id/:boardId" element={<BoardNotes />} />
             <Route path="/boards/create-board" element={<CreateBoard />} />
             <Route path="/create-note" element={<CreateNote />} />
-            <Route
-              path="/boards/id/:boardId/:noteId"
-              element={<EditNote />}
-            />
+            <Route path="/boards/id/:boardId/:noteId" element={<EditNote />} />
             <Route path="/boards/edit-board/:boardId" element={<EditBoard />} />
             <Route path="/profile" element={<Profile />} />
           </Route>

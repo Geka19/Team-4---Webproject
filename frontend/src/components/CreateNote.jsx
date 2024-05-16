@@ -52,7 +52,7 @@ function CreateNote() {
     try {
       // Updating the note context API state
       await addNote(note);
-      toast.success("Note Added"); 
+      toast.success("Note Added");
 
       // Clearing the note data after the user submits the form
       setNote({
@@ -62,7 +62,7 @@ function CreateNote() {
         board: "",
       });
     } catch (error) {
-      toast.error("Failed to add note"); 
+      toast.error("Failed to add note");
       console.error("Failed to add note:", error);
     }
 
@@ -75,7 +75,6 @@ function CreateNote() {
       <h2>Create a new note</h2>
 
       <label className="create-note-content-wrapper">
-        Title:
         <input
           type="text"
           id="title"
@@ -87,7 +86,6 @@ function CreateNote() {
       </label>
 
       <label className="create-note-content-wrapper">
-        Content:
         <textarea
           id="content"
           placeholder="Write down your ideas here..."
@@ -98,7 +96,6 @@ function CreateNote() {
       </label>
 
       <label className="create-note-content-wrapper">
-        Tags:
         <input
           id="tags"
           type="text"
@@ -111,7 +108,6 @@ function CreateNote() {
       </label>
 
       <label className="create-note-content-wrapper">
-        Board:
         <select value={note.board} onChange={handleBoardChange}>
           <option value="">Select a board</option>
           {boards.map((board) => (

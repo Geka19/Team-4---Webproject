@@ -35,7 +35,7 @@ const Navbar = () => {
           </Link>
         </li>
         <li className="list-group-item">
-          <Link to="/home">
+          <Link to="/CreateNotePage">
             <img
               className="icon addNote"
               src={addNoteIcon}

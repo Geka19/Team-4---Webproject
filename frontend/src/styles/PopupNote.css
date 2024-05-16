@@ -9,7 +9,7 @@
     align-items: center; /* Center the popup vertically */
     position: fixed; /* Ensure the popup stays fixed on the screen */
     top: 0;
-    left: 20px;
+    left: 0;
     width: 100vw;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
@@ -17,6 +17,8 @@
   }
 
   .popup-note {
+    display: flex;
+    flex-direction: column;
     background-color: white;
     width: 80%;
     height: 70%;
