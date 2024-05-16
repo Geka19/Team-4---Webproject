@@ -4,6 +4,7 @@ import profileIcon from "../assets/img/profile.png";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useAuth } from "../context/AuthContext";
+import addNoteIcon from "../assets/img/addNote.png";
 
 import "../styles/Sidebar.css";
 
@@ -36,6 +37,15 @@ function Sidebar() {
               className="icon home"
               src={homeIcon}
               alt="icon for home page"
+            />
+          </Link>
+        </li>
+        <li className="list-group-item">
+          <Link to="/home">
+            <img
+              className="icon addNote"
+              src={addNoteIcon}
+              alt="icon for adding a note"
             />
           </Link>
         </li>
