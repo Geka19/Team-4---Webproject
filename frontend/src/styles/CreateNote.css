@@ -1,7 +1,7 @@
-/* For the create note component */
 form {
     width: 500px;
 }
+
 .create-note {
     display: flex;
     flex-direction: column;
@@ -30,11 +30,13 @@ form {
 @media screen and (max-width: 600px) {
     .create-note {
         max-width: 100%; /* Adjust for full-width on smaller screens */
-
+        margin-bottom: 30vh;
     }
-    #content {
-        width: 100%;
-        height: 75%;
+
+    /* Adjust content styling only for CreateNotePage */
+    .create-note-page #content {
+        width: 50vw;
+        height: 50vh;
         overflow: scroll;
         position: relative;
         top: 10px;
@@ -45,5 +47,7 @@ form {
         left: -20vw;
     } */
 }
+
+
 
 
