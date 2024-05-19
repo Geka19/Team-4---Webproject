@@ -3,6 +3,18 @@
 }
 
 @media screen and (max-width: 600px) {
+  /* Add this CSS to your existing CSS file or create a new one */
+
+.create-note-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+
+  
+  
   .popup-wrapper {
     display: flex !important; /* Display the popup when screen width is less than 600px */
     justify-content: center; /* Center the popup horizontally */
