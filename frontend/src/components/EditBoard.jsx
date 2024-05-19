@@ -6,16 +6,13 @@ import GoBackButton from "./HandleGoBack";
 import "react-toastify/dist/ReactToastify.css";
 import "../styles/App.css";
 
-// For editing a board
 const EditBoard = () => {
   const [board, setBoard] = useState({ title: "", description: "", tags: [] });
   const { boardId } = useParams();
-  const { boards, setBoards } = useBoardContext();
+  const { boards, setBoards, editBoard } = useBoardContext();
 
-  // Using navigate to go back to the previous page
   const navigate = useNavigate();
 
-  // For changing the board data when the user types in the input fields
   const handleChange = (event) => {
     const { name, value } = event.target;
     setBoard((prevBoard) => ({
@@ -24,8 +21,6 @@ const EditBoard = () => {
     }));
   };
 
-  // This will get the current board from the database
-  // So the user can see what has previously been written in the board
   useEffect(() => {
     const fetchedBoard = boards.find((board) => board._id === boardId);
     if (fetchedBoard) {
@@ -33,48 +28,20 @@ const EditBoard = () => {
     }
   }, [boardId, boards]);
 
-  // For updating the board data
-  // This function will be called when the user submits the form
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    // Send the updated board data to the server
     try {
-      const response = await fetch(
-        `http://localhost:8050/api/boards/${boardId}`,
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(board),
-        }
-      );
-
-      // If the request fails, throw an error
-      if (!response.ok) {
-        throw new Error("Failed to update board");
-      }
-
-      // Display a success message to the user
+      await editBoard(boardId, board);
       toast.success("Board Updated");
       navigate(-1);
-
-      // Update the boards context API state
-      setBoards((prevBoards) =>
-        prevBoards.map((prevBoard) =>
-          prevBoard._id === boardId ? { ...prevBoard, ...board } : prevBoard
-        )
-      );
     } catch (error) {
-      // Display an error message to the user
       toast.error(
         error.message || "An error occurred while updating the board"
       );
     }
   };
 
-  // Reusing the note styling for the edit board component as well
   return (
     <div className="note">
       <form onSubmit={handleSubmit}>
