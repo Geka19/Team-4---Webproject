@@ -42,7 +42,7 @@ export function BoardProvider({ children }) {
       console.error("Failed to fetch boards:", error);
       setLoading(false);
     }
-  }, [currentUser]); // Dependecies of fetchboards
+  }, [currentUser]); // Dependencies of fetchboards
 
   useEffect(() => {
     // Check if currentUser is available before fetching boards
@@ -77,8 +77,37 @@ export function BoardProvider({ children }) {
     }
   };
 
+  // Update an existing board
+  const editBoard = async (boardId, updatedBoard) => {
+    try {
+      const response = await axios.put(`/api/boards/${boardId}`, updatedBoard, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (response.status !== 200) {
+        throw new Error("Failed to update board");
+      }
+
+      // Update local state with the updated board
+      setBoards((prevBoards) =>
+        prevBoards.map((board) =>
+          board._id === boardId ? { ...board, ...updatedBoard } : board
+        )
+      );
+
+      return response.data;
+    } catch (error) {
+      console.error("Failed to update board:", error);
+      throw error;
+    }
+  };
+
   return (
-    <BoardContext.Provider value={{ boards, setBoards, loading, addBoard }}>
+    <BoardContext.Provider
+      value={{ boards, setBoards, loading, addBoard, editBoard }}
+    >
       {children}
     </BoardContext.Provider>
   );
