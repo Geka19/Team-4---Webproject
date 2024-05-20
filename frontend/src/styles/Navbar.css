@@ -40,6 +40,7 @@
     align-items: center;
     width: 60%;
     /* Adjust the width of the list group */
+    padding: 0;
   }
 
   .list-group-item {
