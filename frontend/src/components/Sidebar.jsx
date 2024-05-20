@@ -41,7 +41,7 @@ function Sidebar() {
           </Link>
         </li>
         <li className="list-group-item">
-          <Link to="/home">
+          <Link to="/createnotepage">
             <img
               className="icon addNote"
               src={addNoteIcon}
