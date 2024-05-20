@@ -24,11 +24,13 @@
   .navbar.show {
     transform: translateY(0);
     height: 10vh;
-    width: 100%;
+    width: 100vw;
   }
 
   .navbar.hide {
-    transform: translateY(100%);
+    transform: translateY(0);
+    height: 10vh;
+    width: 100vw;
   }
 
   .list-group {
@@ -53,9 +55,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem;
     background-color: #ffbf00;
-    width: 100%;
   }
 
   .list-group {

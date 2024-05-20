@@ -4,6 +4,7 @@ import "../styles/Navbar.css";
 import homeIcon from "../assets/img/home.png";
 import boardIcon from "../assets/img/board.png";
 import profileIcon from "../assets/img/profile.png";
+import addNoteIcon from "../assets/img/addNote.png";
 
 const Navbar = () => {
   const [showNavbar, setShowNavbar] = useState(true);
@@ -30,6 +31,15 @@ const Navbar = () => {
               className="icon home"
               src={homeIcon}
               alt="icon for home page"
+            />
+          </Link>
+        </li>
+        <li className="list-group-item">
+          <Link to="/CreateNotePage">
+            <img
+              className="icon addNote"
+              src={addNoteIcon}
+              alt="icon for adding a note"
             />
           </Link>
         </li>

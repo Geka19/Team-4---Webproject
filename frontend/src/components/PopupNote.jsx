@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import "../styles/PopupNote.css";
 import "../styles/Button.css";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useBoardContext } from "../context/BoardContext";
 import { useNoteContext } from "../context/NoteContext";
 import { toast } from "react-toastify";
@@ -18,22 +19,11 @@ function PopupNote({ onClose }) {
     board: "",
   });
   const [selectedBoard, setSelectedBoard] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (popupRef.current && !popupRef.current.contains(event.target)) {
-        onClose();
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
+    return () => {};
   }, [onClose]);
-
-  const navigate = useNavigate();
 
   const handleBoardChange = (event) => {
     setSelectedBoard(event.target.value);
@@ -86,10 +76,37 @@ function PopupNote({ onClose }) {
     navigate(-1);
   };
 
+  const handleXButtonClick = () => {
+    // Check if any input fields have been modified
+    if (isNoteChanged()) {
+      const confirmClose = window.confirm(
+        "Your note is not saved. Are you sure you want to close the note?"
+      );
+      if (confirmClose) {
+        onClose();
+      }
+    } else {
+      onClose();
+    }
+  };
+
+  const isNoteChanged = () => {
+    // Check if note has been changed
+    // Return true if changed, false otherwise
+    // You can implement this based on your application logic
+    // For example, compare the current note with the initial state
+    return (
+      note.title !== "" ||
+      note.content !== "" ||
+      note.tags.length > 0 ||
+      selectedBoard !== ""
+    );
+  };
+
   return (
     <div className="popup-wrapper">
       <div ref={popupRef} className="popup-note">
-        <button className="close-btn" onClick={onClose}>
+        <button className="close-btn" onClick={handleXButtonClick}>
           X
         </button>
         <h2>Create a new note</h2>
@@ -138,6 +155,9 @@ function PopupNote({ onClose }) {
                 ))}
               </select>
             </label>
+            <Link id="create-new-board" to="/boards/create-board">
+              Create New Board
+            </Link>
           </div>
 
           <button onClick={handleAddNote}>Save Note</button>

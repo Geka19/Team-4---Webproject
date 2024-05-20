@@ -34,7 +34,7 @@ if (process.env.NODE_ENV === "production") {
 
 // Set up CORS
 const corsOptions = {
-  origin: origin || "http://localhost:3000",
+  origin: origin || "http://localhost:8084",
   credentials: true,
 };
 app.use(cors(corsOptions));
