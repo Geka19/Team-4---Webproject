@@ -1,12 +1,7 @@
 import axios from "axios";
 
-let BASE_URL;
-
-if (process.env.NODE_ENV === "production") {
-  BASE_URL = "https://backend:8094";
-} else {
-  BASE_URL = "http://localhost:8085";
-}
+// Use the environment variable to get the base URL
+const BASE_URL = "http://localhost:8094";
 
 // Create an axios instance
 const api = axios.create({
