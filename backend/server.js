@@ -26,10 +26,10 @@ app.use(cookieParser());
 // Set up CORS
 let origin;
 
-if (process.env.NODE_ENV === 'production') {
-  origin = 'https://team4.sustainability.it.ntnu.no';
+if (process.env.NODE_ENV === "production") {
+  origin = "https://team4.sustainability.it.ntnu.no";
 } else {
-  origin = 'http://localhost:3000';
+  origin = "http://localhost:3000";
 }
 
 // Set up CORS
