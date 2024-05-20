@@ -1,3 +1,4 @@
+@import 'App.css';
 .popup-wrapper {
   display: none !important; /* Hide the popup by default */
 }
