@@ -26,6 +26,7 @@ app.use(cookieParser());
 // Set up CORS
 let origin;
 
+// Set the origin based on the environment
 if (process.env.NODE_ENV === "production") {
   origin = "https://team4.sustainability.it.ntnu.no";
 } else {
