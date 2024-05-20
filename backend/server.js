@@ -50,7 +50,7 @@ app.use("/api/notes", noteRoutes);
 app.use("/api/boards", boardRoutes);
 
 // Set the port
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8084;
 
 // Start the server
 let server = app.listen(PORT, () => {

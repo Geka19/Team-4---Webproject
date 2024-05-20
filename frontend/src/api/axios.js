@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // Use the environment variable to get the base URL
-const BASE_URL = "http://localhost:8084";
+const BASE_URL = "http://localhost:8094";
 
 // Create an axios instance
 const api = axios.create({
