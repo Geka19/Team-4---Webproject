@@ -18,4 +18,4 @@ RUN npm run build
 
 EXPOSE 8084/tcp
 
-CMD ["serve", "-s", "build"]
+CMD ["serve", "-s", "build", "-l", "8084"]

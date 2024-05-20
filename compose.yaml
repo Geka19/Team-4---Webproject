@@ -7,4 +7,4 @@ services:
   frontend:
     build: ./frontend
     ports:
-      - '8094:8094'
+      - '8084:8084'
