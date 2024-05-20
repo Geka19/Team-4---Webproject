@@ -3,7 +3,7 @@ FROM node:21.6.1-slim
 LABEL author="Team4"
 LABEL version="1.0"
 
-EXPOSE 8084/tcp
+EXPOSE 8094/tcp
 
 RUN mkdir -p /usr/src/app
 
