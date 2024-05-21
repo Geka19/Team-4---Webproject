@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../styles/Navbar.css";
-import homeIcon from "../assets/img/home.png";
-import boardIcon from "../assets/img/board.png";
 import profileIcon from "../assets/img/profile.png";
-import addNoteIcon from "../assets/img/addNote.png";
 
 const Navbar = () => {
   const [showNavbar, setShowNavbar] = useState(true);
@@ -29,7 +26,7 @@ const Navbar = () => {
           <Link to="/home">
             <img
               className="icon home"
-              src={homeIcon}
+              src="/svg/home.svg"
               alt="icon for home page"
             />
           </Link>
@@ -38,7 +35,7 @@ const Navbar = () => {
           <Link to="/CreateNotePage">
             <img
               className="icon addNote"
-              src={addNoteIcon}
+              src="/svg/plus.svg"
               alt="icon for adding a note"
             />
           </Link>
@@ -48,7 +45,7 @@ const Navbar = () => {
             <img
               id="link-to-boards"
               className="icon board"
-              src={boardIcon}
+              src="/svg/boards.svg"
               alt="icon for board page"
             />
           </Link>

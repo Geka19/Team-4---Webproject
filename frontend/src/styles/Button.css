@@ -6,12 +6,12 @@
 }
 
 .login-button {
-  background-color: #ffbf00;
+  background-color: var(--logo-green);
   color: black;
 }
 
 .game-button {
-  background-color: #ffbf00;
+  background-color: var(--logo-green);
   color: black;
 }
 
@@ -23,8 +23,7 @@
 
 /* Media Queries */
 @media screen and (max-width: 600px) {
-
-  .popup-note>.close-button {
+  .popup-note > .close-button {
     text-align: end;
   }
 
@@ -40,7 +39,7 @@
     cursor: pointer;
   }
 
-  .create-note-buttons>button {
+  .create-note-buttons > button {
     margin: 0;
   }
 }
