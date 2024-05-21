@@ -34,7 +34,7 @@ function Sidebar() {
           <Link to="/home">
             <img
               className="icon home"
-              src={homeIcon}
+              src="/svg/home.svg"
               alt="icon for home page"
             />
           </Link>
@@ -43,7 +43,7 @@ function Sidebar() {
           <Link to="/createnotepage">
             <img
               className="icon addNote"
-              src={addNoteIcon}
+              src="/svg/plus.svg"
               alt="icon for adding a note"
             />
           </Link>
@@ -53,7 +53,7 @@ function Sidebar() {
             <img
               id="link-to-boards"
               className="icon board"
-              src={boardIcon}
+              src="/svg/boards.svg"
               alt="icon for home page"
             />
           </Link>

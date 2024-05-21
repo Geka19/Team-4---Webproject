@@ -3,6 +3,7 @@ import Sidebar from "./Sidebar";
 import Footer from "./Footer";
 import "../styles/Layout.css";
 import Navbar from "./Navbar";
+import Header from "./Header";
 
 const Layout = () => {
   return (
@@ -10,6 +11,7 @@ const Layout = () => {
       <Sidebar />
 
       <div className="main-content">
+        <Header />
         <Outlet />
       </div>
       <Navbar />

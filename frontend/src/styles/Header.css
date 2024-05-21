@@ -1,0 +1,11 @@
+.page-header {
+  background-color: white;
+  max-width: 50%;
+  padding: 15px;
+}
+
+@media screen and (max-width: 600px) {
+  .page-header {
+    max-width: 100%;
+  }
+}
