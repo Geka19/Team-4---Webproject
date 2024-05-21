@@ -68,12 +68,12 @@ function PopupNote({ onClose }) {
         tags: [],
         board: "",
       });
+      // Navigate to the boards page after successfully adding the note
+      navigate("/boards");
     } catch (error) {
       toast.error("Failed to add note");
       console.error("Failed to add note:", error);
     }
-
-    navigate(-1);
   };
 
   const handleXButtonClick = () => {

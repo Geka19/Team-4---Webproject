@@ -16,6 +16,6 @@ RUN npm install -g serve
 
 RUN npm run build
 
-EXPOSE 3000/tcp
+EXPOSE 8084/tcp
 
-CMD ["serve", "-s", "build"]
+CMD ["serve", "-s", "build", "-l", "8084"]

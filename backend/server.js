@@ -30,12 +30,12 @@ let origin;
 if (process.env.NODE_ENV === "production") {
   origin = "https://team4.sustainability.it.ntnu.no";
 } else {
-  origin = "http://localhost:3000";
+  origin = "http://localhost:8084";
 }
 
 // Set up CORS
 const corsOptions = {
-  origin: origin || "http://localhost:8084",
+  origin: origin || "http://localhost:8094",
   credentials: true,
 };
 app.use(cors(corsOptions));
@@ -50,7 +50,7 @@ app.use("/api/notes", noteRoutes);
 app.use("/api/boards", boardRoutes);
 
 // Set the port
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8084;
 
 // Start the server
 let server = app.listen(PORT, () => {

@@ -1,3 +1,15 @@
+:root {
+  --color-yellow: #007bff;
+  --secondary-color: #6c757d;
+  --success-color: #28a745;
+  --danger-color: #dc3545;
+  --warning-color: #ffc107;
+  --info-color: #17a2b8;
+  --light-color: #f8f9fa;
+  --dark-color: #343a40;
+  /* Add more variables as needed */
+}
+
 body,
 html {
     min-height: 100vh;
@@ -17,12 +29,12 @@ button {
     margin: 10px;
     border: none;
     border-radius: 5px;
-    background-color: #007bff;
-    color: white;
+    background-color: #ffbf00;
+    color: black;
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #ffbf00;
 }
 .homepage-container {
     display: flex;
@@ -37,7 +49,14 @@ button:hover {
     display: flex;
     flex-direction: column;
   }
-
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+.flex-row-reverse {
+  display: flex;
+  flex-direction: row-reverse;
+}
 /* Media Queries */
 @media screen and (max-width: 600px) {
     .app {
