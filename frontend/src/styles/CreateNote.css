@@ -45,7 +45,7 @@ form {
 @media screen and (max-width: 600px) {
   .create-note {
     max-width: 100%; /* Adjust for full-width on smaller screens */
-    margin-bottom: 30vh;
+    margin-bottom: 40px;
   }
 
   .create-note-page #tags {
