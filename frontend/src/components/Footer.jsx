@@ -1,5 +1,5 @@
-import React from 'react';
-import '../styles/Footer.css';
+import React from "react";
+import "../styles/Footer.css";
 
 // Gets the current year and adds it to the footer
 const Footer = () => {
@@ -7,7 +7,7 @@ const Footer = () => {
 
   return (
     <footer className="footer">
-      <p>© {year} Boardable. All rights reserved.</p>
+      <p>© {year} Boardabl. All rights reserved.</p>
     </footer>
   );
 };

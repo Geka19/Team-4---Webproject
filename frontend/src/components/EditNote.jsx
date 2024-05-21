@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import GoBackButton from "./HandleGoBack";
 import "react-toastify/dist/ReactToastify.css";
 import "../styles/EditNote.css";
+import axios from "../api/axios";
 
 // For editing a note
 const EditNote = () => {
@@ -40,17 +41,19 @@ const EditNote = () => {
   // This will get the current note from the database
   // So the user can see what has previously been written in the note
   useEffect(() => {
-    fetch(`http://localhost:8050/api/notes/${noteId}`)
-      .then((response) => response.json())
-      .then((data) => {
-        setNote({
-          title: data.title,
-          content: data.content,
-          tags: data.tags,
-          date: data.date,
-          board: data.board,
-        });
+    const fetchData = async () => {
+      const response = await axios.get(`/api/notes/${noteId}`);
+      const data = await response.data;
+      setNote({
+        title: data.title,
+        content: data.content,
+        tags: data.tags,
+        date: data.date,
+        board: data.board,
       });
+    };
+
+    fetchData();
   }, [noteId]);
 
   // For updating the note data
@@ -60,23 +63,17 @@ const EditNote = () => {
 
     // Send the updated note data to the server
     try {
-      const response = await fetch(
-        `http://localhost:8050/api/notes/${noteId}`,
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ ...note, board: note.board }),
-        }
-      );
+      const response = await axios.put(`/api/notes/${noteId}`, {
+        ...note,
+        board: note.board,
+      });
 
       // If the request fails, throw an error
-      if (!response.ok) {
+      if (response.status !== 200) {
         throw new Error("Failed to update note");
       }
 
-      // If the request is successful, display a success message to the user 
+      // If the request is successful, display a success message to the user
       toast.success("Note Updated");
       navigate(-1);
 
