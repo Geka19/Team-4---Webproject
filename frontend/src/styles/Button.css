@@ -9,6 +9,11 @@
   background-color: #ffbf00;
   color: black;
 }
+.save-button {
+  background-color: #e5e3dd;
+  color: black;
+  border: 2px solid black;
+}
 
 .game-button {
   background-color: #ffbf00;

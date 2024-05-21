@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import "../styles/PopupNote.css";
-import "../styles/Button.css";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useBoardContext } from "../context/BoardContext";
@@ -160,7 +159,9 @@ function PopupNote({ onClose }) {
             </Link>
           </div>
 
-          <button onClick={handleAddNote}>Save Note</button>
+          <button onClick={handleAddNote} className="save-button">
+            Save Note
+          </button>
         </div>
       </div>
     </div>

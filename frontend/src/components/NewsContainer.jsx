@@ -1,12 +1,12 @@
 import React from "react";
 import "../styles/NewsContainer.css";
-import earthday from "../assets/svg/earthday.svg";
+import sustainability from "../assets/img/sustainability.png";
 
 const NewsContainer = () => {
   return (
     <div className="news-container">
       <div className="img-news">
-        <img src={earthday} alt="One big image" />
+        <img src={sustainability} alt="One big image" id="img-news" />
       </div>
       <div className="text-news">
         <div className="one-text-news">

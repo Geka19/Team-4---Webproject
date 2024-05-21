@@ -2,7 +2,16 @@
 .popup-wrapper {
   display: none !important; /* Hide the popup by default */
 }
-
+.save-button {
+  background-color: #e5e3dd;
+  color: black;
+  border: 2px solid black;
+}
+.save-button:hover {
+  background-color: var(--color-green);
+  color: black;
+  border: 2px solid black;
+}
 @media screen and (max-width: 600px) {
   /* Add this CSS to your existing CSS file or create a new one */
 
@@ -77,8 +86,11 @@
   }
   #content {
     margin-top: 10px;
-    width: 80vw;
+    width: 85vw;
     height: 35vh;
     overflow: scroll;
+    background:  var(--color-yellow);
+    border-radius: 9px;
+    color:black;
   }
 }
