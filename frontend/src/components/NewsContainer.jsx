@@ -4,9 +4,6 @@ import "../styles/NewsContainer.css";
 const NewsContainer = () => {
   return (
     <div className="news-container">
-      <div className="img-news">
-        <img src="placeholder-image-url" alt="One big image" />
-      </div>
       <div className="text-news">
         <div className="one-text-news">
           <h2>
