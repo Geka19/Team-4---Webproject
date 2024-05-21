@@ -1,53 +1,72 @@
 form {
-    width: 500px;
+  width: 100%;
 }
 
 .create-note {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: auto;
-    width: 100%;
-    max-width: 500px; /* Adjust as needed */
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background-color: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 95%; /* Adjust as needed */
+  padding: 20px 0;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
 }
 
 .create-note input,
 .create-note textarea,
 .create-note select {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-sizing: border-box;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.create-note-page #tags {
+  width: 30vw;
+  padding: 10px;
+}
+
+.create-note-page select {
+  width: 15vw;
+}
+
+.create-note-page #content {
+  width: 50vw;
+  height: 50vh;
+  overflow: scroll;
+  position: relative;
 }
 
 /* Media query for smaller screens */
 @media screen and (max-width: 600px) {
-    .create-note {
-        max-width: 100%; /* Adjust for full-width on smaller screens */
-        margin-bottom: 30vh;
-    }
+  .create-note {
+    max-width: 100%; /* Adjust for full-width on smaller screens */
+    margin-bottom: 30vh;
+  }
 
-    /* Adjust content styling only for CreateNotePage */
-    .create-note-page #content {
-        width: 50vw;
-        height: 50vh;
-        overflow: scroll;
-        position: relative;
-        top: 10px;
-    }
-    /* #tags {
+  .create-note-page #tags {
+    margin-top: 10px;
+  }
+
+  .create-note-page select {
+    width: 100%;
+  }
+
+  /* Adjust content styling only for CreateNotePage */
+  .create-note-page #content {
+    width: 80vw;
+    height: 50vh;
+    overflow: scroll;
+    position: relative;
+    top: 10px;
+  }
+  /* #tags {
         position: relative;
         top: 2vh;
         left: -20vw;
     } */
 }
-
-
-
-

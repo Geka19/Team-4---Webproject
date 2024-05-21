@@ -10,7 +10,7 @@ const Navbar = () => {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollPos = window.pageYOffset;
-      setShowNavbar(prevScrollPos > currentScrollPos || currentScrollPos < 10);
+      setShowNavbar(prevScrollPos > currentScrollPos || currentScrollPos < 25);
       setPrevScrollPos(currentScrollPos);
     };
 
