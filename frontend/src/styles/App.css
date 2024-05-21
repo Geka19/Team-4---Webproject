@@ -29,12 +29,12 @@ button {
     margin: 10px;
     border: none;
     border-radius: 5px;
-    background-color: #007bff;
-    color: white;
+    background-color: #ffbf00;
+    color: black;
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #ffbf00;
 }
 .homepage-container {
     display: flex;

@@ -30,7 +30,7 @@ let origin;
 if (process.env.NODE_ENV === "production") {
   origin = "https://team4.sustainability.it.ntnu.no";
 } else {
-  origin = "http://localhost:3000";
+  origin = "http://localhost:8084";
 }
 
 // Set up CORS
