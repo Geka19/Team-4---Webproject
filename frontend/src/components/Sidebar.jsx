@@ -12,7 +12,6 @@ import "../styles/Sidebar.css";
 function Sidebar() {
   const navigate = useNavigate();
   const { logout } = useAuth();
-  const { currentUser } = useAuth();
 
   const handleLogout = async () => {
     try {

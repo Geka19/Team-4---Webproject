@@ -2,11 +2,9 @@ services:
   backend:
     build: ./backend
     ports:
-      - '8050:8050'
-    command: npm start
+      - '8094:8094'
 
   frontend:
     build: ./frontend
     ports:
-      - '3000:3000'
-    command: npm start
+      - '8084:8084'
