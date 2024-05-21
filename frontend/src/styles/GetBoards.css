@@ -43,12 +43,18 @@
   display: block;
   margin-bottom: 1rem;
   text-decoration: none;
-  color: #007bff;
+  color: var(--logo-green);
 }
 
 /* Media Query for smaller screens */
 @media screen and (max-width: 600px) {
   .board-container {
     justify-content: center;
+    margin-bottom: 25px;
+  }
+
+  .board-text,
+  .create-new-board {
+    text-align: center;
   }
 }

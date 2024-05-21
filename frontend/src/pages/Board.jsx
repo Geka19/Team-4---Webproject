@@ -3,8 +3,8 @@ import GetBoards from "../components/GetBoards";
 function Board() {
   return (
     <>
-      <h1>Boards</h1>
-      <p>Here are your boards:</p>
+      <h1 className="board-text">Boards</h1>
+      <p className="board-text">Here are your boards:</p>
       <GetBoards />
     </>
   );
