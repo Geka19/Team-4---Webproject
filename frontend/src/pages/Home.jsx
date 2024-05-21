@@ -21,7 +21,6 @@ function Home() {
       </h1>
       <p>Welcome to the sustainability diary!</p>
       <NewsContainer />
-      <h2>Create a note? (+ img or something)</h2>
       {/* Render the PopupNote component */}
       {isPopupOpen && <PopupNote onClose={handleClosePopup} />}
     </>
